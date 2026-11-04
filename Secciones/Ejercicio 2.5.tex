@@ -1,0 +1,13 @@
+Supóngase que $\Psi=\psi\otimes\varphi$, con $\psi,\varphi\in H_1$. Si Ana mide en una base $\{u_0,u_1\}$, el resultado $k$ tiene probabilidad $p_k=|\bk{u_k}{\psi}|^2$, y la onda de Bruno es
+\[
+  \Psi_k(s)=\bk{u_k}{\psi}\,\varphi(s).
+\]
+Tras normalizar, $\varphi_k$ es $\varphi/\|\varphi\|$ multiplicada por un factor de fase, para todo $k$ con $p_k\neq0$. En otras palabras, el estado de Bruno es siempre el mismo, sea cual sea la base y el resultado de Ana.
+
+El paso del argumento de 2.4 que falla es la suposición de que el bit de Ana cambia el estado de Bruno. Con un estado producto se tiene
+\[
+  \rho_0=\rho_1=\varphi^{\otimes n},
+\]
+donde $\varphi^{\otimes n}:=\varphi(s_1)\cdots\varphi(s_n)$. Es decir, el mismo estado puro aparece en los dos casos. Entonces ningún procedimiento distingue los dos bits, y el error es $\frac12$ sin importar $n$.
+
+Conviene notar que en el caso entrelazado de 2.3 la diferencia aparece solo al usar varias copias. Con una sola copia, el estado promedio de Bruno es $\frac12 I$ para los dos bits, pero $\rho_0$ y $\rho_1$ son mezclas distintas de estados puros, y al usar $n$ copias esa diferencia se hace visible. Con un estado producto, en cambio, $\rho_0$ y $\rho_1$ son el mismo estado puro desde el principio. Por tanto, lo que permite el argumento es el entrelazamiento de $\Psi$, que por 2.2 se caracteriza por $\det C\neq0$.

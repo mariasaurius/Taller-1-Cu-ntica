@@ -1,0 +1,173 @@
+\paragraph{Los espacios $H_1$ y $H_2$.} Por la fórmula de Euler, para todo número real $x$,
+\[
+  e^{ix}=\cos x+i\sin x ,
+\]
+así que $e^{int}=\cos nt+i\sin nt$ es una onda con valores complejos: su parte real es $\cos nt$ y su parte imaginaria es $\sin nt$. El número $n$ es su frecuencia. La notación $\spanC\{f_1,\dots,f_k\}$ denota el conjunto de todas las combinaciones lineales $c_1f_1+\dots+c_kf_k$ con coeficientes $c_1,\dots,c_k\in\C$. Es la misma definición de conjunto generado del punto 1.1, pero con coeficientes complejos en lugar de reales. Así,
+\[
+  H_1=\{\alpha\,e^{it}+\beta\,e^{2it} : \alpha,\beta\in\C\}.
+\]
+Para recordar que $H_1$ hace el papel de un qubit, se escribe
+\[
+  \ket0:=e^{it},\qquad \ket1:=e^{2it},
+\]
+de modo que un elemento de $H_1$ es $\alpha\ket0+\beta\ket1$, igual que un estado de un qubit.
+
+Del mismo modo, $H_2$ es el conjunto de las combinaciones lineales con coeficientes complejos de las cuatro funciones de dos variables $e^{i(nt+ms)}$ con $n,m\in\{1,2\}$:
+\[
+  e^{i(t+s)},\qquad e^{i(t+2s)},\qquad e^{i(2t+s)},\qquad e^{i(2t+2s)}.
+\]
+Por la definición de $H_2$, estas cuatro funciones lo generan: todo elemento de $H_2$ es una combinación lineal de ellas. Los símbolos $L^2([0,2\pi])$ y $L^2([0,2\pi]^2)$ del enunciado denotan los espacios de funciones definidas en $[0,2\pi]$ y en el cuadrado $[0,2\pi]\times[0,2\pi]$ para las que la integral de $|f|^2$ es finita. $H_1$ y $H_2$ están contenidos en ellos y toman de ellos su producto interno.
+
+\begin{definicionT}[Producto interno normalizado]
+Para $f,g\in H_1$ se define
+\[
+  \bk{f}{g}=\frac1{2\pi}\int_0^{2\pi}\overline{f(t)}\,g(t)\,dt ,
+\]
+y para $F,G\in H_2$,
+\[
+  \bk{F}{G}=\frac1{4\pi^2}\int_0^{2\pi}\!\!\int_0^{2\pi}\overline{F(t,s)}\,G(t,s)\,dt\,ds .
+\]
+La notación $\bk{f}{g}$ es la notación de Dirac para el producto interno: a la izquierda va el vector que se conjuga (el \emph{bra}) y a la derecha el otro (el \emph{ket}). Para los kets $\ket0$ y $\ket1$ se abrevia, por ejemplo, $\bk{0}{1}$ en lugar de $\bk{e^{it}}{e^{2it}}$.
+\end{definicionT}
+
+La barra sobre $f(t)$ indica el conjugado complejo. Se conjuga la primera función para que $\bk{f}{f}=\frac1{2\pi}\int_0^{2\pi}|f(t)|^2\,dt$ sea un número real mayor o igual que $0$, que sirve para medir el tamaño de $f$: la \emph{norma} de $f$ es $\|f\|=\sqrt{\bk{f}{f}}$. El factor $\frac1{2\pi}$ es la normalización que pide el enunciado. Como $|e^{it}|^2=\cos^2t+\sin^2t=1$, sin ese factor se tendría $\int_0^{2\pi}|e^{it}|^2\,dt=2\pi$, y la norma de $e^{it}$ sería $\sqrt{2\pi}$ en lugar de $1$. Con el factor, $\ket0$ y $\ket1$ tienen norma $1$, como los vectores de la base de un qubit. Por la misma razón, en $H_2$ se divide entre $(2\pi)^2=4\pi^2$, que es el área del cuadrado $[0,2\pi]\times[0,2\pi]$.
+
+\begin{definicionT}[Conjunto ortonormal]
+Un conjunto de funciones $\{f_1,\dots,f_k\}$ es \emph{ortonormal} si $\bk{f_j}{f_j}=1$ para cada $j$ (cada función tiene norma $1$) y $\bk{f_j}{f_l}=0$ cuando $j\neq l$. La segunda condición se expresa diciendo que las funciones son \emph{ortogonales dos a dos}: cada pareja de funciones distintas del conjunto tiene producto interno $0$.
+\end{definicionT}
+
+\paragraph{Ortonormalidad en $H_1$.} En el punto 1.1 se obtuvo
+\[
+  \int_0^{2\pi}\cos(kt)\,dt=\begin{cases}2\pi,&k=0,\\0,&k\neq0,\end{cases}\qquad
+  \int_0^{2\pi}\sin(kt)\,dt=0\quad\text{para todo entero }k .
+\]
+Con la fórmula de Euler, para un entero $k$,
+\[
+  \frac1{2\pi}\int_0^{2\pi}e^{ikt}\,dt=\frac1{2\pi}\Bigl(\int_0^{2\pi}\cos(kt)\,dt+i\int_0^{2\pi}\sin(kt)\,dt\Bigr)=\begin{cases}1,&k=0,\\0,&k\neq0.\end{cases}
+\]
+Como $\overline{e^{ipt}}=\cos pt-i\sin pt=e^{-ipt}$ y $e^{-ipt}e^{iqt}=e^{i(q-p)t}$, para enteros $p$ y $q$ se tiene
+\[
+  \bk{e^{ipt}}{e^{iqt}}=\frac1{2\pi}\int_0^{2\pi}e^{i(q-p)t}\,dt=\begin{cases}1,&p=q,\\0,&p\neq q.\end{cases}
+\]
+Con $p,q\in\{1,2\}$ resulta $\bk{0}{0}=\bk{1}{1}=1$ y $\bk{0}{1}=\bk{1}{0}=0$, así que $\{\ket0,\ket1\}$ es ortonormal.
+
+Un conjunto ortonormal siempre es linealmente independiente. Si $c_1f_1+\dots+c_kf_k=0$, se hace el producto interno con $f_j$ a ambos lados. Como el producto interno es lineal en la segunda entrada, queda $c_1\bk{f_j}{f_1}+\dots+c_k\bk{f_j}{f_k}=0$. Todos los términos son $0$ salvo el de $f_j$, que vale $c_j\cdot1$, así que $c_j=0$ para cada $j$. Por tanto $\ket0$ y $\ket1$ son linealmente independientes y forman una base de $H_1$, de modo que $\dim_{\C}H_1=2$. En particular, $H_1$ es un espacio de Hilbert, es decir, un espacio vectorial complejo con producto interno, de dimensión $2$.
+
+\paragraph{Ortonormalidad en $H_2$.} En una integral doble de una función de la forma $f(t)g(s)$, al integrar en $t$ con $s$ fija, $g(s)$ es una constante y sale de la integral. Por eso
+\[
+  \int_0^{2\pi}\!\!\int_0^{2\pi}f(t)\,g(s)\,dt\,ds=\Bigl(\int_0^{2\pi}f(t)\,dt\Bigr)\Bigl(\int_0^{2\pi}g(s)\,ds\Bigr).
+\]
+Como $\overline{e^{i(nt+ms)}}=e^{-int}e^{-ims}$, para $n,m,n',m'\in\{1,2\}$,
+\[
+  \bk{e^{i(nt+ms)}}{e^{i(n't+m's)}}=\Bigl(\frac1{2\pi}\int_0^{2\pi}e^{i(n'-n)t}\,dt\Bigr)\Bigl(\frac1{2\pi}\int_0^{2\pi}e^{i(m'-m)s}\,ds\Bigr).
+\]
+Esto vale $1$ si $n=n'$ y $m=m'$, y $0$ en cualquier otro caso. Así, las cuatro funciones son ortonormales; por lo anterior son linealmente independientes, y como generan $H_2$, forman una base de $H_2$. Por tanto $\dim_{\C}H_2=4$.
+
+\begin{definicionT}[Producto tensorial]
+Como se vio en clase, $H_1\otimes H_1$ es el espacio vectorial complejo cuya base ortonormal son los cuatro símbolos
+\[
+  \ket0\otimes\ket0,\qquad \ket0\otimes\ket1,\qquad \ket1\otimes\ket0,\qquad \ket1\otimes\ket1 ,
+\]
+es decir, $\ket a\otimes\ket b$ con $a,b\in\{0,1\}$. Sus elementos son las combinaciones $\sum_{a,b}c_{ab}\,\ket a\otimes\ket b$ con $c_{ab}\in\C$, y su dimensión es $2\cdot2=4$. Para $\psi=x_0\ket0+x_1\ket1$ y $\varphi=y_0\ket0+y_1\ket1$ en $H_1$ se define
+\[
+  \psi\otimes\varphi=\sum_{a,b\in\{0,1\}}x_a\,y_b\,\ket a\otimes\ket b :
+\]
+el coeficiente de cada pareja $\ket a\otimes\ket b$ es el producto de los coeficientes.
+\end{definicionT}
+
+Con esta definición, un número complejo $c$ se puede sacar de cualquiera de los dos factores: multiplicar $\psi$ por $c$ multiplica todos los $x_a$ por $c$, y multiplicar $\varphi$ por $c$ multiplica todos los $y_b$ por $c$. En ambos casos todos los coeficientes $x_ay_b$ quedan multiplicados por $c$, así que
+\[
+  (c\,\psi)\otimes\varphi=c\,(\psi\otimes\varphi)=\psi\otimes(c\,\varphi).
+\]
+Del mismo modo, $(\psi+\psi')\otimes\varphi=\psi\otimes\varphi+\psi'\otimes\varphi$, y lo mismo en el segundo factor.
+
+\paragraph{La regla del enunciado.} La notación $(\psi,\varphi)\mapsto\psi(t)\varphi(s)$ describe una regla: a cada pareja $(\psi,\varphi)$ de elementos de $H_1$ se le asigna la función de dos variables que en el punto $(t,s)$ vale $\psi(t)\varphi(s)$. La onda $\psi$ se evalúa en la variable $t$ y la onda $\varphi$ en la variable $s$. Por ejemplo, la pareja $(e^{it},e^{2it})$ se envía a $e^{it}e^{2is}=e^{i(t+2s)}$, por la propiedad $e^{ix}e^{iy}=e^{i(x+y)}$ de la exponencial. En general, si $\psi(t)=x_0e^{it}+x_1e^{2it}$ y $\varphi(s)=y_0e^{is}+y_1e^{2is}$, al multiplicar término a término,
+\[
+  \psi(t)\varphi(s)=x_0y_0\,e^{i(t+s)}+x_0y_1\,e^{i(t+2s)}+x_1y_0\,e^{i(2t+s)}+x_1y_1\,e^{i(2t+2s)},
+\]
+que es una combinación de las cuatro funciones que generan $H_2$; por tanto, $\psi(t)\varphi(s)\in H_2$.
+
+\begin{definicionT}[Transformación lineal]
+Sean $V$ y $W$ espacios vectoriales complejos. Una \emph{transformación lineal} $T\colon V\to W$ es una función que a cada $v\in V$ le asigna un elemento $T(v)\in W$ y que cumple
+\[
+  T(u+v)=T(u)+T(v),\qquad T(c\,v)=c\,T(v)
+\]
+para todo $u,v\in V$ y todo $c\in\C$.
+\end{definicionT}
+
+Si $\{v_1,\dots,v_k\}$ es una base de $V$, todo $v\in V$ se escribe como $v=c_1v_1+\dots+c_kv_k$, y las dos propiedades dan
+\[
+  T(v)=c_1\,T(v_1)+\dots+c_k\,T(v_k).
+\]
+Por eso, para definir una transformación lineal basta decir a dónde va cada elemento de una base.
+
+\begin{definicionT}[Isomorfismo]
+Una transformación lineal $T\colon V\to W$ es un \emph{isomorfismo} si es biyectiva, es decir, si cumple dos condiciones: es \emph{inyectiva} (si $T(u)=T(v)$, entonces $u=v$) y es \emph{sobreyectiva} (todo $w\in W$ es igual a $T(v)$ para algún $v\in V$). Cuando existe un isomorfismo de $V$ en $W$ se escribe $V\cong W$, y se dice que $V$ y $W$ son isomorfos.
+\end{definicionT}
+
+Que dos espacios sean isomorfos significa que son el mismo espacio con nombres distintos para sus elementos. El isomorfismo traduce cada elemento de uno en exactamente un elemento del otro, y la traducción respeta las sumas y los múltiplos.
+
+\paragraph{Por qué se pasa al producto tensorial.} La regla $(\psi,\varphi)\mapsto\psi(t)\varphi(s)$ no es una transformación lineal sobre las parejas. Si se multiplican las dos ondas por $2$, la pareja $(2\psi,2\varphi)$ es el doble de $(\psi,\varphi)$, pero su imagen es $4\,\psi(t)\varphi(s)$ y no el doble. Lo que sí cumple la regla es ser lineal en cada onda por separado: con $\varphi$ fija, $\bigl(c\,\psi+\psi'\bigr)(t)\,\varphi(s)=c\,\psi(t)\varphi(s)+\psi'(t)\varphi(s)$, y lo mismo con $\psi$ fija. El producto tensorial tiene exactamente esa propiedad, como se vio después de su definición. Por eso la regla se traduce en una transformación lineal $T$ definida en $H_1\otimes H_1$ que cumple
+\[
+  T(\psi\otimes\varphi)=\psi(t)\varphi(s)\qquad\text{para todo }\psi,\varphi\in H_1 .
+\]
+Esto es lo que significa que la regla \emph{induce} una transformación lineal.
+
+\paragraph{Definición de $T$.} Como $H_1\otimes H_1$ tiene la base $\{\ket a\otimes\ket b\}$, basta decir a dónde va cada uno de esos cuatro elementos. El ket $\ket a$ es la onda $e^{i(a+1)t}$: para $a=0$ es $e^{it}$ y para $a=1$ es $e^{2it}$. La etiqueta $a\in\{0,1\}$ del ket y la frecuencia de la onda se diferencian en $1$, porque las etiquetas de un qubit empiezan en $0$ y las frecuencias de $H_1$ empiezan en $1$. Siguiendo la regla del enunciado, se define
+\[
+  T(\ket a\otimes\ket b)=e^{i(a+1)t}\,e^{i(b+1)s}=e^{i((a+1)t+(b+1)s)} .
+\]
+Con $n=a+1$ y $m=b+1$, la imagen es $e^{i(nt+ms)}$, y cuando $a$ y $b$ recorren $\{0,1\}$, la pareja de frecuencias $(n,m)$ recorre $\{1,2\}$. La tabla muestra las cuatro imágenes.
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{ccc}
+  Elemento de la base & $(n,m)$ & Imagen por $T$\\\hline
+  $\ket0\otimes\ket0$ & $(1,1)$ & $e^{i(t+s)}$\\
+  $\ket0\otimes\ket1$ & $(1,2)$ & $e^{i(t+2s)}$\\
+  $\ket1\otimes\ket0$ & $(2,1)$ & $e^{i(2t+s)}$\\
+  $\ket1\otimes\ket1$ & $(2,2)$ & $e^{i(2t+2s)}$
+\end{tabular}
+\end{center}
+Con esta definición, $T$ cumple $T(\psi\otimes\varphi)=\psi(t)\varphi(s)$. En efecto, si $\psi=x_0\ket0+x_1\ket1$ y $\varphi=y_0\ket0+y_1\ket1$, entonces $\psi\otimes\varphi=\sum_{a,b}x_ay_b\,\ket a\otimes\ket b$, y por linealidad
+\[
+  T(\psi\otimes\varphi)=x_0y_0\,e^{i(t+s)}+x_0y_1\,e^{i(t+2s)}+x_1y_0\,e^{i(2t+s)}+x_1y_1\,e^{i(2t+2s)}=\psi(t)\varphi(s),
+\]
+donde la última igualdad es el desarrollo del producto hecho en la regla del enunciado.
+
+\paragraph{$T$ es un isomorfismo.} Las imágenes de la base de $H_1\otimes H_1$ son las cuatro funciones $e^{i(nt+ms)}$, que forman una base de $H_2$. De ahí salen las dos condiciones de la definición de isomorfismo.
+
+Para la sobreyectividad, todo $F\in H_2$ es una combinación $F=\sum_{n,m}c_{nm}\,e^{i(nt+ms)}$, porque las cuatro funciones generan $H_2$. Entonces $F=T(X)$ con $X=\sum_{a,b}c_{a+1,\,b+1}\,\ket a\otimes\ket b$.
+
+Para la inyectividad, sean $X=\sum_{a,b}u_{ab}\,\ket a\otimes\ket b$ y $Y=\sum_{a,b}v_{ab}\,\ket a\otimes\ket b$ con $T(X)=T(Y)$. Entonces $\sum_{a,b}(u_{ab}-v_{ab})\,e^{i((a+1)t+(b+1)s)}=0$. Como las cuatro funciones son linealmente independientes, todos los coeficientes $u_{ab}-v_{ab}$ son $0$, es decir, $X=Y$.
+
+Por tanto $T$ es un isomorfismo y
+\[
+  \destacado{H_1\otimes H_1\cong H_2 .}
+\]
+Además, $T$ conserva los productos internos: los elementos $\ket a\otimes\ket b$ son ortonormales en $H_1\otimes H_1$ por definición, y sus imágenes son ortonormales en $H_2$ por el cálculo anterior.
+
+\paragraph{Por qué se usan exponenciales complejas.} Las exponenciales tienen la propiedad $e^{int}e^{ims}=e^{i(nt+ms)}$: el producto de una onda de frecuencia $n$ en $t$ por una de frecuencia $m$ en $s$ es una sola onda de dos variables. Con cosenos esto no pasa. Por la identidad $\cos x\cos y=\frac12\bigl[\cos(x+y)+\cos(x-y)\bigr]$, la misma que se usó en el punto 1.1,
+\[
+  \cos t\,\cos s=\tfrac12\bigl[\cos(t+s)+\cos(t-s)\bigr],
+\]
+así que el producto de dos ondas reales se separa en dos ondas, una en $t+s$ y otra en $t-s$. Con las ondas $e^{int}$, en cambio, cada pareja $\ket a\otimes\ket b$ corresponde a una sola función de $H_2$.
+
+\paragraph{Ondas reales.} En la sección anterior el espacio era
+\[
+  V=\spanR\{\cos t,\ \sin t,\ \cos 2t,\ \sin 2t\},
+\]
+formado por ondas con valores reales. La multiplicación por un número complejo se definió con la regla $(a+ib)\cdot\cos nt=a\cos nt+b\sin nt$; en particular, $i\cdot\cos nt=\sin nt$, es decir, multiplicar por $i$ corre la onda un cuarto de periodo.
+
+Este espacio tiene dimensión $4$ si solo se permiten coeficientes reales y dimensión $2$ si se permiten complejos. Con coeficientes reales, $\sin t$ no es un múltiplo real de $\cos t$, así que hacen falta las cuatro funciones, que son linealmente independientes sobre $\R$ (punto 1.1); por eso $\dim_{\R}V=4$. Con coeficientes complejos, en cambio, $\sin t=i\cdot\cos t$ y $\sin 2t=i\cdot\cos 2t$, así que bastan $\cos t$ y $\cos 2t$, y $\dim_{\C}V=2$ (punto 1.1). Como espacio complejo, $V$ es un qubit, igual que $H_1$.
+
+Si se intenta repetir la construcción con $V$ en lugar de $H_1$ y con la regla $(f,g)\mapsto f(t)g(s)$, aparece un problema. En $V\otimes V$, como se vio arriba, un número complejo sale de cualquiera de los dos factores:
+\[
+  (i\cdot f)\otimes g=i\cdot(f\otimes g)=f\otimes(i\cdot g).
+\]
+Si la regla indujera una transformación lineal $T$ con $T(f\otimes g)=f(t)g(s)$, las funciones $(i\cdot f)(t)\,g(s)$ y $f(t)\,(i\cdot g)(s)$ tendrían que ser iguales. Si $f$ y $g$ son la onda $\cos$ de frecuencia $1$, se obtiene
+\[
+  (i\cdot\cos t)\,\cos s=\sin t\,\cos s
+  \qquad\text{y}\qquad
+  \cos t\,(i\cdot\cos s)=\cos t\,\sin s .
+\]
+Estas funciones no son iguales: en $t=\frac\pi2$, $s=0$, la primera vale $\sin\frac\pi2\cos0=1$ y la segunda vale $\cos\frac\pi2\sin0=0$. Por tanto, con ondas reales la regla $(f,g)\mapsto f(t)g(s)$ no induce una transformación lineal de $V\otimes V$, y menos un isomorfismo. El problema es que en $V$ multiplicar por $i$ no es multiplicar la función por el número $i$, sino correr la onda, y correr la onda en $t$ no es lo mismo que correrla en $s$. Con las ondas complejas $e^{int}$, multiplicar por $i$ sí es multiplicar la función por el número $i$, y ese número sale de cualquiera de los dos factores: $\bigl(i\,\psi(t)\bigr)\varphi(s)=\psi(t)\bigl(i\,\varphi(s)\bigr)$. Por eso en esta parte las ondas se toman complejas desde el principio.

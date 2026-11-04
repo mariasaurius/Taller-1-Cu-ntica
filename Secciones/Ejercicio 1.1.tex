@@ -1,0 +1,852 @@
+% ======================================================================
+%  Taller 1 -- Punto 1.1 (cuerpo)
+%  Requiere el bloque "preambulo_taller.tex" en el preámbulo.
+%  Se puede pegar directamente en el documento o incluir con
+%  \input{punto_1_1_cuerpo}.
+% ======================================================================
+% ====================== INICIO DEL PUNTO 1.1 ===========================
+
+
+
+%======================================================================
+\subsection*{El conjunto $V$}
+%======================================================================
+
+\begin{definicionT}[Combinación lineal y conjunto generado]
+Dadas funciones $\varphi_1,\dots,\varphi_k$ definidas en $[0,2\pi]$, una
+\emph{combinación lineal con coeficientes reales} de ellas es una función de la forma
+$c_1\varphi_1+c_2\varphi_2+\dots+c_k\varphi_k$, con $c_1,\dots,c_k\in\mathbb R$. El conjunto de
+todas estas combinaciones se llama \emph{conjunto generado} por $\varphi_1,\dots,\varphi_k$ y
+se denota $\spanR\{\varphi_1,\dots,\varphi_k\}$.
+\end{definicionT}
+
+Según esta definición, los elementos de $V$ son las funciones de la forma
+\begin{equation}\label{eq:forma-general}
+  f(t) = a_1\Cu + b_1\Su + a_2\Cd + b_2\Sd,
+  \qquad a_1, b_1, a_2, b_2 \in \mathbb{R}.
+\end{equation}
+En adelante, $a_n$ denota el coeficiente de $\cos nt$ y $b_n$ el de $\sin nt$. El subíndice
+$n$ es la \emph{frecuencia} de la función, es decir, el número de oscilaciones completas que
+realiza en el intervalo $[0,2\pi]$; así, $\Cu$ y $\Su$ tienen frecuencia $1$, y $\Cd$ y $\Sd$
+tienen frecuencia $2$ (figura~\ref{fig:generadoras}). Todo elemento de $V$ es una función que
+toma valores reales.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ondaT, width=14cm, height=5.8cm,
+  xtick={0,pi/4,pi/2,pi,3*pi/2,2*pi},
+  xticklabels={$0$,$\frac{\pi}{4}$,$\frac{\pi}{2}$,$\pi$,$\frac{3\pi}{2}$,$2\pi$},
+  legend style={at={(0.5,1.04)}, anchor=south, legend columns=4, draw=none,
+                font=\small, column sep=8pt},
+  ]
+  \addplot[very thick, colCu] {cos(x)};    \addlegendentry{$\cos t$}
+  \addplot[very thick, colSu] {sin(x)};    \addlegendentry{$\sin t$}
+  \addplot[very thick, colCd] {cos(2*x)};  \addlegendentry{$\cos 2t$}
+  \addplot[very thick, colSd] {sin(2*x)};  \addlegendentry{$\sin 2t$}
+  \draw[dashed, black!50] (axis cs:0.7854,-1.25) -- (axis cs:0.7854,1.25);
+  \draw[dashed, black!50] (axis cs:1.5708,-1.25) -- (axis cs:1.5708,1.25);
+  \draw[dashed, black!50] (axis cs:3.1416,-1.25) -- (axis cs:3.1416,1.25);
+\end{axis}
+\end{tikzpicture}
+\caption{Las cuatro funciones que generan $V$. Las de frecuencia $1$ completan una oscilación
+en $[0,2\pi]$ y las de frecuencia $2$ completan dos. Las líneas punteadas marcan los puntos
+$t=\pi/4,\ \pi/2,\ \pi$ que, junto con $t=0$, se usan en la demostración del
+lema~\ref{lema:independencia}.}
+\label{fig:generadoras}
+\end{figure}
+
+\begin{definicionT}[Independencia lineal sobre $\mathbb R$]
+Las funciones $\varphi_1,\dots,\varphi_k$ son \emph{linealmente independientes sobre
+$\mathbb R$} si la única combinación lineal con coeficientes reales que da la función cero (la
+que vale $0$ en todo $t$) es aquella con todos sus coeficientes iguales a cero; es decir, si
+\[
+  c_1\varphi_1(t)+\dots+c_k\varphi_k(t)=0 \ \text{ para todo } t\in[0,2\pi]
+  \quad\Longrightarrow\quad c_1=\dots=c_k=0 .
+\]
+\end{definicionT}
+
+\begin{lemaT}{lema:independencia}
+Las funciones $\cos t$, $\sin t$, $\cos 2t$ y $\sin 2t$ son linealmente independientes sobre
+$\mathbb R$. En consecuencia, si dos expresiones de la forma $f(t)=a_1\cos t+b_1\sin t+a_2\cos 2t+b_2\sin 2t$ \eqref{eq:forma-general}
+representan la misma función, sus coeficientes coinciden.
+\end{lemaT}
+
+\begin{proof}
+Supóngase que
+\begin{equation}\label{eq:combinacion-cero}
+  a_1\cos t + b_1\sin t + a_2\cos 2t + b_2\sin 2t = 0
+  \qquad\text{para todo } t\in[0,2\pi].
+\end{equation}
+Como la igualdad se cumple para todo $t$, se cumple en particular en los puntos donde varias
+de las cuatro funciones valen $0$ o $\pm 1$, que son los marcados en la
+figura~\ref{fig:generadoras}. Los valores en esos puntos son
+\[
+\begin{array}{c|cccc}
+ t & \cos t & \sin t & \cos 2t & \sin 2t\\ \hline
+ 0 & 1 & 0 & 1 & 0\\
+ \pi/4 & \tfrac{\sqrt2}{2} & \tfrac{\sqrt2}{2} & 0 & 1\\
+ \pi/2 & 0 & 1 & -1 & 0\\
+ \pi & -1 & 0 & 1 & 0
+\end{array}
+\]
+Al evaluar $a_1\cos t+b_1\sin t+a_2\cos 2t+b_2\sin 2t=0$ \eqref{eq:combinacion-cero} en $t=0$ y en $t=\pi$ se obtienen las ecuaciones
+$a_1+a_2=0$ y $-a_1+a_2=0$. Sumándolas resulta $2a_2=0$, es decir, $a_2=0$, y entonces
+$a_1=0$. Al evaluar en $t=\pi/2$ se obtiene $b_1-a_2=0$, y como $a_2=0$, también $b_1=0$.
+Finalmente, al evaluar en $t=\pi/4$ queda
+$\tfrac{\sqrt2}{2}a_1+\tfrac{\sqrt2}{2}b_1+b_2=0$, y como $a_1=b_1=0$, resulta $b_2=0$. Así,
+los cuatro coeficientes son cero.
+
+Para la segunda afirmación, supóngase que una misma función $f$ se escribe con coeficientes
+$a_1,b_1,a_2,b_2$ y también con coeficientes $\tilde a_1,\tilde b_1,\tilde a_2,\tilde b_2$. Al
+restar ambas expresiones se obtiene
+$(a_1-\tilde a_1)\cos t+(b_1-\tilde b_1)\sin t+(a_2-\tilde a_2)\cos 2t+(b_2-\tilde b_2)\sin 2t=0$
+para todo $t$, y por la primera parte cada diferencia es cero, es decir, $a_1=\tilde a_1$,
+$b_1=\tilde b_1$, $a_2=\tilde a_2$ y $b_2=\tilde b_2$.
+\end{proof}
+
+Gracias al lema tiene sentido hablar de \emph{los} coeficientes de un elemento de $V$, y dos
+elementos de $V$ son iguales exactamente cuando sus cuatro coeficientes coinciden. Este es el
+criterio que se usa en todas las verificaciones siguientes.
+
+%======================================================================
+\subsection*{Propiedades de espacio vectorial complejo}
+%======================================================================
+
+\begin{definicionT}[Espacio vectorial complejo]
+Un conjunto $V$ es un \emph{espacio vectorial complejo} si tiene definidas dos operaciones, la
+suma $f+g$ de dos elementos y la multiplicación $z\cdot f$ de un elemento por un número
+complejo $z$, cuyos resultados pertenecen otra vez a $V$ y que cumplen las
+siguientes propiedades para todo $f, g, h\in V$ y todo $z, w\in\mathbb{C}$.
+
+\smallskip
+\noindent\textbf{Propiedades de la suma.}
+\begin{enumerate}
+  \item[(S1)] $f+g = g+f$.
+  \item[(S2)] $(f+g)+h = f+(g+h)$.
+  \item[(S3)] Existe un elemento $0\in V$ tal que $f+0 = f$.
+  \item[(S4)] Para cada $f$ existe $-f\in V$ tal que $f+(-f) = 0$.
+\end{enumerate}
+\noindent\textbf{Propiedades de la multiplicación por escalares.}
+\begin{enumerate}
+  \item[(M1)] $z\cdot(f+g) = z\cdot f + z\cdot g$.
+  \item[(M2)] $(z+w)\cdot f = z\cdot f + w\cdot f$.
+  \item[(M3)] $(zw)\cdot f = z\cdot(w\cdot f)$.
+  \item[(M4)] $1\cdot f = f$.
+\end{enumerate}
+\end{definicionT}
+
+En $V$ la suma es la suma usual de funciones, $(f+g)(t)=f(t)+g(t)$, mientras que la
+multiplicación por escalares complejos se construye a partir de la regla del enunciado. Las dos
+operaciones se estudian por separado.
+
+\subsubsection*{La suma}
+
+Sean $f, g, h\in V$. Por la definición de $V$, existen números reales
+$a_1, b_1, a_2, b_2$, $a_1', b_1', a_2', b_2'$ y $a_1'', b_1'', a_2'', b_2''$ tales que
+\begin{align*}
+  f &= a_1\cos t + b_1\sin t + a_2\cos 2t + b_2\sin 2t,\\
+  g &= a_1'\cos t + b_1'\sin t + a_2'\cos 2t + b_2'\sin 2t,\\
+  h &= a_1''\cos t + b_1''\sin t + a_2''\cos 2t + b_2''\sin 2t.
+\end{align*}
+
+\paragraph{La suma pertenece a $V$.}
+Al sumar $f$ y $g$ y agrupar los términos que contienen la misma función, se obtiene
+\begin{equation}\label{eq:suma}
+  f+g = (a_1+a_1')\cos t + (b_1+b_1')\sin t + (a_2+a_2')\cos 2t + (b_2+b_2')\sin 2t.
+\end{equation}
+Como $a_1+a_1'$, $b_1+b_1'$, $a_2+a_2'$ y $b_2+b_2'$ son números reales, $f+g$ es de la
+forma $f(t)=a_1\cos t+b_1\sin t+a_2\cos 2t+b_2\sin 2t$ \eqref{eq:forma-general} y por tanto pertenece a $V$. En otras palabras, sumar dos
+elementos de $V$ equivale a sumar sus coeficientes uno a uno.
+
+\paragraph{(S1) $f+g = g+f$.}
+Por $f+g=(a_1+a_1')\cos t+(b_1+b_1')\sin t+(a_2+a_2')\cos 2t+(b_2+b_2')\sin 2t$ \eqref{eq:suma}, los coeficientes de $f+g$ son $a_1+a_1'$, $b_1+b_1'$, $a_2+a_2'$ y
+$b_2+b_2'$, mientras que los de $g+f$ son $a_1'+a_1$, $b_1'+b_1$, $a_2'+a_2$ y $b_2'+b_2$. Como
+la suma de números reales no depende del orden, $a_1+a_1'=a_1'+a_1$, y lo mismo ocurre con los
+otros tres coeficientes. Al tener los mismos coeficientes, $f+g=g+f$.
+
+\paragraph{(S2) $(f+g)+h = f+(g+h)$.}
+Al aplicar $f+g=(a_1+a_1')\cos t+(b_1+b_1')\sin t+(a_2+a_2')\cos 2t+(b_2+b_2')\sin 2t$ \eqref{eq:suma} dos veces, el coeficiente de $\cos t$ en $(f+g)+h$ es
+$(a_1+a_1')+a_1''$ y en $f+(g+h)$ es $a_1+(a_1'+a_1'')$. Estos números son iguales porque la
+suma de números reales es asociativa. El mismo argumento se aplica a los coeficientes de
+$\sin t$, $\cos 2t$ y $\sin 2t$, de modo que $(f+g)+h = f+(g+h)$.
+
+\paragraph{(S3) Existe $0\in V$ tal que $f+0 = f$.}
+Sea $0$ la función con sus cuatro coeficientes iguales a cero,
+\[
+  0 = 0\cos t + 0\sin t + 0\cos 2t + 0\sin 2t,
+\]
+que pertenece a $V$ porque $0$ es un número real; se trata de la función que vale $0$ en todo
+$t$. Por $f+g=(a_1+a_1')\cos t+(b_1+b_1')\sin t+(a_2+a_2')\cos 2t+(b_2+b_2')\sin 2t$ \eqref{eq:suma},
+\[
+  f+0 = (a_1+0)\cos t + (b_1+0)\sin t + (a_2+0)\cos 2t + (b_2+0)\sin 2t = f.
+\]
+
+\paragraph{(S4) Para cada $f$ existe $-f\in V$ tal que $f+(-f) = 0$.}
+Sea $-f$ la función con los coeficientes de $f$ cambiados de signo,
+\[
+  -f = (-a_1)\cos t + (-b_1)\sin t + (-a_2)\cos 2t + (-b_2)\sin 2t,
+\]
+que pertenece a $V$ porque $-a_1, -b_1, -a_2, -b_2$ son números reales. Por $f+g=(a_1+a_1')\cos t+(b_1+b_1')\sin t+(a_2+a_2')\cos 2t+(b_2+b_2')\sin 2t$ \eqref{eq:suma},
+\[
+  f+(-f) = (a_1-a_1)\cos t + (b_1-b_1)\sin t + (a_2-a_2)\cos 2t + (b_2-b_2)\sin 2t = 0.
+\]
+Con esto, la suma en $V$ produce elementos de $V$ y cumple (S1)--(S4).
+
+\subsubsection*{La multiplicación por escalares complejos}
+
+La regla del enunciado está escrita en términos de la forma polar de un número complejo, por
+lo que conviene fijar primero la notación correspondiente.
+
+\begin{definicionT}[Partes, conjugado y módulo de un número complejo]
+Todo número complejo se escribe como $z=a+ib$, con $a,b\in\mathbb R$ e $i^2=-1$. El número
+$a=\Real z$ es su \emph{parte real} y $b=\Imag z$ su \emph{parte imaginaria}. El
+\emph{conjugado} de $z$ es $\overline z=a-ib$ y su \emph{módulo} es $|z|=\sqrt{a^2+b^2}$. Al
+multiplicar $z$ por su conjugado se obtiene
+\begin{equation}\label{eq:modulo}
+  z\,\overline z=(a+ib)(a-ib)=a^2-i^2b^2=a^2+b^2=|z|^2 .
+\end{equation}
+El conjugado respeta la suma y el producto y, al aplicarse dos veces, devuelve el número
+original: para $z,w\in\mathbb C$,
+\begin{equation}\label{eq:conjugado}
+  \overline{z+w}=\overline z+\overline w,\qquad
+  \overline{zw}=\overline z\,\overline w,\qquad
+  \overline{\overline z}=z .
+\end{equation}
+Estas igualdades se comprueban escribiendo $z=a+ib$, $w=c+id$ y desarrollando ambos lados.
+\end{definicionT}
+
+\begin{definicionT}[Forma polar]
+La \emph{fórmula de Euler} establece que, para $x\in\mathbb R$,
+$e^{ix}=\cos x+i\sin x$. Todo número complejo $z=a+ib$ puede escribirse en \emph{forma polar}
+$z=Ae^{ix}$, donde $A=|z|\ge 0$ es su módulo y $x$ es el ángulo que forma el segmento que va
+de $0$ a $z$ con el eje real. Leyendo la figura como un triángulo
+rectángulo de hipotenusa $A$, se tiene
+\begin{equation}\label{eq:polar}
+  a=A\cos x,\qquad b=A\sin x .
+\end{equation}
+El ángulo $x$ no es único: $x$ y $x+2\pi$ describen el mismo número, y si $z=0$ cualquier
+ángulo sirve.
+\end{definicionT}
+
+
+\paragraph{Significado de la regla.}
+La regla del enunciado,
+\[
+  (Ae^{ix})\cdot\cos nt = A\cos(nt-x),\qquad n=1,2,
+\]
+tiene una lectura gráfica directa. Como $A\cos(nt-x)=A\cos\bigl(n(t-x/n)\bigr)$, la función
+resultante es la gráfica de $\cos nt$ desplazada $x/n$ unidades hacia la derecha y estirada
+verticalmente por el factor $A$. El módulo del número complejo controla la altura de la onda y
+el ángulo controla su posición.
+
+\paragraph{La regla en términos de las partes real e imaginaria.}
+Sea $z=a+ib\in\mathbb C$ escrito en forma polar como $z=Ae^{ix}$. Al aplicar la regla, usar la
+fórmula del coseno de una resta, $\cos(nt-x)=\cos nt\cos x+\sin nt\sin x$, y luego
+$a=A\cos x,\quad\penalty0 b=A\sin x$ \eqref{eq:polar}, se obtiene
+\begin{align*}
+  (a+ib)\cdot\cos nt
+  &=A\cos(nt-x)
+   =A\bigl(\cos nt\cos x+\sin nt\sin x\bigr)\\
+  &=(A\cos x)\cos nt+(A\sin x)\sin nt
+   =a\cos nt+b\sin nt .
+\end{align*}
+Por tanto,
+\begin{equation}\label{eq:regla-coef}
+  \destacado{(a+ib)\cdot\cos nt=a\cos nt+b\sin nt,\qquad n=1,2.}
+\end{equation}
+El lado derecho depende únicamente de $a$ y $b$, no del ángulo $x$ elegido, así que la regla
+asigna una sola función a cada número complejo aunque su forma polar no sea única. Además, si
+$z=a$ es real ($b=0$), la regla da $a\cdot\cos nt=a\cos nt$, que es el producto usual de un
+número real por una función; la nueva multiplicación extiende, por tanto, la multiplicación
+por números reales. En el caso particular $z=i$, es decir, $a=0$ y $b=1$, la fórmula
+$(a+ib)\cdot\cos nt=a\cos nt+b\sin nt$ \eqref{eq:regla-coef} da
+\begin{equation}\label{eq:i-cos}
+  i\cdot\cos nt=\sin nt ,
+\end{equation}
+que es lo que muestra en la figura~\ref{fig:regla}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ondaT, title={$i\cdot\cos t=\cos(t-\pi/2)=\sin t$}]
+  \addplot[very thick, colCu] {cos(x)};
+  \addplot[very thick, colSu] {sin(x)};
+  \draw[-{Stealth[length=2mm]}, thick] (axis cs:0,1.2) -- (axis cs:1.5708,1.2)
+     node[midway, above, font=\footnotesize] {$\pi/2$};
+  \node[colCu, font=\footnotesize] at (axis cs:5.75,1.15) {$\cos t$};
+  \node[colSu, font=\footnotesize] at (axis cs:4.0,-1.2) {$\sin t$};
+\end{axis}
+\end{tikzpicture}
+\caption{}
+\label{fig:regla}
+\end{figure}
+
+\paragraph{Coordenadas complejas de un elemento de $V$.}
+La regla solo indica cómo multiplicar $\cos t$ y $\cos 2t$ por un número complejo; para
+multiplicar un elemento cualquiera de $V$ hace falta extenderla. La fórmula
+$(a+ib)\cdot\cos nt=a\cos nt+b\sin nt$ \eqref{eq:regla-coef}, leída de derecha a izquierda, muestra cómo hacerlo, pues dice que una
+pareja de términos con la misma frecuencia es un múltiplo complejo de $\cos nt$:
+\[
+  a_1\cos t+b_1\sin t=(a_1+ib_1)\cdot\cos t,
+  \qquad
+  a_2\cos 2t+b_2\sin 2t=(a_2+ib_2)\cdot\cos 2t .
+\]
+
+\begin{definicionT}[Coordenadas complejas]
+Para $f\in V$ con coeficientes $a_1,b_1,a_2,b_2$ como en $f(t)=a_1\cos t+b_1\sin t+a_2\cos 2t+b_2\sin 2t$ \eqref{eq:forma-general}, sus
+\emph{coordenadas complejas} son los números
+\[
+  \alpha=a_1+ib_1,\qquad \beta=a_2+ib_2 .
+\]
+La parte real de $\alpha$ es el coeficiente de $\cos t$ y su parte imaginaria es el
+coeficiente de $\sin t$; lo mismo ocurre con $\beta$ para la frecuencia $2$.
+\end{definicionT}
+
+Con esta notación, todo elemento de $V$ se escribe como
+\begin{equation}\label{eq:alfa-beta}
+  f=\alpha\cdot\Cu+\beta\cdot\Cd .
+\end{equation}
+Por el lema~\ref{lema:independencia}, los números $\alpha$ y $\beta$ quedan determinados por
+$f$ de manera única, y cada pareja $(\alpha,\beta)$ corresponde a una única función de $V$.
+Del mismo modo, las coordenadas complejas de $g$ y $h$ se denotan
+$\alpha'=a_1'+ib_1'$, $\beta'=a_2'+ib_2'$ y $\alpha''=a_1''+ib_1''$, $\beta''=a_2''+ib_2''$.
+
+La suma también se describe en estas coordenadas. Por $f+g=(a_1+a_1')\cos t+(b_1+b_1')\sin t+(a_2+a_2')\cos 2t+(b_2+b_2')\sin 2t$ \eqref{eq:suma}, los coeficientes de
+$\cos t$ y $\sin t$ en $f+g$ son $a_1+a_1'$ y $b_1+b_1'$, así que su primera coordenada
+compleja es $(a_1+a_1')+i(b_1+b_1')=\alpha+\alpha'$; de la misma forma, la segunda es
+$\beta+\beta'$. Es decir,
+\begin{equation}\label{eq:suma-coord}
+  f+g=(\alpha+\alpha')\cdot\cos t+(\beta+\beta')\cdot\cos 2t ,
+\end{equation}
+y sumar en $V$ equivale a sumar las coordenadas complejas una a una.
+
+\paragraph{Definición de la multiplicación.}
+Para $z\in\mathbb C$ y $f=\alpha\cdot\cos t+\beta\cdot\cos 2t$ se define
+\begin{equation}\label{eq:mult}
+  \destacado{z\cdot f=(z\alpha)\cdot\cos t+(z\beta)\cdot\cos 2t ,}
+\end{equation}
+es decir, multiplicar $f$ por $z$ consiste en multiplicar por $z$ cada una de sus coordenadas
+complejas. La definición no presenta ambigüedad, porque $\alpha$ y $\beta$ son únicos, y es
+compatible con el enunciado: para $f=\cos t$ se tiene $\alpha=1$, $\beta=0$, y
+$z\cdot f=(z\alpha)\cdot\cos t+(z\beta)\cdot\cos 2t$ \eqref{eq:mult} se reduce a $z\cdot\cos t$ tal como lo da la regla; lo mismo ocurre con
+$\cos 2t$. Además, el resultado pertenece a $V$: si $z\alpha=p+iq$ con $p,q\in\mathbb R$, por
+$(a+ib)\cdot\cos nt=a\cos nt+b\sin nt$ \eqref{eq:regla-coef} se tiene $(z\alpha)\cdot\cos t=p\cos t+q\sin t$, y análogamente para
+$z\beta$, de modo que $z\cdot f$ es una combinación con coeficientes reales de las cuatro
+funciones generadoras.
+
+\paragraph{Multiplicación por $i$.}
+Este caso se usa de nuevo en la construcción del producto hermítico. Como
+$i\alpha=i(a_1+ib_1)=-b_1+ia_1$ e $i\beta=-b_2+ia_2$, la definición $z\cdot f=(z\alpha)\cdot\cos t+(z\beta)\cdot\cos 2t$ \eqref{eq:mult} junto con
+$(a+ib)\cdot\cos nt=a\cos nt+b\sin nt$ \eqref{eq:regla-coef} da
+\begin{equation}\label{eq:i-f}
+  \destacado{i\cdot f=-b_1\cos t+a_1\sin t-b_2\cos 2t+a_2\sin 2t .}
+\end{equation}
+En particular, $\sin nt$ tiene coordenada compleja $i$ (porque $\sin nt=i\cdot\cos nt$ por
+$i\cdot\cos nt=\sin nt$ \eqref{eq:i-cos}), así que $i\cdot\sin nt=(i\cdot i)\cdot\cos nt=-\cos nt$. Multiplicar por
+$i$ desplaza cada onda un cuarto de período: $\cos nt$ pasa a $\sin nt$ y $\sin nt$ pasa a
+$-\cos nt$.
+
+\paragraph{(M1) $z\cdot(f+g)=z\cdot f+z\cdot g$.}
+Por $f+g=(\alpha+\alpha')\cdot\cos t+(\beta+\beta')\cdot\cos 2t$ \eqref{eq:suma-coord}, $f+g$ tiene coordenadas $\alpha+\alpha'$ y $\beta+\beta'$, y por
+$z\cdot f=(z\alpha)\cdot\cos t+(z\beta)\cdot\cos 2t$ \eqref{eq:mult},
+\[
+  z\cdot(f+g)=\bigl(z(\alpha+\alpha')\bigr)\cdot\cos t
+  +\bigl(z(\beta+\beta')\bigr)\cdot\cos 2t .
+\]
+Por otra parte, $z\cdot f$ tiene coordenadas $z\alpha$, $z\beta$ y $z\cdot g$ tiene
+coordenadas $z\alpha'$, $z\beta'$, de modo que, por $f+g=(\alpha+\alpha')\cdot\cos t+(\beta+\beta')\cdot\cos 2t$ \eqref{eq:suma-coord},
+\[
+  z\cdot f+z\cdot g=(z\alpha+z\alpha')\cdot\cos t+(z\beta+z\beta')\cdot\cos 2t .
+\]
+La multiplicación de números complejos se distribuye sobre la suma, así que
+$z(\alpha+\alpha')=z\alpha+z\alpha'$ y $z(\beta+\beta')=z\beta+z\beta'$. Ambos lados tienen las
+mismas coordenadas y, por tanto, $z\cdot(f+g)=z\cdot f+z\cdot g$.
+
+\paragraph{(M2) $(z+w)\cdot f=z\cdot f+w\cdot f$.}
+Por $z\cdot f=(z\alpha)\cdot\cos t+(z\beta)\cdot\cos 2t$ \eqref{eq:mult}, las coordenadas de $(z+w)\cdot f$ son $(z+w)\alpha$ y $(z+w)\beta$. Por
+$z\cdot f=(z\alpha)\cdot\cos t+(z\beta)\cdot\cos 2t$ \eqref{eq:mult} y $f+g=(\alpha+\alpha')\cdot\cos t+(\beta+\beta')\cdot\cos 2t$ \eqref{eq:suma-coord}, las de $z\cdot f+w\cdot f$ son $z\alpha+w\alpha$ y
+$z\beta+w\beta$. Por la propiedad distributiva en $\mathbb C$, $(z+w)\alpha=z\alpha+w\alpha$ y
+$(z+w)\beta=z\beta+w\beta$, de modo que las coordenadas coinciden y
+$(z+w)\cdot f=z\cdot f+w\cdot f$.
+
+\paragraph{(M3) $(zw)\cdot f=z\cdot(w\cdot f)$.}
+Las coordenadas de $(zw)\cdot f$ son $(zw)\alpha$ y $(zw)\beta$. Por otro lado, $w\cdot f$ tiene
+coordenadas $w\alpha$ y $w\beta$, y al multiplicar por $z$ se obtienen $z(w\alpha)$ y
+$z(w\beta)$. Como la multiplicación de números complejos es asociativa,
+$(zw)\alpha=z(w\alpha)$ y $(zw)\beta=z(w\beta)$, de donde $(zw)\cdot f=z\cdot(w\cdot f)$.
+
+\paragraph{(M4) $1\cdot f=f$.}
+Con $z=1$, la definición $z\cdot f=(z\alpha)\cdot\cos t+(z\beta)\cdot\cos 2t$ \eqref{eq:mult} da
+$1\cdot f=(1\alpha)\cdot\cos t+(1\beta)\cdot\cos 2t=\alpha\cdot\cos t+\beta\cdot\cos 2t=f$.
+
+\medskip
+Así, la multiplicación por escalares complejos produce elementos de $V$ y se cumplen (M1)--(M4). Junto
+con lo demostrado para la suma, esto prueba que $V$ es un espacio vectorial complejo.
+
+%======================================================================
+\subsection*{Dimensión compleja de $V$}
+%======================================================================
+
+\begin{definicionT}[Base y dimensión]
+Un conjunto $\{v_1,\dots,v_k\}$ de vectores de un espacio vectorial complejo $V$ es una
+\emph{base} de $V$ si cumple dos condiciones. La primera es que \emph{genera} $V$: todo
+vector de $V$ se escribe como $c_1\cdot v_1+\dots+c_k\cdot v_k$ con $c_1,\dots,c_k\in\mathbb C$.
+La segunda es que es \emph{linealmente independiente sobre $\mathbb C$}: si
+$c_1\cdot v_1+\dots+c_k\cdot v_k=0$ con $c_j\in\mathbb C$, entonces $c_1=\dots=c_k=0$. Todas
+las bases de un mismo espacio tienen el mismo número de elementos, y ese número se llama
+\emph{dimensión} del espacio; para un espacio complejo se denota $\dim_{\mathbb C}V$.
+\end{definicionT}
+
+El conjunto $\{\cos t,\cos 2t\}$ genera $V$, pues por $f=\alpha\cdot\cos t+\beta\cdot\cos 2t$ \eqref{eq:alfa-beta} todo elemento de $V$
+se escribe como $\alpha\cdot\cos t+\beta\cdot\cos 2t$ con $\alpha,\beta\in\mathbb C$. Para la
+independencia, supóngase que $\alpha\cdot\cos t+\beta\cdot\cos 2t=0$ con
+$\alpha=a_1+ib_1$ y $\beta=a_2+ib_2$. Por $(a+ib)\cdot\cos nt=a\cos nt+b\sin nt$ \eqref{eq:regla-coef}, el lado izquierdo es la función
+$a_1\cos t+b_1\sin t+a_2\cos 2t+b_2\sin 2t$, que es la función cero; por el
+lema~\ref{lema:independencia}, $a_1=b_1=a_2=b_2=0$, es decir, $\alpha=\beta=0$. En
+consecuencia, $\{\cos t,\cos 2t\}$ es una base de $V$ y
+\[
+  \destacado{\dim_{\mathbb C}V=2 .}
+\]
+
+\begin{definicionT}[Notación de Dirac]
+En computación cuántica, los vectores del espacio de estados se escriben con el símbolo
+$\ket{\psi}$, llamado \emph{ket}, donde $\psi$ es solo un nombre. Siguiendo el enunciado, se
+denota
+\[
+  \ket0=\cos t,\qquad \ket1=\cos 2t .
+\]
+\end{definicionT}
+
+Con esta notación, $f=\alpha\cdot\cos t+\beta\cdot\cos 2t$ \eqref{eq:alfa-beta} se escribe $f=\alpha\ket0+\beta\ket1$, y el resultado
+anterior dice que $V=\spanC\{\ket0,\ket1\}$, donde $\spanC$ indica combinaciones lineales con
+coeficientes complejos.
+
+
+%======================================================================
+\subsection*{El producto interno de $L^2$ en $V$}
+%======================================================================
+
+\begin{definicionT}[El espacio $L^2$ y su producto interno]
+El espacio $L^2([0,2\pi])$ está formado por las funciones definidas en $[0,2\pi]$ cuyo
+cuadrado tiene integral finita en ese intervalo. Para dos funciones reales $f,g$ de este
+espacio, su \emph{producto interno de $L^2$} es
+\[
+  \destacado{\Lp fg=\int_0^{2\pi}f(t)\,g(t)\,dt .}
+\]
+Para funciones con valores complejos aparece además un conjugado en uno de los factores, pero
+todos los elementos de $V$ son funciones reales, de modo que ese conjugado no interviene aquí.
+El subíndice $L^2$ indica el espacio del que proviene el producto, y los paréntesis lo
+distinguen del producto hermítico $\bk fg$ que se construye más adelante.
+\end{definicionT}
+
+Los elementos de $V$ pertenecen a $L^2([0,2\pi])$ porque son funciones continuas en un
+intervalo cerrado y acotado. El producto $\Lp fg$ es un número real y es simétrico,
+$\Lp fg=\Lp gf$, porque $f(t)g(t)=g(t)f(t)$. Además, como la integral de una suma es la suma de
+las integrales y las constantes salen de la integral, es lineal en cada argumento: para
+$c,d\in\mathbb R$,
+\begin{equation}\label{eq:L2-lineal}
+  \Lp{cf+dg}{h}=c\,\Lp fh+d\,\Lp gh,
+  \qquad
+  \Lp{f}{cg+dh}=c\,\Lp fg+d\,\Lp fh .
+\end{equation}
+Las constantes que salen de este producto son números \emph{reales}, y esa restricción es la
+que obliga más adelante a modificarlo.
+
+\paragraph{Reducción a productos de senos y cosenos.}
+Para calcular $\Lp fg$ con $f$ y $g$ arbitrarios en $V$ se vuelve a su escritura
+$f(t)=a_1\cos t+b_1\sin t+a_2\cos 2t+b_2\sin 2t$ \eqref{eq:forma-general}. Para abreviar, las cuatro funciones generadoras se nombran
+\[
+  \varphi_1=\Cu,\qquad \varphi_2=\Su,\qquad \varphi_3=\Cd,\qquad \varphi_4=\Sd,
+\]
+y los coeficientes de $f$ y $g$ se agrupan como
+$(c_1,c_2,c_3,c_4)=(a_1,b_1,a_2,b_2)$ y $(c_1',c_2',c_3',c_4')=(a_1',b_1',a_2',b_2')$, de modo
+que $f=\sum_{j=1}^4 c_j\varphi_j$ y $g=\sum_{k=1}^4 c_k'\varphi_k$. Por la linealidad
+$(cf+dg,h)_{L^2}=c\,(f,h)_{L^2}+d\,(g,h)_{L^2},\quad\penalty0 (f,cg+dh)_{L^2}=c\,(f,g)_{L^2}+d\,(f,h)_{L^2}$ \eqref{eq:L2-lineal}, los coeficientes salen del producto:
+\begin{equation}\label{eq:L2-expansion}
+  \Lp fg=\int_0^{2\pi}\Bigl(\sum_{j=1}^4 c_j\varphi_j(t)\Bigr)\Bigl(\sum_{k=1}^4 c_k'\varphi_k(t)\Bigr)dt
+  =\sum_{j=1}^4\sum_{k=1}^4 c_j\,c_k'\,\Lp{\varphi_j}{\varphi_k} .
+\end{equation}
+Calcular el producto de dos elementos cualesquiera de $V$ se reduce entonces a conocer los
+dieciséis productos $\Lp{\varphi_j}{\varphi_k}$ entre las cuatro funciones con las que se
+construyen $f$ y $g$. Cada uno es la integral de un producto de dos funciones
+trigonométricas, de la forma $\cos(nt)\cos(mt)$, $\sin(nt)\sin(mt)$ o $\cos(nt)\sin(mt)$ con
+$n,m\in\{1,2\}$; esa es la razón por la que a continuación se trabaja con productos de senos y
+cosenos.
+
+\paragraph{Identidades de producto a suma.}
+Un producto de dos funciones trigonométricas no se integra de forma directa, pero puede
+reescribirse como una suma de un solo coseno o un solo seno, cuya integral es inmediata. Para
+ello se parte de las fórmulas de suma y resta de ángulos,
+\begin{align*}
+\cos(A-B) &= \cos A\cos B + \sin A\sin B, & \cos(A+B) &= \cos A\cos B - \sin A\sin B,\\
+\sin(A+B) &= \sin A\cos B + \cos A\sin B, & \sin(A-B) &= \sin A\cos B - \cos A\sin B.
+\end{align*}
+Al sumar las dos primeras se cancela $\sin A\sin B$; al restarlas se cancela
+$\cos A\cos B$; y al restar la cuarta de la tercera se cancela $\sin A\cos B$. Despejando, y
+tomando $A=nt$, $B=mt$, se obtiene
+\begin{equation}\label{eq:producto-suma}
+\begin{aligned}
+\cos(nt)\cos(mt) &= \tfrac12\bigl[\cos((n-m)t) + \cos((n+m)t)\bigr],\\
+\sin(nt)\sin(mt) &= \tfrac12\bigl[\cos((n-m)t) - \cos((n+m)t)\bigr],\\
+\cos(nt)\sin(mt) &= \tfrac12\bigl[\sin((n+m)t) - \sin((n-m)t)\bigr].
+\end{aligned}
+\end{equation}
+Después de aplicar estas identidades, solo quedan por calcular integrales de la forma
+$\int_0^{2\pi}\cos(kt)\,dt$ y $\int_0^{2\pi}\sin(kt)\,dt$ con $k$ entero.
+
+\paragraph{Integral de un solo coseno o un solo seno.}
+La figura~\ref{fig:integrales} muestra por qué estas integrales valen cero cuando $k\ne 0$. En
+$[0,2\pi]$, la función $\cos(kt)$ o $\sin(kt)$ completa exactamente $k$ oscilaciones, y en cada
+oscilación el tramo de curva que queda por encima del eje encierra la misma área que el que
+queda por debajo, pues uno es el reflejo del otro. Los ceros de la función separan esos tramos:
+$\cos t$ se anula en $\pi/2$ y $3\pi/2$; $\cos 2t$ en $\pi/4$, $3\pi/4$, $5\pi/4$ y $7\pi/4$;
+$\sin t$ en $0$, $\pi$ y $2\pi$; y $\sin 2t$ en $0$, $\pi/2$, $\pi$, $3\pi/2$ y $2\pi$. Como la
+integral cuenta con signo positivo el área por encima del eje y con signo negativo el área
+por debajo, las dos contribuciones se cancelan.
+
+\begin{figure}[htbp]
+\centering
+\panelarea{cos(x)}{colCu}{$\cos t$}{(1.5708,0) (4.7124,0)}{
+  \node[font=\small] at (axis cs:0.6,0.35) {$+$};
+  \node[font=\small] at (axis cs:3.1416,-0.4) {$-$};
+  \node[font=\small] at (axis cs:5.7,0.35) {$+$};}
+\hfill
+\panelarea{cos(2*x)}{colCd}{$\cos 2t$}{(0.7854,0) (2.3562,0) (3.9270,0) (5.4978,0)}{
+  \node[font=\small] at (axis cs:1.5708,-0.4) {$-$};
+  \node[font=\small] at (axis cs:3.1416,0.4) {$+$};
+  \node[font=\small] at (axis cs:4.7124,-0.4) {$-$};}
+
+\vspace{2mm}
+\panelarea{sin(x)}{colSu}{$\sin t$}{(0,0) (3.1416,0) (6.2832,0)}{
+  \node[font=\small] at (axis cs:1.5708,0.4) {$+$};
+  \node[font=\small] at (axis cs:4.7124,-0.4) {$-$};}
+\hfill
+\panelarea{sin(2*x)}{colSd}{$\sin 2t$}{(0,0) (1.5708,0) (3.1416,0) (4.7124,0) (6.2832,0)}{
+  \node[font=\small] at (axis cs:0.7854,0.4) {$+$};
+  \node[font=\small] at (axis cs:2.3562,-0.4) {$-$};
+  \node[font=\small] at (axis cs:3.9270,0.4) {$+$};
+  \node[font=\small] at (axis cs:5.4978,-0.4) {$-$};}
+\caption{Cosenos y senos de frecuencia $1$ y $2$ en $[0,2\pi]$. Los puntos rojos son los ceros
+de cada función. El área en azul (por encima del eje) es igual al área en rojo (por debajo),
+así que la integral de cada función sobre $[0,2\pi]$ es $0$.}
+\label{fig:integrales}
+\end{figure}
+
+El cálculo confirma lo que muestra la figura. Si $k$ es un entero distinto de cero, una
+antiderivada de $\cos(kt)$ es $\sin(kt)/k$ y una de $\sin(kt)$ es $-\cos(kt)/k$, de modo que
+\begin{align*}
+  \int_0^{2\pi}\cos(kt)\,dt&=\left[\frac{\sin(kt)}{k}\right]_0^{2\pi}
+  =\frac{\sin(2\pi k)-\sin 0}{k}=0,\\[1mm]
+  \int_0^{2\pi}\sin(kt)\,dt&=\left[-\frac{\cos(kt)}{k}\right]_0^{2\pi}
+  =\frac{\cos 0-\cos(2\pi k)}{k}=0,
+\end{align*}
+ya que, por ser $2\pi k$ un múltiplo entero de $2\pi$, $\sin(2\pi k)=0$ y
+$\cos(2\pi k)=1=\cos 0$. Si $k=0$, el coseno es la función constante $\cos(0\cdot t)=1$, cuya
+gráfica encierra con el eje un rectángulo de base $2\pi$ y altura $1$, mientras que el seno es
+la función constante $0$. En resumen,
+\begin{equation}\label{eq:integrales}
+  \destacado{\int_0^{2\pi}\cos(kt)\,dt=
+  \begin{cases} 2\pi, & k=0,\\ 0, & k\ne 0,\end{cases}
+  \qquad
+  \int_0^{2\pi}\sin(kt)\,dt=0\ \text{ para todo entero } k.}
+\end{equation}
+
+\paragraph{Productos entre las funciones generadoras.}
+Las identidades \eqref{eq:producto-suma} son las siguientes:
+\begin{align*}
+\cos nt\cos mt&=\tfrac12\bigl[\cos((n-m)t)+\cos((n+m)t)\bigr],\\
+\sin nt\sin mt&=\tfrac12\bigl[\cos((n-m)t)-\cos((n+m)t)\bigr],\\
+\cos nt\sin mt&=\tfrac12\bigl[\sin((n+m)t)-\sin((n-m)t)\bigr]
+\end{align*}
+Al integrarlas y aplicar $\int_0^{2\pi}\cos(kt)\,dt=\begin{cases}2\pi,&k=0\\0,&k\neq0\end{cases}\quad\text{y}\quad \int_0^{2\pi}\sin(kt)\,dt=0$ \eqref{eq:integrales}, el valor
+de cada producto depende de si las frecuencias $n-m$ y $n+m$ son o no cero. Como
+$n,m\in\{1,2\}$, la frecuencia $n+m$ vale $2$, $3$ o $4$ y nunca es cero, mientras que $n-m$ es
+cero exactamente cuando $n=m$. Para dos cosenos,
+\[
+  \Lp{\cos nt}{\cos mt}
+  =\frac12\int_0^{2\pi}\cos((n-m)t)\,dt+\frac12\underbrace{\int_0^{2\pi}\cos((n+m)t)\,dt}_{=\,0},
+\]
+y el primer término vale $\frac12\cdot 2\pi=\pi$ si $n=m$ y $0$ si $n\ne m$. Para dos senos
+ocurre lo mismo, pues la identidad tiene los mismos dos cosenos con un signo menos en el
+segundo, que de todos modos se anula. Para un coseno y un seno, la identidad solo contiene
+senos, y por $\int_0^{2\pi}\cos(kt)\,dt=\begin{cases}2\pi,&k=0\\0,&k\neq0\end{cases}\quad\text{y}\quad \int_0^{2\pi}\sin(kt)\,dt=0$ \eqref{eq:integrales} el resultado es $0$ para cualquier $n$ y $m$.
+
+La figura~\ref{fig:productos} ilustra estos resultados. La función
+$\cos^2 t=\frac12+\frac12\cos 2t$ nunca es negativa y oscila alrededor de su valor medio
+$\frac12$, de modo que el área bajo su gráfica es la de un rectángulo de base $2\pi$ y altura
+$\frac12$, es decir, $\pi$. En cambio, el producto de dos funciones distintas toma valores
+positivos y negativos que se compensan exactamente.
+
+\begin{figure}[htbp]
+\centering
+\panelarea{cos(x)^2}{colCu}{$\cos t\cdot\cos t$ \quad (integral $=\pi$)}{(1.5708,0) (4.7124,0)}{
+  \draw[dashed, thick, resaltado] (axis cs:0,0.5) -- (axis cs:6.2832,0.5);
+  \node[resaltado, font=\footnotesize, anchor=west] at (axis cs:6.35,0.5) {$\tfrac12$};}
+\hfill
+\panelarea{cos(x)*cos(2*x)}{black!75}{$\cos t\cdot\cos 2t$ \quad (integral $=0$)}%
+  {(0.7854,0) (1.5708,0) (2.3562,0) (3.9270,0) (4.7124,0) (5.4978,0)}{}
+
+\vspace{2mm}
+\panelarea{cos(x)*sin(x)}{black!75}{$\cos t\cdot\sin t$ \quad (integral $=0$)}%
+  {(0,0) (1.5708,0) (3.1416,0) (4.7124,0) (6.2832,0)}{}
+\hfill
+\panelarea{sin(x)*sin(2*x)}{black!75}{$\sin t\cdot\sin 2t$ \quad (integral $=0$)}%
+  {(0,0) (1.5708,0) (3.1416,0) (4.7124,0) (6.2832,0)}{}
+\caption{Productos entre funciones generadoras. Arriba a la izquierda, una función por sí
+misma: toda el área queda por encima del eje y la integral es $2\pi\cdot\frac12=\pi$. En los
+otros tres paneles, dos funciones distintas: las áreas azul y roja son iguales y la integral
+es $0$.}
+\label{fig:productos}
+\end{figure}
+
+\begin{definicionT}[Delta de Kronecker]
+Para enteros $j,k$ se define
+\[
+  \delta_{jk}=\begin{cases} 1, & j=k,\\ 0, & j\ne k.\end{cases}
+\]
+Esta notación permite escribir en una sola fórmula los casos ``índices iguales'' e ``índices
+distintos''.
+\end{definicionT}
+
+Con ella, los resultados anteriores se resumen en
+\begin{equation}\label{eq:ortogonalidad}
+  \Lp{\cos nt}{\cos mt}=\pi\,\delta_{nm},\qquad
+  \Lp{\sin nt}{\sin mt}=\pi\,\delta_{nm},\qquad
+  \Lp{\cos nt}{\sin mt}=0,
+\end{equation}
+o, en términos de las funciones $\varphi_j$, $\Lp{\varphi_j}{\varphi_k}=\pi\,\delta_{jk}$. La
+tabla siguiente reúne los dieciséis productos; en la fila $j$ y la columna $k$ aparece
+$\Lp{\varphi_j}{\varphi_k}$.
+\[
+\renewcommand{\arraystretch}{1.3}
+\begin{array}{c|cccc}
+\Lp{\cdot}{\cdot} & \Cu & \Su & \Cd & \Sd\\ \hline
+\Cu & \color{resaltado}\boldsymbol\pi & \color{ceroCol}0 & \color{ceroCol}0 & \color{ceroCol}0\\
+\Su & \color{ceroCol}0 & \color{resaltado}\boldsymbol\pi & \color{ceroCol}0 & \color{ceroCol}0\\
+\Cd & \color{ceroCol}0 & \color{ceroCol}0 & \color{resaltado}\boldsymbol\pi & \color{ceroCol}0\\
+\Sd & \color{ceroCol}0 & \color{ceroCol}0 & \color{ceroCol}0 & \color{resaltado}\boldsymbol\pi
+\end{array}
+\]
+Los valores $\pi$ ocupan la diagonal, donde cada función se multiplica por sí misma; fuera de
+ella todos los productos son $0$, es decir, las cuatro funciones son \emph{ortogonales} entre sí
+respecto a $\Lp{\cdot}{\cdot}$.
+
+\paragraph{Fórmula del producto en términos de los coeficientes.}
+En la suma doble \eqref{eq:L2-expansion}, que es
+\begin{equation*}
+(f,g)_{L^2}=\sum_{j=1}^4\sum_{k=1}^4 c_j\,c_k'\,(\varphi_j,\varphi_k)_{L^2},
+\end{equation*}
+todos los términos con $j\ne k$ se anulan y solo
+sobreviven los cuatro términos con $j=k$, cada uno multiplicado por $\pi$. Por tanto,
+\begin{equation}\label{eq:L2-formula}
+  \destacado{\Lp fg=\pi\bigl(a_1a_1'+b_1b_1'+a_2a_2'+b_2b_2'\bigr).}
+\end{equation}
+El producto de $L^2$ en $V$ es, salvo el factor $\pi$, la suma de los productos de
+coeficientes correspondientes, igual que el producto punto de dos vectores de
+$\mathbb R^4$.
+
+%======================================================================
+\subsection*{Producto hermítico}
+%======================================================================
+
+\begin{definicionT}[Producto hermítico]
+Un \emph{producto hermítico} en un espacio vectorial complejo $V$ es una regla que asigna a
+cada par de vectores $f,g$ un número complejo $\bk fg$ y que cumple, para todo $f,g,h\in V$ y
+todo $z,w\in\mathbb C$, las propiedades siguientes.
+\begin{enumerate}
+  \item[(H1)] \emph{Hermiticidad:} $\bk gf=\overline{\bk fg}$.
+  \item[(H2)] \emph{Linealidad en el segundo argumento:}
+  $\bk{f}{z\cdot g+w\cdot h}=z\,\bk fg+w\,\bk fh$.
+  \item[(H3)] \emph{Antilinealidad en el primer argumento:}
+  $\bk{z\cdot f+w\cdot g}{h}=\overline z\,\bk fh+\overline w\,\bk gh$.
+  \item[(H4)] \emph{Positividad definida:} $\bk ff\ge 0$, y $\bk ff=0$ solo si $f=0$.
+\end{enumerate}
+\end{definicionT}
+
+\paragraph{Por qué $\Lp{\cdot}{\cdot}$ no es un producto hermítico.}
+El producto de $L^2$ siempre da números reales y solo permite sacar escalares reales, como
+indica $(cf+dg,h)_{L^2}=c\,(f,h)_{L^2}+d\,(g,h)_{L^2},\quad\penalty0 (f,cg+dh)_{L^2}=c\,(f,g)_{L^2}+d\,(f,h)_{L^2}$ \eqref{eq:L2-lineal}. Con escalares complejos falla la propiedad (H2). Por ejemplo, por
+$i\cdot\cos nt=\sin nt$ \eqref{eq:i-cos}, $i\cdot\cos t=\sin t$, así que
+\[
+  \Lp{\cos t}{i\cdot\cos t}=\Lp{\cos t}{\sin t}=0 .
+\]
+Si $\Lp{\cdot}{\cdot}$ cumpliera (H2), debería tenerse
+\[
+  \Lp{\cos t}{i\cdot\cos t}=i\,\Lp{\cos t}{\cos t}=i\pi\ne 0 ,
+\]
+lo cual contradice el cálculo anterior. El problema de fondo es que $\Lp{\cdot}{\cdot}$ trata a
+$\cos t$ y $\sin t$ como funciones perpendiculares, mientras que en $V$, visto como espacio
+complejo, $\sin t$ es simplemente $i$ veces $\cos t$. Un producto que solo ve coeficientes
+reales no puede detectar esa relación, y por eso pierde la información de la parte imaginaria.
+
+\paragraph{El producto buscado en coordenadas complejas.}
+Como $\ket0$ y $\ket1$ tienen coordenadas complejas $(1,0)$ y $(0,1)$, un producto hermítico en
+el que $\{\ket0,\ket1\}$ sea ortonormal debe comportarse, en coordenadas, como el producto
+hermítico usual de $\mathbb C^2$. Para $f=\alpha\ket0+\beta\ket1$ y
+$g=\alpha'\ket0+\beta'\ket1$, ese producto es
+\begin{equation}\label{eq:producto-C2}
+  \bk fg=\overline\alpha\,\alpha'+\overline\beta\,\beta' .
+\end{equation}
+El enunciado pide construirlo a partir de $\Lp{\cdot}{\cdot}$, de modo que el objetivo es
+escribir $\bk fg=\overline\alpha\,\alpha'+\overline\beta\,\beta'$ \eqref{eq:producto-C2} en términos de ese producto. Al sustituir
+$\alpha=a_1+ib_1$, $\beta=a_2+ib_2$, $\alpha'=a_1'+ib_1'$ y $\beta'=a_2'+ib_2'$ y desarrollar,
+\[
+\begin{aligned}
+\overline\alpha\,\alpha'+\overline\beta\,\beta'
+&=(a_1-ib_1)(a_1'+ib_1')+(a_2-ib_2)(a_2'+ib_2')\\
+&=\bigl(a_1a_1'+b_1b_1'+a_2a_2'+b_2b_2'\bigr)
+ +i\bigl(a_1b_1'-b_1a_1'+a_2b_2'-b_2a_2'\bigr).
+\end{aligned}
+\]
+Por $(f,g)_{L^2}=\pi\bigl(a_1a_1'+b_1b_1'+a_2a_2'+b_2b_2'\bigr)$ \eqref{eq:L2-formula}, la parte real es exactamente $\frac1\pi\Lp fg$. Falta expresar la
+parte imaginaria.
+
+\paragraph{La parte imaginaria a partir de la multiplicación por $i$.}
+Por $i\cdot f=-b_1\cos t+a_1\sin t-b_2\cos 2t+a_2\sin 2t$ \eqref{eq:i-f}, los coeficientes de $i\cdot f$ son $(-b_1,\ a_1,\ -b_2,\ a_2)$. Al aplicar
+$(f,g)_{L^2}=\pi\bigl(a_1a_1'+b_1b_1'+a_2a_2'+b_2b_2'\bigr)$ \eqref{eq:L2-formula} a $i\cdot f$ y $g$ se obtiene
+\[
+  \Lp{i\cdot f}{g}=\pi\bigl(-b_1a_1'+a_1b_1'-b_2a_2'+a_2b_2'\bigr),
+\]
+que es $\pi$ veces la parte imaginaria hallada arriba. La multiplicación por $i$ intercambia
+los papeles de coseno y seno, y eso es justamente lo que permite que $\Lp{\cdot}{\cdot}$ capture
+los productos cruzados que forman la parte imaginaria.
+
+\paragraph{Definición del producto hermítico.}
+Por lo anterior, se define, para $f,g\in V$,
+\begin{equation}\label{eq:hermitico}
+  \destacado{\bk fg=\frac1\pi\Bigl[\Lp fg+i\,\Lp{i\cdot f}{g}\Bigr].}
+\end{equation}
+El primer sumando aporta la parte real y el segundo, multiplicado por $i$, la parte
+imaginaria; el factor $1/\pi$ compensa el $\pi$ que aparece en $(f,g)_{L^2}=\pi\bigl(a_1a_1'+b_1b_1'+a_2a_2'+b_2b_2'\bigr)$ \eqref{eq:L2-formula} y es lo
+que hace que $\ket0$ y $\ket1$ tengan norma $1$. Por los dos cálculos anteriores,
+\begin{equation}\label{eq:hermitico-coord}
+  \destacado{\bk fg=\overline\alpha\,\alpha'+\overline\beta\,\beta' ,}
+\end{equation}
+es decir, en coordenadas complejas el producto construido coincide con el producto usual de
+$\mathbb C^2$. Esta expresión es la que se usa para verificar las propiedades.
+
+%======================================================================
+\subsection*{Verificación de las propiedades del producto hermítico}
+%======================================================================
+
+Sean $f=\alpha\ket0+\beta\ket1$, $g=\alpha'\ket0+\beta'\ket1$ y $h=\alpha''\ket0+\beta''\ket1$
+elementos de $V$, y sean $z,w\in\mathbb C$.
+
+\paragraph{(H1) Hermiticidad.}
+Por $\bk fg=\overline\alpha\,\alpha'+\overline\beta\,\beta'$ \eqref{eq:hermitico-coord} y las propiedades del conjugado $\overline{z+w}=\overline z+\overline w,\quad\penalty0 \overline{zw}=\overline z\,\overline w,\quad\penalty0 \overline{\overline z}=z$ \eqref{eq:conjugado},
+\[
+  \overline{\bk fg}
+  =\overline{\overline\alpha\,\alpha'+\overline\beta\,\beta'}
+  =\overline{\overline\alpha}\;\overline{\alpha'}+\overline{\overline\beta}\;\overline{\beta'}
+  =\alpha\,\overline{\alpha'}+\beta\,\overline{\beta'}
+  =\overline{\alpha'}\,\alpha+\overline{\beta'}\,\beta
+  =\bk gf ,
+\]
+donde en el penúltimo paso se usó que el producto de números complejos no depende del orden,
+y en el último, que $\bk gf$ se obtiene de $\bk fg=\overline\alpha\,\alpha'+\overline\beta\,\beta'$ \eqref{eq:hermitico-coord} conjugando las
+coordenadas de $g$, que ahora está en el primer argumento.
+
+\paragraph{(H2) Linealidad en el segundo argumento.}
+Para usar $\bk fg=\overline\alpha\,\alpha'+\overline\beta\,\beta'$ \eqref{eq:hermitico-coord} con $z\cdot g+w\cdot h$ en el segundo argumento se
+necesitan sus coordenadas complejas. Por la definición $z\cdot f=(z\alpha)\cdot\cos t+(z\beta)\cdot\cos 2t$ \eqref{eq:mult}, $z\cdot g$ tiene
+coordenadas $z\alpha'$ y $z\beta'$, y $w\cdot h$ tiene coordenadas $w\alpha''$ y $w\beta''$;
+por $f+g=(\alpha+\alpha')\cdot\cos t+(\beta+\beta')\cdot\cos 2t$ \eqref{eq:suma-coord}, al sumarlas se suman las coordenadas, de modo que
+\[
+  z\cdot g+w\cdot h=(z\alpha'+w\alpha'')\ket0+(z\beta'+w\beta'')\ket1 .
+\]
+Entonces
+\[
+\begin{aligned}
+  \bk{f}{z\cdot g+w\cdot h}
+  &=\overline\alpha\,(z\alpha'+w\alpha'')+\overline\beta\,(z\beta'+w\beta'')\\
+  &=z\bigl(\overline\alpha\,\alpha'+\overline\beta\,\beta'\bigr)
+   +w\bigl(\overline\alpha\,\alpha''+\overline\beta\,\beta''\bigr)
+   =z\,\bk fg+w\,\bk fh ,
+\end{aligned}
+\]
+donde se distribuyeron los productos y se agruparon los términos que contienen $z$ y los que
+contienen $w$. Los dos paréntesis son, por $\bk fg=\overline\alpha\,\alpha'+\overline\beta\,\beta'$ \eqref{eq:hermitico-coord}, $\bk fg$ y $\bk fh$.
+
+\paragraph{(H3) Antilinealidad en el primer argumento.}
+Esta propiedad se deduce de las dos anteriores. Por (H1) se pasa la combinación al segundo
+argumento, por (H2) se sacan los escalares y por $\overline{z+w}=\overline z+\overline w,\quad\penalty0 \overline{zw}=\overline z\,\overline w,\quad\penalty0 \overline{\overline z}=z$ \eqref{eq:conjugado} se distribuye el
+conjugado:
+\[
+\begin{aligned}
+  \bk{z\cdot f+w\cdot g}{h}
+  &=\overline{\bk{h}{z\cdot f+w\cdot g}}
+   =\overline{z\,\bk hf+w\,\bk hg}\\
+  &=\overline z\;\overline{\bk hf}+\overline w\;\overline{\bk hg}
+   =\overline z\,\bk fh+\overline w\,\bk gh ,
+\end{aligned}
+\]
+donde en el último paso se usó de nuevo (H1).
+
+\paragraph{(H4) Positividad definida.}
+Por $\bk fg=\overline\alpha\,\alpha'+\overline\beta\,\beta'$ \eqref{eq:hermitico-coord} y $z\,\overline z=|z|^2$ \eqref{eq:modulo},
+\[
+  \bk ff=\overline\alpha\,\alpha+\overline\beta\,\beta=|\alpha|^2+|\beta|^2
+  =a_1^2+b_1^2+a_2^2+b_2^2\ \ge 0 ,
+\]
+porque es una suma de cuadrados de números reales. Además, una suma de cuadrados de números
+reales es cero solo si cada sumando es cero, así que $\bk ff=0$ implica
+$a_1=b_1=a_2=b_2=0$, es decir, que $f$ es la función cero. Recíprocamente, si $f=0$, el
+lema~\ref{lema:independencia} garantiza que sus cuatro coeficientes son cero y, por tanto,
+$\bk ff=0$.
+
+\medskip
+Con esto, $\bk{\cdot}{\cdot}$ es un producto hermítico en $V$.
+
+%======================================================================
+\subsection*{Ortonormalidad de $\{\ket0,\ket1\}$}
+%======================================================================
+
+\begin{definicionT}[Norma, ortogonalidad y base ortonormal]
+En un espacio con producto hermítico, la \emph{norma} de un vector es
+$\lVert f\rVert=\sqrt{\bk ff}$, que mide su longitud. Dos vectores $f,g$ son
+\emph{ortogonales} si $\bk fg=0$. Una base es \emph{ortonormal} si cada uno de sus elementos
+tiene norma $1$ y sus elementos son ortogonales entre sí.
+\end{definicionT}
+
+Para $\{\ket0,\ket1\}$ esto significa comprobar que $\bk00=\bk11=1$ y $\bk01=0$; la igualdad
+$\bk10=0$ se sigue entonces de (H1), pues $\bk10=\overline{\bk01}=0$. Las coordenadas complejas
+de $\ket0=\cos t$ son $(1,0)$ y las de $\ket1=\cos 2t$ son $(0,1)$, de modo que, por
+$\bk fg=\overline\alpha\,\alpha'+\overline\beta\,\beta'$ \eqref{eq:hermitico-coord},
+\[
+  \bk00=\overline1\cdot1+\overline0\cdot0=1,\qquad
+  \bk11=\overline0\cdot0+\overline1\cdot1=1,\qquad
+  \bk01=\overline1\cdot0+\overline0\cdot1=0 .
+\]
+
+El mismo resultado se obtiene directamente de la definición $\bk fg=\frac1\pi\bigl[(f,g)_{L^2}+i\,(i\cdot f,g)_{L^2}\bigr]$ \eqref{eq:hermitico}, lo que
+muestra el papel de cada término. Como $i\cdot\cos nt=\sin nt$, por $(\cos nt,\cos mt)_{L^2}=\pi\delta_{nm},\quad\penalty0 (\sin nt,\sin mt)_{L^2}=\pi\delta_{nm},\quad\penalty0 (\cos nt,\sin mt)_{L^2}=0$ \eqref{eq:ortogonalidad}
+se tiene
+\[
+  \bk00=\frac1\pi\Bigl[\Lp{\cos t}{\cos t}+i\,\Lp{\sin t}{\cos t}\Bigr]
+  =\frac1\pi\bigl[\pi+i\cdot0\bigr]=1,
+\]
+\[
+  \bk11=\frac1\pi\Bigl[\Lp{\cos 2t}{\cos 2t}+i\,\Lp{\sin 2t}{\cos 2t}\Bigr]
+  =\frac1\pi\bigl[\pi+i\cdot0\bigr]=1,
+\]
+\[
+  \bk01=\frac1\pi\Bigl[\Lp{\cos t}{\cos 2t}+i\,\Lp{\sin t}{\cos 2t}\Bigr]
+  =\frac1\pi\bigl[0+i\cdot0\bigr]=0 .
+\]
+En los dos primeros cálculos se ve que el factor $1/\pi$ es el que lleva la norma de $\ket0$ y
+$\ket1$ al valor $1$.
+
+\paragraph{Conclusión.}
+Con la suma usual de funciones y la multiplicación por escalares complejos
+$z\cdot f=(z\alpha)\cdot\cos t+(z\beta)\cdot\cos 2t$ \eqref{eq:mult}, que extiende la regla del enunciado, $V$ es un espacio vectorial complejo, y
+$\{\ket0,\ket1\}=\{\cos t,\cos 2t\}$ es una base, de modo que $\dim_{\mathbb C}V=2$. A partir del
+producto interno de $L^2$ se construyó el producto hermítico
+\[
+  \destacado{\bk fg=\frac1\pi\Bigl[\Lp fg+i\,\Lp{i\cdot f}{g}\Bigr]
+  =\overline\alpha\,\alpha'+\overline\beta\,\beta' ,}
+\]
+respecto al cual $\{\ket0,\ket1\}$ es una base ortonormal. En coordenadas complejas, $V$ con
+este producto se comporta exactamente como $\mathbb C^2$ con su producto usual, que es el
+espacio de estados de un qubit.
+% ======================== FIN DEL PUNTO 1.1 ============================

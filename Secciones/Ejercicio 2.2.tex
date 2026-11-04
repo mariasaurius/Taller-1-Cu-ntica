@@ -1,0 +1,31 @@
+Sea $\Psi\in H_2$. Como los cuatro productos $\ket a\otimes\ket b$ forman una base de $H_2$ (véase el punto anterior), existen números complejos únicos $c_{ab}$ tales que
+\[
+  \Psi=\sum_{a,b\in\{0,1\}}c_{ab}\,\ket a\otimes\ket b ,
+\]
+que, en términos de funciones, significa
+\[
+  \Psi(t,s)=c_{00}\,e^{i(t+s)}+c_{01}\,e^{i(t+2s)}+c_{10}\,e^{i(2t+s)}+c_{11}\,e^{2i(t+s)} .
+\]
+Los coeficientes se ordenan en la matriz
+\[
+  C=\begin{pmatrix}c_{00}&c_{01}\\ c_{10}&c_{11}\end{pmatrix}.
+\]
+
+\paragraph{Caracterización.} La onda $\Psi$ es de la forma $\psi(t)\varphi(s)$ con $\psi,\varphi\in H_1$ si y solo si
+\[
+  \det C=c_{00}c_{11}-c_{01}c_{10}=0 .
+\]
+En la notación del enunciado, con $\Psi=\sum c_{nm}e^{i(nt+ms)}$, la condición es $c_{11}c_{22}=c_{12}c_{21}$.
+
+\paragraph{Demostración.} Si $\psi=x_0\ket0+x_1\ket1$ y $\varphi=y_0\ket0+y_1\ket1$, entonces
+\[
+  \psi(t)\varphi(s)=\sum_{a,b}x_a y_b\,\ket a(t)\,\ket b(s),
+\]
+así que $c_{ab}=x_a y_b$. En particular $c_{00}c_{11}=x_0y_0x_1y_1=c_{01}c_{10}$, es decir, $\det C=0$.
+
+Recíprocamente, supóngase que $\det C=0$. Si $C=0$, entonces $\Psi=0$, que es el producto $0\cdot0$. Si $C\neq0$, alguna fila de $C$ es no nula; sea $y=(y_0,y_1)$ esa fila. Como el determinante es cero, la otra fila es un múltiplo de $y$: existen números $x_0,x_1$ tales que $(c_{a0},c_{a1})=x_a\,y$ para $a=0,1$. Esto significa $c_{ab}=x_a y_b$, y por tanto
+\[
+  \Psi(t,s)=\psi(t)\varphi(s), \qquad \psi=\sum_a x_a\ket a,\quad \varphi=\sum_b y_b\ket b .
+\]
+
+\paragraph{Ejemplo.} La onda $\Psi=\frac1{\sqrt2}\bigl(\ket0\otimes\ket0+\ket1\otimes\ket1\bigr)$, que aparece en el punto siguiente, tiene $C=\frac1{\sqrt2}\begin{pmatrix}1&0\\0&1\end{pmatrix}$ y $\det C=\frac12\neq0$. Por tanto no es de la forma $\psi(t)\varphi(s)$: es un estado entrelazado.

@@ -1,0 +1,26 @@
+\paragraph{Estados que recibe Bruno.} Sea $b\in\{0,1\}$ el bit que Ana quiere transmitir. Si $b=0$, Ana mide en $\{\ket0,\ket1\}$ y Bruno tiene $\varphi=\ket0$ o $\varphi=\ket1$, cada una con probabilidad $\frac12$. Tras aplicar el procedimiento, tiene $\varphi(s_1)\cdots\varphi(s_n)$, es decir, $\ket{0\cdots0}$ o $\ket{1\cdots1}$, donde $\ket{x\cdots x}:=\ket x\otimes\cdots\otimes\ket x$ tiene $n$ factores. Como Bruno no conoce el resultado de Ana, su estado es la mezcla
+\[
+  \rho_0=\tfrac12\,\ket{0\cdots0}\bra{0\cdots0}+\tfrac12\,\ket{1\cdots1}\bra{1\cdots1}.
+\]
+Si $b=1$, Ana mide en $\{\ket+,\ket-\}$, y el estado de Bruno es
+\[
+  \rho_1=\tfrac12\,\ket{+\cdots+}\bra{+\cdots+}+\tfrac12\,\ket{-\cdots-}\bra{-\cdots-}.
+\]
+
+\paragraph{Cómo decide Bruno.} Bruno mide cada variable $s_j$ en la base $\{\ket0,\ket1\}$. Si los $n$ resultados son todos iguales, decide que Ana envió $0$; si no lo son, decide que envió $1$.
+
+\paragraph{Probabilidad de error.} Si Ana envió $0$, el estado de Bruno es $\ket{0\cdots0}$ o $\ket{1\cdots1}$, y sus $n$ resultados son siempre todos iguales. La decisión es correcta en todos los casos.
+
+Si Ana envió $1$, el estado es $\ket{\pm\cdots\pm}$. Cada cadena $x=(x_1,\dots,x_n)\in\{0,1\}^n$ tiene probabilidad
+\[
+  \prod_{j=1}^n\bigl|\bk{\ket{x_j}}{\ket\pm}\bigr|^2=\prod_{j=1}^n\tfrac12=2^{-n}.
+\]
+Solo hay dos cadenas con todos los resultados iguales (la de puros ceros y la de puros unos), así que Bruno decide $0$ con probabilidad $2\cdot2^{-n}=2^{1-n}$. Esa es la probabilidad de error cuando Ana envió $1$. Por tanto,
+\[
+  P_{\text{error}}=\tfrac12\cdot 0+\tfrac12\cdot 2^{1-n}=2^{-n}.
+\]
+Para $n=1$ el error es $\frac12$, y Bruno no sabe nada, como se vio en el punto anterior. Para $n=2$ es $\frac14$, para $n=3$ es $\frac18$, y en general tiende a $0$ cuando $n$ crece.
+
+La regla anterior no es la mejor posible. Con una medición óptima (que no se desarrolla aquí, porque requiere calcular autovalores) el error disminuye más; por ejemplo, es aproximadamente $0.067$ para $n=3$ y $0.034$ para $n=4$.
+
+\paragraph{Conclusión.} Si el procedimiento existiera, Bruno podría determinar con error tan pequeño como se quiera la base que Ana eligió. Pero en el punto anterior se vio que las probabilidades de Bruno no dependen de esa base. Que Bruno pudiera detectar la elección de Ana, sin recibir nada de ella, permitiría enviar información a distancia de forma instantánea, algo que la teoría cuántica no permite. Por tanto, el procedimiento no puede existir. Este es el teorema de no clonación: no hay una operación cuántica que copie un estado desconocido. Una razón directa es que una operación cuántica es lineal, y $\varphi\mapsto\varphi\otimes\varphi$ no lo es: $(\varphi_1+\varphi_2)\otimes(\varphi_1+\varphi_2)$ contiene los términos cruzados $\varphi_1\otimes\varphi_2+\varphi_2\otimes\varphi_1$, que no pueden salir de $\varphi_1\otimes\varphi_1$ y $\varphi_2\otimes\varphi_2$ por linealidad.

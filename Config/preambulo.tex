@@ -1,0 +1,503 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IDIOMA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[spanish]{babel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GEOMETRÍA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+top=0.65in,
+bottom=0.65in,
+left=0.65in,
+right=0.65in
+]{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CLASE BOOK
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FUENTES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fontspec}
+\usepackage{microtype}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MATEMÁTICAS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{cancel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GRÁFICOS Y TABLAS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{pdflscape}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+
+\usetikzlibrary{arrows.meta}
+
+
+\pgfplotsset{compat=1.18}
+ 
+\definecolor{azul}{HTML}{1F5FAD}
+\definecolor{naranja}{HTML}{D9730D}
+\definecolor{verde}{HTML}{2E8B57}
+\pgfplotsset{
+  onda/.style={
+    width=0.82\linewidth, height=4.2cm,
+    axis lines=middle, axis line style={gray!70},
+    xmin=-0.2, xmax=2*pi+0.35, ymin=-1.3, ymax=1.55,
+    xtick={0,pi/4,pi/2,pi,3*pi/2,2*pi},
+    xticklabels={$0$,$\frac{\pi}{4}$,$\frac{\pi}{2}$,$\pi$,$\frac{3\pi}{2}$,$2\pi$},
+    ytick={-1,1},
+    xlabel={$t$}, xlabel style={at={(ticklabel* cs:1)}, anchor=west},
+    tick label style={font=\footnotesize},
+    legend pos=outer north east,
+    legend style={font=\footnotesize, draw=none, cells={anchor=west}},
+    domain=0:2*pi, samples=200, clip=false,
+  },
+  base/.style={very thick, azul, no markers},
+  imagen/.style={very thick, naranja, dashed, no markers},
+  segunda/.style={very thick, verde, densely dotted, no markers},
+  pico/.style={only marks, mark=*, mark size=1.8pt, draw=white, forget plot},
+}
+\tikzset{desplazamiento/.style={-latex, semithick, gray!80!black}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLORES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{colortbl}
+\input{Config/colores}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TIKZ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HIPERVÍNCULOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CAJAS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[most]{tcolorbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CAPTIONS Y LISTAS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{caption}
+\usepackage{enumitem}
+
+\setlength{\belowcaptionskip}{12pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NÚMEROS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{siunitx}
+
+\sisetup{
+table-number-alignment = center,
+input-symbols = {+},
+table-space-text-post = {+}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECCIONES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\Large\bfseries}
+{\thesection.}{0.5em}{}
+[\vspace{0.3em}\color{rojoUN}\titlerule]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLORBOX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtcolorbox{cuadro_verde}[1]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=verdeUN,
+    colbacktitle=verdeUN,
+    coltitle=white,
+    fonttitle=\AncizarSansSemiBold,
+    title=#1,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+\newtcolorbox{cuadro_verdeOscuro}[1]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=verdeOscuroUN,
+    colbacktitle=verdeOscuroUN,
+    coltitle=white,
+    fonttitle=\AncizarSansSemiBold,
+    title=#1,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+\newtcolorbox{cuadro_rojo}[1]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=rojoUN,
+    colbacktitle=rojoUN,
+    coltitle=white,
+    fonttitle=\AncizarSansSemiBold,
+    title=#1,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+\newtcolorbox{cuadro_rojo_Oscuro}[1]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=rojoOscuroUN,
+    colbacktitle=rojoOscuroUN,
+    coltitle=white,
+    fonttitle=\AncizarSansSemiBold,
+    title=#1,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+\newtcolorbox{cuadro_grisClaro}[1]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=grisClaroUN,
+    colbacktitle=grisClaroUN,
+    coltitle=white,
+    fonttitle=\AncizarSansSemiBold,
+    title=#1,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+\newtcolorbox{cuadro_grisOscuro}[1]{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=grisOscuroUN,
+    colbacktitle=grisOscuroUN,
+    coltitle=white,
+    fonttitle=\AncizarSansSemiBold,
+    title=#1,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+
+\newtcolorbox{nota}{
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=verdeUN,
+    borderline west={3pt}{0pt}{verdeUN},
+    boxrule=0pt,
+    arc=0mm,
+    left=5mm,
+    right=3mm,
+    top=2mm,
+    bottom=2mm
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LISTINGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FUENTE JETBRAINS MONO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\setmonofont{Latin Modern Mono}
+\setmonofont{IBM Plex Mono}
+%\setmonofont{Source Code Pro}
+
+%\setmonofont[
+%Path=Config/Fuentes/JetBrains/,
+%UprightFont=JetBrainsMono-Regular.ttf,
+%BoldFont=JetBrainsMonoNL-Bold.ttf,
+%ItalicFont=JetBrainsMono-Italic.ttf,
+%BoldItalicFont=JetBrainsMonoNL-BoldItalic.ttf
+%]{JetBrainsMono-Regular.ttf}
+
+
+\usepackage{listings}
+
+\lstdefinestyle{Rcode}{
+language=R,
+backgroundcolor=\color{bgcream},
+keywordstyle=\color{keywordcolor}\bfseries,
+commentstyle=\color{commentcolor}\itshape,
+stringstyle=\color{stringcolor},
+basicstyle=\fontsize{10}{14}\ttfamily\selectfont,
+numbers=left,
+numberstyle=\footnotesize\color{grisClaroUN},
+numbersep=8pt,
+frame=single,
+rulecolor=\color{grisClaroUN},
+breaklines=true,
+showstringspaces=false,
+morekeywords={library,ggplot,df2,zcounts},
+xleftmargin=10pt,
+framesep=6pt
+}
+
+\lstdefinestyle{Routput}{
+basicstyle=\fontsize{10}{14}\ttfamily\selectfont,
+backgroundcolor=\color{white},
+frame=single,
+rulecolor=\color{grisClaroUN},
+breaklines=true,
+showstringspaces=false,
+numbers=none,
+xleftmargin=10pt,
+framesep=6pt
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FUENTE PRINCIPAL DEL DOCUMENTO (SERIF)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setmainfont[
+Path=Config/Fuentes/Serif/,
+UprightFont=AncizarSerif-Regular.ttf,
+ItalicFont=AncizarSerif-Italic.ttf,
+BoldFont=AncizarSerif-Bold.ttf,
+BoldItalicFont=AncizarSerif-BoldItalic.ttf
+]
+{AncizarSerif-Regular.ttf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FUENTES SANS (PORTADA)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newfontfamily\AncizarSansMedium[
+Path=Config/Fuentes/Sans/
+]
+{AncizarSans-Medium.ttf}
+
+\newfontfamily\AncizarSansLight[
+Path=Config/Fuentes/Sans/
+]
+{AncizarSans-Light.ttf}
+
+\newfontfamily\AncizarSansLightItalic[
+Path=Config/Fuentes/Sans/
+]
+{AncizarSans-LightItalic.ttf}
+
+\newfontfamily\AncizarSansRegular[
+Path=Config/Fuentes/Sans/
+]
+{AncizarSans-Regular.ttf}
+
+\newfontfamily\AncizarSansSemiBold[
+Path=Config/Fuentes/Sans/
+]
+{AncizarSans-SemiBold.ttf}
+
+\newfontfamily\AncizarSansExtraBold[
+Path=Config/Fuentes/Sans/
+]
+{AncizarSans-ExtraBold.ttf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FUENTES SERIF AUXILIARES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newfontfamily\AncizarSerifMedium[
+Path=Config/Fuentes/Serif/
+]
+{AncizarSerif-Medium.ttf}
+
+\newfontfamily\AncizarSerifLight[
+Path=Config/Fuentes/Serif/
+]
+{AncizarSerif-Light.ttf}
+
+\newfontfamily\AncizarSerifLightItalic[
+Path=Config/Fuentes/Serif/
+]
+{AncizarSerif-LightItalic.ttf}
+
+\newfontfamily\AncizarSerifRegular[
+Path=Config/Fuentes/Serif/
+]
+{AncizarSerif-Regular.ttf}
+
+\newfontfamily\AncizarSerifSemiBold[
+Path=Config/Fuentes/Serif/
+]
+{AncizarSerif-SemiBold.ttf}
+
+\newfontfamily\AncizarSerifExtraBold[
+Path=Config/Fuentes/Serif/
+]
+{AncizarSerif-ExtraBold.ttf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TALLER 1: COLORES, NOTACIÓN, CAJAS Y GRÁFICOS
+% Reemplaza el bloque que empieza en "% --- colores ---"
+% (todo lo que se pegó del punto 1.1 al final del preámbulo).
+% Va DESPUÉS de cargar xcolor, tcolorbox y pgfplots y de
+% definir las fuentes Ancizar.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ------------------------------ colores -------------------------------
+% Un color fijo por cada función; se repite en fórmulas, tabla y gráficos.
+\definecolor{colCu}{HTML}{1F5FA8}   % cos t
+\definecolor{colSu}{HTML}{D35400}   % sin t
+\definecolor{colCd}{HTML}{1E8449}   % cos 2t
+\definecolor{colSd}{HTML}{7D3C98}   % sin 2t
+\definecolor{areaPos}{HTML}{AED6F1} % área por encima del eje
+\definecolor{areaNeg}{HTML}{F5B7B1} % área por debajo del eje
+\definecolor{ceroCol}{HTML}{B03A2E} % ceros de las funciones
+\definecolor{resaltado}{HTML}{154360}
+
+\newcommand{\Cu}{{\color{colCu}\cos t}}
+\newcommand{\Su}{{\color{colSu}\sin t}}
+\newcommand{\Cd}{{\color{colCd}\cos 2t}}
+\newcommand{\Sd}{{\color{colSd}\sin 2t}}
+\newcommand{\destacado}[1]{\boxed{\color{resaltado}#1}}
+
+% ------------------------------ notación ------------------------------
+% \ket lo define el paquete physics; esta línea solo actúa si no está cargado.
+\providecommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bk}[2]{\langle #1\mid #2\rangle}   % producto hermítico <f|g>
+\newcommand{\Lp}[2]{(#1,#2)_{L^2}}              % producto interno de L^2
+\newcommand{\spanR}{\operatorname{span}_{\mathbb R}}
+\newcommand{\spanC}{\operatorname{span}_{\mathbb C}}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+
+% ------------------------------- cajas --------------------------------
+% Mismo aspecto que las cajas de los apuntes (cajaUN), pero con nombres y
+% contador propios: así no chocan con "definicion" de los apuntes y la
+% numeración del taller no depende de las secciones (Definición 1, 2, ...).
+\tcbset{
+  cajaTaller/.style={
+    enhanced, breakable,
+    colback=white, colframe=#1, colbacktitle=#1, coltitle=white,
+    fonttitle=\AncizarSansSemiBold,
+    boxrule=0.8pt, arc=2mm, left=3mm, right=3mm, top=2mm, bottom=2mm
+  }
+}
+% Uso: \begin{definicionT}[Nombre opcional] ... \end{definicionT}
+\newtcolorbox[auto counter]{definicionT}[1][]{
+  cajaTaller=verdeOscuroUN,
+  title={Definición~\thetcbcounter\ifx\relax#1\relax\else: #1\fi}
+}
+% Uso: \begin{lemaT}[Nombre opcional]{etiqueta} ... \end{lemaT}
+% (la etiqueta permite citarlo con \ref{etiqueta})
+\newtcolorbox[auto counter]{lemaT}[2][]{
+  cajaTaller=rojoUN, label={#2},
+  title={Lema~\thetcbcounter\ifx\relax#1\relax\else: #1\fi}
+}
+% Uso: \begin{observacionT} ... \end{observacionT}
+\newtcolorbox{observacionT}{
+  enhanced, breakable,
+  colback=grisClaroUN!8, colframe=verdeOscuroUN,
+  borderline west={3pt}{0pt}{verdeOscuroUN},
+  boxrule=0pt, arc=0mm, left=5mm, right=3mm, top=2mm, bottom=2mm,
+  before upper={{\AncizarSansSemiBold\color{verdeOscuroUN} Observación.}\ }
+}
+
+% ------------------------- estilo de gráficos -------------------------
+% Se llama "ondaT" para no reemplazar el estilo "onda" de los apuntes.
+\pgfplotsset{
+  ondaT/.style={
+    width=7.4cm, height=4.6cm,
+    axis lines=middle,
+    axis line style={-{Stealth[length=2mm]}, black!60},
+    xmin=0, xmax=2*pi+0.6, ymin=-1.35, ymax=1.45,
+    xtick={0,pi/2,pi,3*pi/2,2*pi},
+    xticklabels={$0$,$\frac{\pi}{2}$,$\pi$,$\frac{3\pi}{2}$,$2\pi$},
+    ytick={-1,1},
+    tick label style={font=\footnotesize},
+    xlabel={$t$},
+    every axis x label/.style={at={(ticklabel* cs:1)},anchor=west},
+    title style={font=\small, yshift=-1mm},
+    samples=241, domain=0:2*pi,
+    trig format plots=rad,
+    clip=false,
+  },
+}
+% Panel con áreas positivas (azul) y negativas (rojo) y ceros marcados.
+% #1 expresión, #2 color de la curva, #3 título, #4 ceros, #5 extras
+\newcommand{\panelarea}[5]{%
+  \begin{tikzpicture}
+  \begin{axis}[ondaT, title={#3}]
+    \addplot[draw=none, fill=areaPos] {max(#1,0)} \closedcycle;
+    \addplot[draw=none, fill=areaNeg] {min(#1,0)} \closedcycle;
+    \addplot[very thick, #2] {#1};
+    \addplot[only marks, mark=*, mark size=1.8pt, ceroCol] coordinates {#4};
+    #5
+  \end{axis}
+  \end{tikzpicture}}
