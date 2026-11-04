@@ -1,14 +1,11 @@
-
-
-Sean $\ket\psi=\alpha\ket0+\beta\ket1$ y $\ket{\psi'}=\alpha'\ket0+\beta'\ket1$ como en el
-punto anterior, es decir, con las mismas probabilidades de medición,
+Sean $\ket\psi=\alpha\ket0+\beta\ket1$ y una solución del punto 1.3,
 \[
-  |\alpha'|=|\alpha|,\qquad |\beta'|=|\beta| ,
+  \ket{\psi'}=\alpha'\ket0+\beta'\ket1=e^{-i\eta}\bigl(-\alpha\ket0+e^{i\tau}\beta\ket1\bigr)
+  \quad\eqref{eq:13-soluciones},
 \]
-y con $\ket{\psi'}$ de la forma $\ket{\psi'}=e^{-i\eta}\bigl(-\alpha\ket0+e^{i\tau}\beta\ket1\bigr),\quad\penalty0 \eta\in\mathbb R,\ \tau\in(-\pi,\pi)$ \eqref{eq:13-soluciones},
-$\ket{\psi'}=e^{-i\eta}\bigl(-\alpha\ket0+e^{i\tau}\beta\ket1\bigr)$. En el punto 1.3 se sumaron
-los kets; en este punto se suman los proyectores $\ket\psi\bra\psi$ y $\ket{\psi'}\bra{\psi'}$.
-Para eso primero se escriben esos proyectores como matrices.
+que tiene las mismas probabilidades de medición que $\ket\psi$: $|\alpha'|=|\alpha|$ y
+$|\beta'|=|\beta|$. En el punto 1.3 se sumaron los kets; en este punto se suman sus proyectores,
+que primero se escriben como matrices.
 
 \begin{definicionT}[Bra y proyector de un estado]
 Al ket $\ket\psi=\alpha\ket0+\beta\ket1$ se le asocia la matriz columna de sus coordenadas en la
@@ -33,10 +30,9 @@ donde se usó $z\overline z=|z|^2$. Las filas y columnas de $\rho$ se numeran $0
 estados de la base, y su entrada en la fila $j$ y la columna $k$ se escribe $\rho_{jk}$.
 \end{definicionT}
 
-En la diagonal de $\rho=\ket\psi\bra\psi=\begin{pmatrix}|\alpha|^2 & \alpha\overline\beta\\ \beta\overline\alpha & |\beta|^2\end{pmatrix}$ \eqref{eq:14-proyector} están las probabilidades de medición de $\ket\psi$:
-$\rho_{00}=|\alpha|^2$ es la probabilidad de obtener $0$ y $\rho_{11}=|\beta|^2$ la de obtener
-$1$. Las fases de $\alpha$ y $\beta$ solo aparecen fuera de la diagonal, en $\rho_{01}$ y
-$\rho_{10}$.
+En la diagonal de $\rho$ están las probabilidades de medición de $\ket\psi$: $\rho_{00}=|\alpha|^2$
+es la probabilidad de obtener $0$ y $\rho_{11}=|\beta|^2$ la de obtener $1$. Las fases de $\alpha$
+y $\beta$ solo aparecen fuera de la diagonal.
 
 \begin{definicionT}[Estado mixto]
 Si $\rho_1,\dots,\rho_n$ son proyectores de estados puros y $p_1,\dots,p_n$ son números reales
@@ -53,155 +49,135 @@ El estado que se estudia en este punto es la mezcla de dos estados,
   \rho_p=p\rho+(1-p)\rho',\qquad \rho=\ket\psi\bra\psi,\quad \rho'=\ket{\psi'}\bra{\psi'},
   \quad p\in[0,1],
 \end{equation}
-que está en el estado $\ket\psi$ con probabilidad $p$ y en el estado $\ket{\psi'}$ con
-probabilidad $1-p$.
+que está en $\ket\psi$ con probabilidad $p$ y en $\ket{\psi'}$ con probabilidad $1-p$.
 
 %======================================================================
 \subsection*{Las probabilidades de medición de la mezcla}
 %======================================================================
 
-Por $\rho=\ket\psi\bra\psi=\begin{pmatrix}|\alpha|^2 & \alpha\overline\beta\\ \beta\overline\alpha & |\beta|^2\end{pmatrix}$ \eqref{eq:14-proyector}, aplicado a $\ket\psi$ y a $\ket{\psi'}$,
+Como la mezcla está en $\ket\psi$ con probabilidad $p$ y en $\ket{\psi'}$ con probabilidad $1-p$,
+por la ley de probabilidad total la probabilidad de obtener $0$ es
 \[
-  \rho=\begin{pmatrix}|\alpha|^2 & \alpha\overline\beta\\
-                       \beta\overline\alpha & |\beta|^2\end{pmatrix},
-  \qquad
-  \rho'=\begin{pmatrix}|\alpha'|^2 & \alpha'\overline{\beta'}\\
-                       \beta'\overline{\alpha'} & |\beta'|^2\end{pmatrix}
-       =\begin{pmatrix}|\alpha|^2 & \alpha'\overline{\beta'}\\
-                       \beta'\overline{\alpha'} & |\beta|^2\end{pmatrix},
+  P_{\rho_p}(0)=p\,P_\psi(0)+(1-p)\,P_{\psi'}(0)=p\,|\alpha|^2+(1-p)\,|\alpha'|^2
+  =p\,|\alpha|^2+(1-p)\,|\alpha|^2=|\alpha|^2 ,
 \]
-donde en $\rho'$ se reemplazó $|\alpha'|=|\alpha|$ y $|\beta'|=|\beta|$. Las dos matrices tienen
-la misma diagonal y solo se diferencian fuera de ella. Al sumar matrices y multiplicarlas por
-números se opera entrada por entrada, así que
-\begin{multline}\label{eq:14-rho-p}
-  \rho_p=p\rho+(1-p)\rho'
-  =\begin{pmatrix}
-     p|\alpha|^2+(1-p)|\alpha|^2 & p\,\alpha\overline\beta+(1-p)\,\alpha'\overline{\beta'}\\[2pt]
-     p\,\beta\overline\alpha+(1-p)\,\beta'\overline{\alpha'} & p|\beta|^2+(1-p)|\beta|^2
-   \end{pmatrix}\\
-  =\begin{pmatrix}
-     |\alpha|^2 & p\,\alpha\overline\beta+(1-p)\,\alpha'\overline{\beta'}\\[2pt]
-     p\,\beta\overline\alpha+(1-p)\,\beta'\overline{\alpha'} & |\beta|^2
-   \end{pmatrix},
-\end{multline}
-donde en la diagonal se usó $p+(1-p)=1$.
-
-Para ver que la diagonal de $\rho_p$ sigue dando las probabilidades de medición se usa lo que
-representa la mezcla. El sistema está en $\ket\psi$ con probabilidad $p$ y en $\ket{\psi'}$ con
-probabilidad $1-p$, y por la ley de probabilidad total,
-\begin{align*}
-  P_{\rho_p}(0)
-  &=P(\text{estado }\ket\psi)\,P_\psi(0)+P(\text{estado }\ket{\psi'})\,P_{\psi'}(0)\\
-  &=p\,|\alpha|^2+(1-p)\,|\alpha'|^2 ,
-\end{align*}
-que es exactamente $p\rho_{00}+(1-p)\rho'_{00}$, la entrada $(0,0)$ de $\rho_p$. Lo mismo pasa con
-el resultado $1$ y la entrada $(1,1)$. Esto coincide con el ejemplo de clase,
-$p\ket0\bra0+(1-p)\ket1\bra1=\begin{pmatrix}p&0\\0&1-p\end{pmatrix}$, que da $0$ con
-probabilidad $p$ y $1$ con probabilidad $1-p$. Como $|\alpha'|=|\alpha|$ y $|\beta'|=|\beta|$,
-y por $(\rho_p)_{00}=|\alpha|^2,\quad\penalty0 (\rho_p)_{11}=|\beta|^2,\quad\penalty0 (\rho_p)_{10}=p\,\beta\overline\alpha+(1-p)\,\beta'\overline{\alpha'}$ \eqref{eq:14-rho-p},
+donde se usó $|\alpha'|=|\alpha|$ y $p+(1-p)=1$. Del mismo modo, $P_{\rho_p}(1)=|\beta|^2$. Por tanto,
 \[
   \destacado{P_{\rho_p}(0)=|\alpha|^2=P_\psi(0),\qquad P_{\rho_p}(1)=|\beta|^2=P_\psi(1),
-  \qquad\text{para todo }p\in[0,1].}
+  \qquad\text{para todo }p\in[0,1],}
 \]
-Es decir, todo estado mixto $p\rho+(1-p)\rho'$ tiene las mismas probabilidades de medición en la
-base computacional que $\ket\psi$.
+es decir, toda mezcla $p\rho+(1-p)\rho'$ tiene las mismas probabilidades de medición en la base
+computacional que $\ket\psi$.
 
-\paragraph{Diferencia entre superponer y mezclar.}
-En el punto 1.3 se sumaron kets: $\ket\psi+e^{i\eta}\ket{\psi'}=c\ket1$. Allí se suman las
-amplitudes \emph{antes} de calcular los módulos al cuadrado, y como $\alpha$ y $e^{i\eta}\alpha'$
-tienen direcciones contrarias, se anulan. La distribución cambia por completo: los dos estados
-daban $0$ con probabilidad $|\alpha|^2$, y el resultado normalizado da $0$ con probabilidad
-$0$ y $1$ con probabilidad $1$.
+La misma cuenta se ve en las matrices. Por $\rho=\begin{pmatrix}|\alpha|^2 & \alpha\overline\beta\\ \beta\overline\alpha & |\beta|^2\end{pmatrix}$ \eqref{eq:14-proyector}, y como $|\alpha'|=|\alpha|$ y
+$|\beta'|=|\beta|$, las matrices $\rho$ y $\rho'$ tienen la misma diagonal, $|\alpha|^2$ y
+$|\beta|^2$. Como las matrices se suman y se multiplican por números entrada por entrada,
+\begin{equation}\label{eq:14-rho-p}
+  \rho_p=\begin{pmatrix}
+     |\alpha|^2 & p\,\alpha\overline\beta+(1-p)\,\alpha'\overline{\beta'}\\[2pt]
+     p\,\beta\overline\alpha+(1-p)\,\beta'\overline{\alpha'} & |\beta|^2
+   \end{pmatrix}.
+\end{equation}
+La diagonal de $\rho_p$ son las probabilidades de $\ket\psi$ para todo $p$; el número $p$ solo
+cambia las entradas de fuera de la diagonal.
 
-En este punto se suman proyectores. En la diagonal de $(\rho_p)_{00}=|\alpha|^2,\quad\penalty0 (\rho_p)_{11}=|\beta|^2,\quad\penalty0 (\rho_p)_{10}=p\,\beta\overline\alpha+(1-p)\,\beta'\overline{\alpha'}$ \eqref{eq:14-rho-p} se suman
-probabilidades, que ya son módulos al cuadrado, es decir, números reales no negativos:
-$p|\alpha|^2+(1-p)|\alpha|^2$. Esos números no tienen fase y no se pueden anular entre sí, así que
-el promedio de dos probabilidades iguales es la misma probabilidad. Las fases, que fueron las que
-produjeron la cancelación en 1.3, quedan solo fuera de la diagonal y no intervienen en las
-probabilidades de medición en la base computacional.
+\paragraph{Diferencia entre superponer y mezclar.} En el punto 1.3 se sumaron amplitudes, que son
+números complejos con fase y se pueden anular: $\alpha+e^{i\eta}\alpha'=0$, y el resultado $0$
+desaparece. En una mezcla se suman probabilidades, que son números reales no negativos y no se
+anulan: $p|\alpha|^2+(1-p)|\alpha|^2=|\alpha|^2$. Por eso la superposición cambia las
+probabilidades y la mezcla no.
 
 %======================================================================
 \subsection*{Interpretación en la esfera de Bloch}
 %======================================================================
 
-Para ubicar $\rho_p$ en la esfera se escriben las coordenadas del punto de un estado puro en
-términos de las entradas de su proyector. Con $\alpha=Ae^{ix}$ y $\beta=Be^{iy}$, por
-$\cos\tfrac\theta2=A,\quad\penalty0 \sin\tfrac\theta2=B$ \eqref{eq:theta}, $\cos\frac\theta2=A$, $\sin\frac\theta2=B$, y por $\varphi\equiv y-x \pmod{2\pi}$ \eqref{eq:phi},
-$\varphi\equiv y-x$, el punto de $\ket\psi$ es
-$\vec r=(\sin\theta\cos\varphi,\ \sin\theta\sin\varphi,\ \cos\theta)$. Por las fórmulas del
-ángulo doble,
-\[
-  \cos\theta=\cos^2\tfrac\theta2-\sin^2\tfrac\theta2=A^2-B^2,
-  \qquad
-  \sin\theta=2\sin\tfrac\theta2\cos\tfrac\theta2=2AB .
-\]
-Por otro lado, en $\rho=\ket\psi\bra\psi=\begin{pmatrix}|\alpha|^2 & \alpha\overline\beta\\ \beta\overline\alpha & |\beta|^2\end{pmatrix}$ \eqref{eq:14-proyector},
-$\rho_{00}=A^2$, $\rho_{11}=B^2$ y
-$\rho_{10}=\beta\overline\alpha=Be^{iy}Ae^{-ix}=AB\,e^{i(y-x)}=AB\cos\varphi+i\,AB\sin\varphi$.
-Comparando,
+En el punto 1.2 se obtuvo el punto de un estado puro,
+$\vec r=\bigl(2\Real(\overline\alpha\beta),\ 2\Imag(\overline\alpha\beta),\ A^2-B^2\bigr)$
+\eqref{eq:a-c}. En la matriz $\rho$ se tiene $\rho_{00}=A^2$, $\rho_{11}=B^2$ y
+$\rho_{10}=\beta\overline\alpha=\overline\alpha\beta$, así que el punto se lee de las entradas de
+la matriz:
 \begin{equation}\label{eq:14-bloch-matriz}
-  \destacado{r_x=2\,\bigl(\text{parte real de }\rho_{10}\bigr),\qquad
-  r_y=2\,\bigl(\text{parte imaginaria de }\rho_{10}\bigr),\qquad
+  \destacado{r_x=2\,\Real\rho_{10},\qquad
+  r_y=2\,\Imag\rho_{10},\qquad
   r_z=\rho_{00}-\rho_{11}.}
 \end{equation}
-Estas fórmulas leen el punto de la esfera directamente de las entradas de la matriz, y se usan
-igual para un estado mixto: el punto de $\rho_p$ es el que dan $r_x=2\,\Real\rho_{10},\quad\penalty0 r_y=2\,\Imag\rho_{10},\quad\penalty0 r_z=\rho_{00}-\rho_{11}$ \eqref{eq:14-bloch-matriz} con
-las entradas de $\rho_p$.
-
-Por $(\rho_p)_{00}=|\alpha|^2,\quad\penalty0 (\rho_p)_{11}=|\beta|^2,\quad\penalty0 (\rho_p)_{10}=p\,\beta\overline\alpha+(1-p)\,\beta'\overline{\alpha'}$ \eqref{eq:14-rho-p}, cada entrada de $\rho_p$ es $p$ por la entrada de $\rho$ más $(1-p)$ por
-la entrada de $\rho'$, y lo mismo pasa con su parte real y su parte imaginaria. Por tanto, si
-$\vec r$ y $\vec r\,'$ son los puntos de $\ket\psi$ y $\ket{\psi'}$,
+Para un estado mixto se usan las mismas fórmulas con las entradas de $\rho_p$. Como cada entrada
+de $\rho_p$ es $p$ por la entrada de $\rho$ más $(1-p)$ por la de $\rho'$, si $\vec r$ y
+$\vec r\,'$ son los puntos de $\ket\psi$ y $\ket{\psi'}$,
 \begin{equation}\label{eq:14-segmento}
   \destacado{\vec r_p=p\,\vec r+(1-p)\,\vec r\,' ,\qquad p\in[0,1].}
 \end{equation}
-Con $p=1$ se obtiene $\vec r$, con $p=0$ se obtiene $\vec r\,'$, y con los valores intermedios se
-obtienen los puntos del segmento de recta que los une; el punto está más cerca de $\ket\psi$
-mientras más grande sea $p$, la probabilidad de estar en $\ket\psi$. Como el segmento une dos
-puntos de la superficie de la esfera, sus puntos intermedios quedan en el interior, lo que
-coincide con que los estados mixtos ocupan el interior de la esfera.
 
-La altura de todos esos puntos es la misma:
-$r_z=\rho_{00}-\rho_{11}=|\alpha|^2-|\beta|^2=A^2-B^2$ para todo $p$. Por tanto, el segmento es
-horizontal: es una cuerda del paralelo de $\ket\psi$ que se encontró en el punto 1.3. Esta es la
-lectura de este punto en la esfera, porque las probabilidades de medición solo dependen de la
-altura: como $\rho_{00}+\rho_{11}=|\alpha|^2+|\beta|^2=1$ y $\rho_{00}-\rho_{11}=r_z$,
+\begin{definicionT}[Cuerda]
+Una \emph{cuerda} de la esfera es el segmento de recta que une dos puntos de su superficie. Sus
+puntos, salvo los dos extremos, están en el interior de la esfera.
+\end{definicionT}
+
+Por $\vec r_p=p\,\vec r+(1-p)\,\vec r\,'$ \eqref{eq:14-segmento}, con $p=0$ se obtiene
+$\vec r\,'$, con $p=1$ se obtiene $\vec r$, y con los valores intermedios se obtienen los puntos
+del segmento que los une, más cerca de $\ket\psi$ cuanto mayor es $p$. Es decir, las mezclas
+forman la cuerda que une $\ket{\psi'}$ con $\ket\psi$, y por eso quedan dentro de la esfera.
+Además, todas tienen la misma altura, $r_z=\rho_{00}-\rho_{11}=|\alpha|^2-|\beta|^2$, porque la
+diagonal de $\rho_p$ no depende de $p$. La cuerda es horizontal: une dos puntos del paralelo de
+$\ket\psi$ del punto 1.3. Como $\rho_{00}+\rho_{11}=1$ y $\rho_{00}-\rho_{11}=r_z$, las
+probabilidades solo dependen de la altura,
 \[
   P(0)=\rho_{00}=\frac{1+r_z}{2},\qquad P(1)=\rho_{11}=\frac{1-r_z}{2},
 \]
-y todos los puntos de la cuerda tienen la misma altura que $\ket\psi$.
-
-En resumen, superponer $\ket\psi$ y $\ket{\psi'}$ (punto 1.3) lleva el estado desde el paralelo
-hasta el polo sur, mientras que mezclarlos lo deja sobre la cuerda que los une, dentro de la
-esfera y a la misma altura. Si se toman todas las soluciones $\ket{\psi'}$ del punto 1.3, las
-cuerdas que salen de $\ket\psi$ hacia todos los puntos del paralelo llenan el círculo horizontal
-que tiene ese paralelo como borde.
+así que todos los puntos de la cuerda tienen las mismas probabilidades que $\ket\psi$. En resumen,
+superponer $\ket\psi$ y $\ket{\psi'}$ (punto 1.3) lleva el estado al polo sur, mientras que
+mezclarlos lo deja en la cuerda entre los dos, dentro de la esfera y a la misma altura.
 
 %======================================================================
 \subsection*{Comprobación con el ejemplo del punto 1.3}
 %======================================================================
 
-Se toma de nuevo $\ket\psi=\frac{\sqrt3}{2}\ket0+\frac{i}{2}\ket1$ y la solución de $\tau=0$ y
-$\eta=0$, $\ket{\psi'}=-\frac{\sqrt3}{2}\ket0+\frac{i}{2}\ket1$. Con
-$\overline{i}=-i$, por $\rho=\ket\psi\bra\psi=\begin{pmatrix}|\alpha|^2 & \alpha\overline\beta\\ \beta\overline\alpha & |\beta|^2\end{pmatrix}$ \eqref{eq:14-proyector},
+Se toma el ejemplo del punto 1.3, $\ket\psi=\frac{\sqrt3}{2}\ket0+\frac{i}{2}\ket1$, es decir,
+$\alpha=\frac{\sqrt3}{2}$ y $\beta=\frac{i}{2}$, y la solución con $\tau=0$ y $\eta=0$,
+$\ket{\psi'}=-\frac{\sqrt3}{2}\ket0+\frac{i}{2}\ket1$, es decir, $\alpha'=-\frac{\sqrt3}{2}$ y
+$\beta'=\frac{i}{2}$.
+
+\paragraph{Proyectores.} Como el conjugado de $\frac{i}{2}$ es $-\frac{i}{2}$, por
+$\rho=\begin{pmatrix}|\alpha|^2 & \alpha\overline\beta\\ \beta\overline\alpha & |\beta|^2\end{pmatrix}$ \eqref{eq:14-proyector} las entradas de $\rho$ son
 \[
-  \rho=\begin{pmatrix}\frac34 & \frac{\sqrt3}{2}\cdot\bigl(-\frac{i}{2}\bigr)\\[3pt]
-                      \frac{i}{2}\cdot\frac{\sqrt3}{2} & \frac14\end{pmatrix}
-      =\begin{pmatrix}\frac34 & -\frac{\sqrt3}{4}i\\[3pt] \frac{\sqrt3}{4}i & \frac14\end{pmatrix},
-  \qquad
-  \rho'=\begin{pmatrix}\frac34 & \bigl(-\frac{\sqrt3}{2}\bigr)\bigl(-\frac{i}{2}\bigr)\\[3pt]
-                      \frac{i}{2}\bigl(-\frac{\sqrt3}{2}\bigr) & \frac14\end{pmatrix}
-      =\begin{pmatrix}\frac34 & \frac{\sqrt3}{4}i\\[3pt] -\frac{\sqrt3}{4}i & \frac14\end{pmatrix},
+  \rho_{00}=\tfrac34,\qquad
+  \rho_{01}=\tfrac{\sqrt3}{2}\bigl(-\tfrac{i}{2}\bigr)=-\tfrac{\sqrt3}{4}i,\qquad
+  \rho_{10}=\tfrac{i}{2}\cdot\tfrac{\sqrt3}{2}=\tfrac{\sqrt3}{4}i,\qquad
+  \rho_{11}=\tfrac14 .
 \]
-y, por $(\rho_p)_{00}=|\alpha|^2,\quad\penalty0 (\rho_p)_{11}=|\beta|^2,\quad\penalty0 (\rho_p)_{10}=p\,\beta\overline\alpha+(1-p)\,\beta'\overline{\alpha'}$ \eqref{eq:14-rho-p}, con $p\,\frac{\sqrt3}{4}i-(1-p)\frac{\sqrt3}{4}i=(2p-1)\frac{\sqrt3}{4}i$,
+En $\rho'$ solo cambia el signo de $\alpha$, así que la diagonal es la misma y cambia el signo de
+las otras dos entradas: $\rho'_{01}=\bigl(-\tfrac{\sqrt3}{2}\bigr)\bigl(-\tfrac{i}{2}\bigr)=\tfrac{\sqrt3}{4}i$ y
+$\rho'_{10}=\tfrac{i}{2}\bigl(-\tfrac{\sqrt3}{2}\bigr)=-\tfrac{\sqrt3}{4}i$. Entonces
+\[
+  \rho=\begin{pmatrix}\frac34 & -\frac{\sqrt3}{4}i\\[3pt] \frac{\sqrt3}{4}i & \frac14\end{pmatrix},
+  \qquad
+  \rho'=\begin{pmatrix}\frac34 & \frac{\sqrt3}{4}i\\[3pt] -\frac{\sqrt3}{4}i & \frac14\end{pmatrix}.
+\]
+
+\paragraph{Mezcla.} Al calcular $p\rho+(1-p)\rho'$ entrada por entrada, la diagonal queda
+$p\cdot\frac34+(1-p)\cdot\frac34=\frac34$ y $p\cdot\frac14+(1-p)\cdot\frac14=\frac14$, y
+\[
+  (\rho_p)_{10}=p\cdot\tfrac{\sqrt3}{4}i+(1-p)\bigl(-\tfrac{\sqrt3}{4}i\bigr)=(2p-1)\tfrac{\sqrt3}{4}i ,
+\]
+y $(\rho_p)_{01}$ es su conjugado. Por tanto
 \[
   \rho_p=\begin{pmatrix}\frac34 & -(2p-1)\frac{\sqrt3}{4}i\\[3pt]
                         (2p-1)\frac{\sqrt3}{4}i & \frac14\end{pmatrix}.
 \]
-La diagonal no depende de $p$: la mezcla da $0$ con probabilidad $\frac34$ y $1$ con probabilidad
-$\frac14$, igual que $\ket\psi$. Por $r_x=2\,\Real\rho_{10},\quad\penalty0 r_y=2\,\Imag\rho_{10},\quad\penalty0 r_z=\rho_{00}-\rho_{11}$ \eqref{eq:14-bloch-matriz}, como
-$\rho_{10}=(2p-1)\frac{\sqrt3}{4}i$ no tiene parte real,
+Por ejemplo, con $p=\frac14$ se tiene $2p-1=-\frac12$, y
+$\rho_{1/4}=\begin{pmatrix}\frac34 & \frac{\sqrt3}{8}i\\[2pt] -\frac{\sqrt3}{8}i & \frac14\end{pmatrix}$.
+
+\paragraph{Probabilidades.} La diagonal no depende de $p$: para toda mezcla, $P(0)=\frac34$ y
+$P(1)=\frac14$, que son las probabilidades de $\ket\psi$, pues $|\alpha|^2=\frac34$ y
+$|\beta|^2=\frac14$. Esto comprueba en el ejemplo el resultado general; en el punto 1.5 se
+comprueba también con mediciones simuladas.
+
+\paragraph{Punto en la esfera.} El número $(\rho_p)_{10}=(2p-1)\frac{\sqrt3}{4}i$ tiene parte real
+$0$ y parte imaginaria $(2p-1)\frac{\sqrt3}{4}$. Por
+$r_x=2\,\Real\rho_{10},\ r_y=2\,\Imag\rho_{10},\ r_z=\rho_{00}-\rho_{11}$ \eqref{eq:14-bloch-matriz},
 \[
-  \vec r_p=\Bigl(0,\ (2p-1)\tfrac{\sqrt3}{2},\ \tfrac12\Bigr).
+  \vec r_p=\Bigl(0,\ (2p-1)\tfrac{\sqrt3}{2},\ \tfrac34-\tfrac14\Bigr)
+          =\Bigl(0,\ (2p-1)\tfrac{\sqrt3}{2},\ \tfrac12\Bigr).
 \]
 \begin{center}
 \renewcommand{\arraystretch}{1.45}
@@ -214,21 +190,22 @@ $\rho_{10}=(2p-1)\frac{\sqrt3}{4}i$ no tiene parte real,
   $1$ & $\bigl(0,\frac{\sqrt3}{2},\frac12\bigr)$, punto de $\ket{\psi}$ & $\frac34$ & $\frac14$
 \end{tabular}
 \end{center}
-Los puntos de $p=0$ y $p=1$ coinciden con los que muestra el widget para $\ket{\psi'}$ y
-$\ket\psi$, $\vec r\,'=(0,-0.866,0.5)$ y $\vec r=(0,0.866,0.5)$. Como en este caso
-$\ket{\psi'}$ es el punto del paralelo que está enfrente de $\ket\psi$, la cuerda pasa por el
-centro del paralelo, que es el punto de $p=\frac12$.
+Con $p=0$ y $p=1$ se obtienen los puntos de $\ket{\psi'}$ y de $\ket\psi$,
+$(0,-0.866,0.5)$ y $(0,0.866,0.5)$, que son los que muestra el widget. Los demás están en la
+cuerda que los une, a altura $\frac12$. Como en este caso $\ket{\psi'}$ está enfrente de
+$\ket\psi$ en el paralelo, la cuerda pasa por el eje $z$, en $p=\frac12$ (figura~\ref{fig:14-bloch},
+izquierda).
 
 Con la solución de $\tau=\frac\pi2$ del punto 1.3, $\ket{\psi'}=-\frac{\sqrt3}{2}\ket0-\frac12\ket1$,
-los coeficientes son reales y $\rho'_{10}=\bigl(-\frac12\bigr)\bigl(-\frac{\sqrt3}{2}\bigr)=\frac{\sqrt3}{4}$.
-Entonces $(\rho_p)_{10}=p\frac{\sqrt3}{4}i+(1-p)\frac{\sqrt3}{4}$, y
+se tiene $\rho'_{10}=\bigl(-\frac12\bigr)\bigl(-\frac{\sqrt3}{2}\bigr)=\frac{\sqrt3}{4}$, así que
+$(\rho_p)_{10}=p\frac{\sqrt3}{4}i+(1-p)\frac{\sqrt3}{4}$ y
 \[
   \vec r_p=\Bigl((1-p)\tfrac{\sqrt3}{2},\ p\,\tfrac{\sqrt3}{2},\ \tfrac12\Bigr),
 \]
-que es otra cuerda del mismo paralelo, entre $\vec r\,'=(0.866,0,0.5)$ y
-$\vec r=(0,0.866,0.5)$, de nuevo a altura $\frac12$ (figura~\ref{fig:14-bloch}).
+que es otra cuerda del mismo paralelo, entre $(0.866,0,0.5)$ y $(0,0.866,0.5)$
+(figura~\ref{fig:14-bloch}, derecha).
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \begin{minipage}{0.42\linewidth}\centering
   \includegraphics[width=\linewidth]{Imágenes/p14_mezcla_tau0.png}\\
