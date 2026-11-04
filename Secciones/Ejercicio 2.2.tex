@@ -1,4 +1,4 @@
-Sea $\Psi\in H_2$. Como los cuatro productos $\ket a\otimes\ket b$ forman una base de $H_2$ (véase el punto anterior), existen números complejos únicos $c_{ab}$ tales que
+Sea $\Psi\in H_2$. Por el punto anterior, las cuatro funciones $e^{i(nt+ms)}$ forman una base de $H_2$, y el isomorfismo $T$ identifica cada una con un elemento $\ket a\otimes\ket b$ de la base de $H_1\otimes H_1$, con $n=a+1$ y $m=b+1$. Por eso existen números complejos únicos $c_{ab}$ tales que
 \[
   \Psi=\sum_{a,b\in\{0,1\}}c_{ab}\,\ket a\otimes\ket b ,
 \]
@@ -27,5 +27,7 @@ Recíprocamente, supóngase que $\det C=0$. Si $C=0$, entonces $\Psi=0$, que es 
 \[
   \Psi(t,s)=\psi(t)\varphi(s), \qquad \psi=\sum_a x_a\ket a,\quad \varphi=\sum_b y_b\ket b .
 \]
+
+\paragraph{Relación con la probabilidad.} La condición es la misma que aparece con dos variables aleatorias. Si $p_{ab}$ es la distribución conjunta de dos variables que toman los valores $0$ y $1$, las variables son independientes cuando la conjunta es el producto de sus marginales, $p_{ab}=p_a\,q_b$, y hay distribuciones conjuntas que no son el producto de sus marginales. Para una tabla de $2\times2$, además, la independencia equivale a $p_{00}p_{11}=p_{01}p_{10}$, que es la condición $\det C=0$ escrita con probabilidades. Del mismo modo, una onda de $H_2$ es un producto $\psi(t)\varphi(s)$ cuando $c_{ab}=x_ay_b$, y las ondas de $H_2$ que no son de esa forma son los estados entrelazados.
 
 \paragraph{Ejemplo.} La onda $\Psi=\frac1{\sqrt2}\bigl(\ket0\otimes\ket0+\ket1\otimes\ket1\bigr)$, que aparece en el punto siguiente, tiene $C=\frac1{\sqrt2}\begin{pmatrix}1&0\\0&1\end{pmatrix}$ y $\det C=\frac12\neq0$. Por tanto no es de la forma $\psi(t)\varphi(s)$: es un estado entrelazado.

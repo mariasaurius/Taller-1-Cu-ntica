@@ -11,9 +11,9 @@ Si $b=1$, Ana mide en $\{\ket+,\ket-\}$, y el estado de Bruno es
 
 \paragraph{Probabilidad de error.} Si Ana envió $0$, el estado de Bruno es $\ket{0\cdots0}$ o $\ket{1\cdots1}$, y sus $n$ resultados son siempre todos iguales. La decisión es correcta en todos los casos.
 
-Si Ana envió $1$, el estado es $\ket{\pm\cdots\pm}$. Cada cadena $x=(x_1,\dots,x_n)\in\{0,1\}^n$ tiene probabilidad
+Si Ana envió $1$, el estado es $\ket{+\cdots+}$ o $\ket{-\cdots-}$. Como $|\bk{0}{+}|^2=|\bk{1}{+}|^2=\frac12$ y $|\bk{0}{-}|^2=|\bk{1}{-}|^2=\frac12$, en cualquiera de los dos casos cada cadena $x=(x_1,\dots,x_n)\in\{0,1\}^n$ tiene probabilidad
 \[
-  \prod_{j=1}^n\bigl|\bk{\ket{x_j}}{\ket\pm}\bigr|^2=\prod_{j=1}^n\tfrac12=2^{-n}.
+  \prod_{j=1}^n\bigl|\bk{x_j}{+}\bigr|^2=\prod_{j=1}^n\bigl|\bk{x_j}{-}\bigr|^2=\prod_{j=1}^n\tfrac12=2^{-n}.
 \]
 Solo hay dos cadenas con todos los resultados iguales (la de puros ceros y la de puros unos), así que Bruno decide $0$ con probabilidad $2\cdot2^{-n}=2^{1-n}$. Esa es la probabilidad de error cuando Ana envió $1$. Por tanto,
 \[

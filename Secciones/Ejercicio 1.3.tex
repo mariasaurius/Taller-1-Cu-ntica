@@ -1,6 +1,6 @@
 Sea $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}$ con $|\alpha|^2+|\beta|^2=1$. Se busca un estado
-$\ket{\psi'}=\alpha'\ket{0}+\beta'\ket{1}$ con las mismas probabilidades de medición, es decir,
-$|\alpha'|=|\alpha|$ y $|\beta'|=|\beta|$, y un $\eta\in\mathbb{R}$ tales que
+$\ket{\psi'}=\alpha'\ket{0}+\beta'\ket{1}$ con las mismas probabilidades de medición. Por la regla de Born, esas probabilidades son $|\alpha|^2$ y $|\beta|^2$, donde $|z|=\sqrt{a^2+b^2}$ es el \emph{módulo} de $z=a+ib$, es decir, su tamaño o distancia al origen del plano complejo. Tener las mismas probabilidades significa, entonces,
+$|\alpha'|=|\alpha|$ y $|\beta'|=|\beta|$. Se busca además un $\eta\in\mathbb{R}$ tal que
 $\ket{\psi}+e^{i\eta}\ket{\psi'}=c\ket{1}$ con $c\neq0$. Agrupando los coeficientes de $\ket0$ y
 $\ket1$,
 \begin{equation}\label{eq:13-suma}
@@ -19,9 +19,9 @@ $\alpha\neq0$, pero sí con amplitudes, porque dos números complejos distintos 
 sumar cero. Esa cancelación es la interferencia.
 
 De la primera ecuación, $\alpha+e^{i\eta}\alpha'=0$, se obtiene $\alpha'=-e^{-i\eta}\alpha$, y
-como $|e^{-i\eta}|=1$, $|\alpha'|=|\alpha|$ para cualquier $\eta$. De la segunda,
+como el módulo de un producto es el producto de los módulos, $|zw|=|z|\,|w|$, y $|e^{-i\eta}|=\sqrt{\cos^2\eta+\sin^2\eta}=1$, se tiene $|\alpha'|=|\alpha|$ para cualquier $\eta$. De la segunda,
 $\beta+e^{i\eta}\beta'=c$, se obtiene $c-\beta=e^{i\eta}\beta'$, y tomando módulos,
-$|c-\beta|=|\beta'|$. Como se pide $|\beta'|=|\beta|$, el número $c$ debe cumplir
+$|c-\beta|=|e^{i\eta}|\,|\beta'|=|\beta'|$. El número $|c-\beta|$ es la distancia entre los puntos $c$ y $\beta$ del plano complejo. Como se pide $|\beta'|=|\beta|$, el número $c$ debe cumplir
 \begin{equation}\label{eq:13-circulo}
   \destacado{|c-\beta|=|\beta|,\qquad c\neq 0,}
 \end{equation}
@@ -38,8 +38,8 @@ de la circunferencia da una solución:
 \begin{equation}\label{eq:13-construccion}
   \alpha'=-e^{-i\eta}\alpha,\qquad \beta'=e^{-i\eta}(c-\beta)
 \end{equation}
-cumplen $|\alpha'|=|\alpha|$, $|\beta'|=|c-\beta|=|\beta|$ y las dos ecuaciones de
-\eqref{eq:13-sistema}. Por tanto,
+cumplen $|\alpha'|=|\alpha|$, $|\beta'|=|c-\beta|=|\beta|$ y las dos ecuaciones
+$\alpha+e^{i\eta}\alpha'=0$, $\beta+e^{i\eta}\beta'=c$ de \eqref{eq:13-sistema}. Por tanto,
 \[
   \destacado{\text{existe }\ket{\psi'}\iff \beta\neq0\iff \ket\psi\text{ no es }\ket0
   \text{ salvo fase global}.}
@@ -50,13 +50,13 @@ cumplen $|\alpha'|=|\alpha|$, $|\beta'|=|c-\beta|=|\beta|$ y las dos ecuaciones 
 Para nombrar cada punto de la circunferencia se usa que $c-\beta$ y $\beta$ tienen el mismo
 módulo $B=|\beta|$. En forma polar (punto 1.1), $\beta=Be^{iy}$ y $c-\beta=Be^{iy'}$ para algún
 ángulo $y'$, así que solo difieren en el ángulo. Si $\tau\in(-\pi,\pi]$ es esa diferencia,
-$\tau\equiv y'-y\pmod{2\pi}$, entonces $c-\beta=e^{i(y'-y)}Be^{iy}=e^{i\tau}\beta$: el número
+$\tau\equiv y'-y\pmod{2\pi}$ (es decir, $\tau$ es el ángulo de $(-\pi,\pi]$ que difiere de $y'-y$ en un múltiplo entero de $2\pi$; véase el punto 1.2), entonces $c-\beta=e^{i(y'-y)}Be^{iy}=e^{i\tau}\beta$: el número
 $c-\beta$ es $\beta$ girado un ángulo $\tau$. Por tanto,
 \begin{equation}\label{eq:13-c-tau}
   \destacado{c=\beta\bigl(1+e^{i\tau}\bigr),\qquad \tau\in(-\pi,\pi],}
 \end{equation}
 y cada $\tau$ da un punto distinto de la circunferencia. Con $\tau=\pi$ se obtiene $c=0$, que
-está excluido. Al reemplazar $c-\beta=e^{i\tau}\beta$ en \eqref{eq:13-construccion}, todas las
+está excluido. Al reemplazar $c-\beta=e^{i\tau}\beta$ en $\alpha'=-e^{-i\eta}\alpha$, $\beta'=e^{-i\eta}(c-\beta)$ \eqref{eq:13-construccion}, se obtiene $\beta'=e^{-i\eta}e^{i\tau}\beta$, y sacando el factor común $e^{-i\eta}$, todas las
 soluciones son
 \begin{equation}\label{eq:13-soluciones}
   \destacado{\ket{\psi'}=e^{-i\eta}\bigl(-\alpha\ket0+e^{i\tau}\beta\ket1\bigr),
@@ -95,7 +95,7 @@ horizontal). Las soluciones $\ket{\psi'}$ están entonces en el paralelo de $\ke
 $\varphi\equiv y-x$ \eqref{eq:phi}, su longitud es
 $\varphi'\equiv(y+\tau)-(x+\pi)=\varphi+\tau-\pi$, que nunca es $\varphi$ porque $\tau\neq\pi$.
 Por tanto, las soluciones son todos los puntos del paralelo de $\ket\psi$ excepto $\ket\psi$, y
-la suma normalizada siempre es el polo sur, $\ket1$. La solución con mayor $|c|$ ($\tau=0$,
+la suma normalizada siempre es el polo sur, $\ket1$: ese estado tiene $A=0$ y $B=1$, así que $\cos\frac\theta2=0$, $\theta=\pi$, y su punto es $\vec r=(0,0,A^2-B^2)=(0,0,-1)$. Como una fase global no mueve el punto, $\frac{c}{|c|}\ket1$ queda en el mismo polo sur para cualquier $\tau$. La solución con mayor $|c|$ ($\tau=0$,
 $\varphi'=\varphi-\pi$) es el punto del paralelo opuesto a $\ket\psi$.
 
 \subsection*{Comprobación con el widget}
