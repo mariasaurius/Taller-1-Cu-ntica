@@ -76,7 +76,7 @@ Los coeficientes del estado $\ket\psi=\alpha\ket0+\beta\ket1$ se escriben en for
 Los números $A=|\alpha|$ y $B=|\beta|$ son los \emph{módulos} de los coeficientes y los ángulos
 $x$ y $y$ son sus \emph{fases}. La condición de norma $1$ se escribe $A^2+B^2=1$. Como $e^{ix}$
 no cambia al sumar $2\pi$ a $x$, las fases están determinadas salvo múltiplos enteros de $2\pi$;
-las igualdades entre fases se entienden en ese sentido y se escriben con el símbolo $\equiv$. Si
+las igualdades entre fases se entienden en ese sentido y se escriben con el símbolo $\equiv$: para dos ángulos $a$ y $b$, la notación $a\equiv b\pmod{2\pi}$ significa que $a-b$ es un múltiplo entero de $2\pi$, es decir, que $a$ y $b$ representan el mismo ángulo. La abreviatura ``mód'' viene de ``módulo $2\pi$'' y no tiene relación con el módulo $|\alpha|$ de un número complejo. Cuando no hay confusión se escribe solo $a\equiv b$. Si
 $A=0$, entonces $\alpha=0$ para cualquier valor de $x$, y la fase $x$ no está determinada (lo
 mismo ocurre con $y$ si $B=0$).
 \end{definicionT}
@@ -545,11 +545,12 @@ $\overline\alpha\beta=Ae^{-ix}Be^{iy}=AB\,e^{i(y-x)}=\cos\frac\theta2\sin\frac\t
 y por las fórmulas del ángulo doble, $2\sin\frac\theta2\cos\frac\theta2=\sin\theta$ y
 $\cos^2\frac\theta2-\sin^2\frac\theta2=\cos\theta$. Por tanto,
 $2\overline\alpha\beta=\sin\theta\,e^{i\varphi}=\sin\theta\cos\varphi+i\sin\theta\sin\varphi$ y
-$A^2-B^2=\cos\theta$, de donde
+$A^2-B^2=\cos\theta$. Con la notación del punto 1.1, en la que $\Real z=a$ es la parte real e $\Imag z=b$ la parte imaginaria de $z=a+ib$, se obtiene
 \begin{equation}\label{eq:a-c}
   \destacado{\vec r=(\sin\theta\cos\varphi,\ \sin\theta\sin\varphi,\ \cos\theta)
   =\bigl(2\Real(\overline\alpha\beta),\ 2\Imag(\overline\alpha\beta),\ A^2-B^2\bigr).}
 \end{equation}
+Es decir, se calcula el número complejo $2\overline\alpha\beta$: su parte real es la coordenada $r_x$ del punto y su parte imaginaria es la coordenada $r_y$. En el ejemplo, $2\overline\alpha\beta=2\cdot\frac1{\sqrt2}\cdot\frac1{\sqrt2}e^{i\pi/3}=e^{i\pi/3}=\frac12+i\frac{\sqrt3}{2}$, así que $r_x=\frac12$, $r_y=\frac{\sqrt3}{2}$ y $r_z=\frac12-\frac12=0$.
 Esta segunda expresión no usa las fases $x$ y $y$, así que sigue siendo válida cuando $A=0$ o
 $B=0$, que es justamente cuando alguna fase no está determinada. En esos casos $\sin\theta=0$ y
 el punto está en uno de los polos, de modo que $\varphi$ no hace falta.
@@ -736,6 +737,4 @@ el panel (b), la altura fija el módulo y la posición fija la fase, según
 $x\equiv t_\alpha$ y $y\equiv 2t_\beta$. Las ondas se dibujan con
 $\psi(t)=A\cos(t-x)+B\cos(2t-y)$ y el punto de Bloch con
 $\vec r=\bigl(2\Real(\overline\alpha\beta),\ 2\Imag(\overline\alpha\beta),\ A^2-B^2\bigr)$. El
-notebook de Python del repositorio verifica, con doscientos estados aleatorios, que cada fórmula
-de ida se invierte con su fórmula de vuelta, así como las propiedades de la fase global y de los
-desplazamientos en el tiempo descritas en la sección anterior.
+notebook de Python del repositorio comprueba numéricamente las fórmulas de esta sección. Para eso genera doscientos estados al azar: para cada uno sortea las partes reales e imaginarias de $\alpha$ y $\beta$ y después divide entre la norma, de modo que $|\alpha|^2+|\beta|^2=1$. Con cada estado verifica que cada fórmula de ida se invierte con su fórmula de vuelta (al pasar por la esfera, salvo fase global), así como las propiedades de la fase global y de los desplazamientos en el tiempo descritas en la sección anterior. Si alguna igualdad fallara, el programa se detendría con un error. Esta comprobación no reemplaza las deducciones anteriores: sirve para detectar errores en las fórmulas o en el código.

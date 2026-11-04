@@ -1,17 +1,22 @@
 \paragraph{Notación.} Se usan las bases
 \[
-  \{\ket0,\ket1\}\qquad\text{y}\qquad\{\ket+,\ket-\},\qquad
-  \ket\pm:=\frac{\ket0\pm\ket1}{\sqrt2}=\frac{e^{it}\pm e^{2it}}{\sqrt2}.
+  \{\ket0,\ket1\}\qquad\text{y}\qquad\{\ket+,\ket-\},
 \]
+donde
+\[
+  \ket+:=\frac{\ket0+\ket1}{\sqrt2}=\frac{e^{it}+e^{2it}}{\sqrt2},\qquad
+  \ket-:=\frac{\ket0-\ket1}{\sqrt2}=\frac{e^{it}-e^{2it}}{\sqrt2}.
+\]
+$\ket+$ y $\ket-$ son dos estados distintos, los dos elementos de la segunda base, y cada uno es un estado puro, igual que $\ket0$ y $\ket1$. Para no escribir dos veces la misma cuenta, en algunas fórmulas aparece $\ket\pm$: la fórmula se lee una vez con el signo $+$ (para $\ket+$) y otra con el signo $-$ (para $\ket-$).
 El estado del sistema es
 \[
   \Psi(t,s)=\frac1{\sqrt2}\bigl(e^{i(t+s)}+e^{2i(t+s)}\bigr)=\frac1{\sqrt2}\bigl(\ket0\otimes\ket0+\ket1\otimes\ket1\bigr).
 \]
 Según el enunciado, si Ana mide en una base ortonormal $\{u_0,u_1\}$ de $H_1$, el resultado $k$ tiene probabilidad $p_k=\|\Psi_k\|^2$, donde $\Psi_k(s)=\bk{u_k}{\Psi(\cdot,s)}$, y la onda de Bruno pasa a ser $\varphi_k=\Psi_k/\sqrt{p_k}$.
 
-\paragraph{Medición de Ana en la base $\{\ket0,\ket1\}$.} Como $\bk{\ket0}{\Psi(\cdot,s)}=\frac1{\sqrt2}\ket0(s)$ y $\bk{\ket1}{\Psi(\cdot,s)}=\frac1{\sqrt2}\ket1(s)$, se obtienen $p_0=p_1=\frac12$, con $\varphi_0=\ket0$ y $\varphi_1=\ket1$.
+\paragraph{Medición de Ana en la base $\{\ket0,\ket1\}$.} Como $\bk{0}{\Psi(\cdot,s)}=\frac1{\sqrt2}\ket0(s)$ y $\bk{1}{\Psi(\cdot,s)}=\frac1{\sqrt2}\ket1(s)$, se obtienen $p_0=p_1=\frac12$, con $\varphi_0=\ket0$ y $\varphi_1=\ket1$.
 
-\paragraph{Medición de Ana en la base $\{\ket+,\ket-\}$.} Como $\bk{\ket\pm}{\ket0}=\frac1{\sqrt2}$ y $\bk{\ket\pm}{\ket1}=\pm\frac1{\sqrt2}$,
+\paragraph{Medición de Ana en la base $\{\ket+,\ket-\}$.} Como $\bk{\pm}{0}=\frac1{\sqrt2}$ y $\bk{\pm}{1}=\pm\frac1{\sqrt2}$,
 \[
   \Psi_\pm(s)=\frac1{\sqrt2}\Bigl(\frac1{\sqrt2}\ket0(s)\pm\frac1{\sqrt2}\ket1(s)\Bigr)=\frac12\bigl(\ket0\pm\ket1\bigr)(s).
 \]
@@ -29,13 +34,13 @@ Los resultados de Ana se resumen en la tabla siguiente.
 \end{tabular}
 \end{center}
 
-\paragraph{Probabilidades de Bruno.} Sea $\{w_0,w_1\}$ cualquier base ortonormal de $H_1$, en la que Bruno mide. Como $\{\ket0,\ket1\}$ es base ortonormal, para cualquier vector unitario $w$ se cumple $|\bk{w}{\ket0}|^2+|\bk{w}{\ket1}|^2=\|w\|^2=1$; lo mismo ocurre con la base $\{\ket+,\ket-\}$. Por tanto, si Ana mide en la base $\{\ket0,\ket1\}$,
+\paragraph{Probabilidades de Bruno.} Sea $\{w_0,w_1\}$ cualquier base ortonormal de $H_1$, en la que Bruno mide. Como $\{\ket0,\ket1\}$ es base ortonormal, para cualquier vector unitario $w$ se cumple $|\bk{w}{0}|^2+|\bk{w}{1}|^2=\|w\|^2=1$; lo mismo ocurre con la base $\{\ket+,\ket-\}$. Por tanto, si Ana mide en la base $\{\ket0,\ket1\}$,
 \[
-  P(\text{Bruno obtiene } w_j)=\tfrac12\,|\bk{w_j}{\ket0}|^2+\tfrac12\,|\bk{w_j}{\ket1}|^2=\tfrac12 ,
+  P(\text{Bruno obtiene } w_j)=\tfrac12\,|\bk{w_j}{0}|^2+\tfrac12\,|\bk{w_j}{1}|^2=\tfrac12 ,
 \]
 y si Ana mide en la base $\{\ket+,\ket-\}$, la probabilidad también es
 \[
-  \tfrac12\,|\bk{w_j}{\ket+}|^2+\tfrac12\,|\bk{w_j}{\ket-}|^2=\tfrac12 .
+  \tfrac12\,|\bk{w_j}{+}|^2+\tfrac12\,|\bk{w_j}{-}|^2=\tfrac12 .
 \]
 Bruno ve, entonces, probabilidades iguales a $\frac12$ para cualquier base suya y sin importar la base de Ana. La respuesta a la pregunta es que no dependen.
 

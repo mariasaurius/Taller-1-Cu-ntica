@@ -107,15 +107,33 @@ Una transformación lineal $T\colon V\to W$ es un \emph{isomorfismo} si es biyec
 
 Que dos espacios sean isomorfos significa que son el mismo espacio con nombres distintos para sus elementos. El isomorfismo traduce cada elemento de uno en exactamente un elemento del otro, y la traducción respeta las sumas y los múltiplos.
 
-\paragraph{Por qué se pasa al producto tensorial.} La regla $(\psi,\varphi)\mapsto\psi(t)\varphi(s)$ no es una transformación lineal sobre las parejas. Si se multiplican las dos ondas por $2$, la pareja $(2\psi,2\varphi)$ es el doble de $(\psi,\varphi)$, pero su imagen es $4\,\psi(t)\varphi(s)$ y no el doble. Lo que sí cumple la regla es ser lineal en cada onda por separado: con $\varphi$ fija, $\bigl(c\,\psi+\psi'\bigr)(t)\,\varphi(s)=c\,\psi(t)\varphi(s)+\psi'(t)\varphi(s)$, y lo mismo con $\psi$ fija. El producto tensorial tiene exactamente esa propiedad, como se vio después de su definición. Por eso la regla se traduce en una transformación lineal $T$ definida en $H_1\otimes H_1$ que cumple
+\paragraph{Por qué se pasa al producto tensorial.} Sea $H_1\times H_1$ el producto cartesiano, es decir, el conjunto de las parejas $(\psi,\varphi)$ con $\psi,\varphi\in H_1$. La regla del enunciado es la función
 \[
-  T(\psi\otimes\varphi)=\psi(t)\varphi(s)\qquad\text{para todo }\psi,\varphi\in H_1 .
+  T'\colon H_1\times H_1\to H_2,\qquad T'(\psi,\varphi)=\psi(t)\varphi(s).
 \]
-Esto es lo que significa que la regla \emph{induce} una transformación lineal.
+Esta función no es una transformación lineal sobre las parejas. Si se multiplican las dos ondas por $2$, la pareja $(2\psi,2\varphi)$ es el doble de $(\psi,\varphi)$, pero $T'(2\psi,2\varphi)=4\,\psi(t)\varphi(s)$, que no es el doble de $T'(\psi,\varphi)$. Lo que sí cumple $T'$ es la propiedad de la definición siguiente.
+
+\begin{definicionT}[Función bilineal]
+Una función $T'\colon H_1\times H_1\to W$, con $W$ un espacio vectorial complejo, es \emph{bilineal} si es lineal en cada variable cuando la otra está fija: para todo $\psi_1,\psi_2,\varphi_1,\varphi_2\in H_1$ y todo $c\in\C$,
+\[
+  T'(c\,\psi_1+\psi_2,\ \varphi)=c\,T'(\psi_1,\varphi)+T'(\psi_2,\varphi),\qquad
+  T'(\psi,\ c\,\varphi_1+\varphi_2)=c\,T'(\psi,\varphi_1)+T'(\psi,\varphi_2).
+\]
+\end{definicionT}
+
+La función $T'(\psi,\varphi)=\psi(t)\varphi(s)$ es bilineal. Con $\varphi$ fija,
+\[
+  T'(c\,\psi_1+\psi_2,\ \varphi)=\bigl(c\,\psi_1(t)+\psi_2(t)\bigr)\varphi(s)=c\,\psi_1(t)\varphi(s)+\psi_2(t)\varphi(s)=c\,T'(\psi_1,\varphi)+T'(\psi_2,\varphi),
+\]
+y la cuenta con $\psi$ fija es igual. El producto tensorial tiene la misma propiedad, como se vio después de su definición. Como se vio en clase, por eso a cada función bilineal $T'$ definida en $H_1\times H_1$ le corresponde una transformación lineal $T$ definida en $H_1\otimes H_1$ que cumple
+\[
+  T(\psi\otimes\varphi)=T'(\psi,\varphi)=\psi(t)\varphi(s)\qquad\text{para todo }\psi,\varphi\in H_1 ,
+\]
+y, al revés, cada transformación lineal en $H_1\otimes H_1$ da una función bilineal en $H_1\times H_1$. Esto es lo que significa que la regla \emph{induce} una transformación lineal.
 
 \paragraph{Definición de $T$.} Como $H_1\otimes H_1$ tiene la base $\{\ket a\otimes\ket b\}$, basta decir a dónde va cada uno de esos cuatro elementos. El ket $\ket a$ es la onda $e^{i(a+1)t}$: para $a=0$ es $e^{it}$ y para $a=1$ es $e^{2it}$. La etiqueta $a\in\{0,1\}$ del ket y la frecuencia de la onda se diferencian en $1$, porque las etiquetas de un qubit empiezan en $0$ y las frecuencias de $H_1$ empiezan en $1$. Siguiendo la regla del enunciado, se define
 \[
-  T(\ket a\otimes\ket b)=e^{i(a+1)t}\,e^{i(b+1)s}=e^{i((a+1)t+(b+1)s)} .
+  T(\ket a\otimes\ket b)=T'(\ket a,\ket b)=e^{i(a+1)t}\,e^{i(b+1)s}=e^{i((a+1)t+(b+1)s)} .
 \]
 Con $n=a+1$ y $m=b+1$, la imagen es $e^{i(nt+ms)}$, y cuando $a$ y $b$ recorren $\{0,1\}$, la pareja de frecuencias $(n,m)$ recorre $\{1,2\}$. La tabla muestra las cuatro imágenes.
 \begin{center}
@@ -170,4 +188,4 @@ Si la regla indujera una transformación lineal $T$ con $T(f\otimes g)=f(t)g(s)$
   \qquad\text{y}\qquad
   \cos t\,(i\cdot\cos s)=\cos t\,\sin s .
 \]
-Estas funciones no son iguales: en $t=\frac\pi2$, $s=0$, la primera vale $\sin\frac\pi2\cos0=1$ y la segunda vale $\cos\frac\pi2\sin0=0$. Por tanto, con ondas reales la regla $(f,g)\mapsto f(t)g(s)$ no induce una transformación lineal de $V\otimes V$, y menos un isomorfismo. El problema es que en $V$ multiplicar por $i$ no es multiplicar la función por el número $i$, sino correr la onda, y correr la onda en $t$ no es lo mismo que correrla en $s$. Con las ondas complejas $e^{int}$, multiplicar por $i$ sí es multiplicar la función por el número $i$, y ese número sale de cualquiera de los dos factores: $\bigl(i\,\psi(t)\bigr)\varphi(s)=\psi(t)\bigl(i\,\varphi(s)\bigr)$. Por eso en esta parte las ondas se toman complejas desde el principio.
+Estas funciones no son iguales: en $t=\frac\pi2$, $s=0$, la primera vale $\sin\frac\pi2\cos0=1$ y la segunda vale $\cos\frac\pi2\sin0=0$. Dicho de otro modo, con la multiplicación por $i$ de la Parte 1 la función $T'(f,g)=f(t)g(s)$ no es bilineal: la bilinealidad exige $T'(i\cdot f,g)=i\cdot T'(f,g)=T'(f,i\cdot g)$, y aquí $T'(i\cdot f,g)\neq T'(f,i\cdot g)$. Por tanto, con ondas reales la regla $(f,g)\mapsto f(t)g(s)$ no induce una transformación lineal de $V\otimes V$, y menos un isomorfismo. El problema es que en $V$ multiplicar por $i$ no es multiplicar la función por el número $i$, sino correr la onda, y correr la onda en $t$ no es lo mismo que correrla en $s$. Con las ondas complejas $e^{int}$, multiplicar por $i$ sí es multiplicar la función por el número $i$, y ese número sale de cualquiera de los dos factores: $\bigl(i\,\psi(t)\bigr)\varphi(s)=\psi(t)\bigl(i\,\varphi(s)\bigr)$. Por eso en esta parte las ondas se toman complejas desde el principio.
