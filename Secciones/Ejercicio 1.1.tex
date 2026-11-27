@@ -220,8 +220,9 @@ Estas igualdades se comprueban escribiendo $z=a+ib$, $w=c+id$ y desarrollando am
 La \emph{fórmula de Euler} establece que, para $x\in\mathbb R$,
 $e^{ix}=\cos x+i\sin x$. Todo número complejo $z=a+ib$ puede escribirse en \emph{forma polar}
 $z=Ae^{ix}$, donde $A=|z|\ge 0$ es su módulo y $x$ es el ángulo que forma el segmento que va
-de $0$ a $z$ con el eje real. Leyendo la figura como un triángulo
-rectángulo de hipotenusa $A$, se tiene
+de $0$ a $z$ con el eje real. Si se dibujan, en el plano complejo, el segmento de $0$ a $z$ y
+su proyección sobre el eje real, se forma un triángulo rectángulo de hipotenusa $A$, cateto
+horizontal $a$ y cateto vertical $b$, de modo que
 \begin{equation}\label{eq:polar}
   a=A\cos x,\qquad b=A\sin x .
 \end{equation}
@@ -570,7 +571,7 @@ cero exactamente cuando $n=m$. Para dos cosenos,
 y el primer término vale $\frac12\cdot 2\pi=\pi$ si $n=m$ y $0$ si $n\ne m$. Para dos senos
 ocurre lo mismo, pues la identidad tiene los mismos dos cosenos con un signo menos en el
 segundo, que de todos modos se anula. Para un coseno y un seno, la identidad solo contiene
-senos, y por $\int_0^{2\pi}\cos(kt)\,dt=\begin{cases}2\pi,&k=0\\0,&k\neq0\end{cases}\quad\text{y}\quad \int_0^{2\pi}\sin(kt)\,dt=0$ \eqref{eq:integrales} el resultado es $0$ para cualquier $n$ y $m$.
+senos, y por las mismas integrales \eqref{eq:integrales} el resultado es $0$ para cualquier $n$ y $m$.
 
 La figura~\ref{fig:productos} ilustra estos resultados. La función
 $\cos^2 t=\frac12+\frac12\cos 2t$ nunca es negativa y oscila alrededor de su valor medio

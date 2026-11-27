@@ -144,14 +144,14 @@ traducciones, y al final de la solución se reúnen todas sus fórmulas.
 ]
   \node[caja=colCu] (a) at (0,0)    {\textbf{(a) Coeficientes}\\[1pt]
         $\alpha=Ae^{ix},\ \beta=Be^{iy}$};
-  \node[caja=colSu] (b) at (8.2,0)  {\textbf{(b) Onda}\\[1pt]
+  \node[caja=colSu] (b) at (8.8,0)  {\textbf{(b) Onda}\\[1pt]
         $\psi(t)=A\cos(t-x)+B\cos(2t-y)$};
-  \node[caja=colSd] (c) at (4.1,-4) {\textbf{(c) Esfera de Bloch}\\[1pt]
+  \node[caja=colSd] (c) at (4.4,-4) {\textbf{(c) Esfera de Bloch}\\[1pt]
         $\vec r=(\sin\theta\cos\varphi,\,\sin\theta\sin\varphi,\,\cos\theta)$};
   % (a) <-> (b)
-  \draw[flecha] ([yshift=3mm]a.east) -- node[etq, above=1pt]{regla del enunciado \eqref{eq:a-b}}
+  \draw[flecha] ([yshift=3mm]a.east) -- node[etq, above=1pt]{regla del\\enunciado \eqref{eq:a-b}}
         ([yshift=3mm]b.west);
-  \draw[flecha] ([yshift=-3mm]b.west) -- node[etq, below=1pt]{lectura de las crestas \eqref{eq:b-a}} ([yshift=-3mm]a.east);
+  \draw[flecha] ([yshift=-3mm]b.west) -- node[etq, below=1pt]{lectura de\\las crestas \eqref{eq:b-a}} ([yshift=-3mm]a.east);
   % (a) <-> (c)
   \draw[flecha] ([xshift=-8mm]a.south) -- ([xshift=-14mm]c.north);
   \draw[flecha] ([xshift=-6mm]c.north) -- ([xshift=0mm]a.south);
@@ -160,7 +160,7 @@ traducciones, y al final de la solución se reúnen todas sus fórmulas.
   % (b) <-> (c)
   \draw[flecha] ([xshift=0mm]b.south) -- ([xshift=6mm]c.north);
   \draw[flecha] ([xshift=14mm]c.north) -- ([xshift=8mm]b.south);
-  \node[etq, anchor=west] at (8.0,-2.05) {$\downarrow$ se olvida la fase global \eqref{eq:b-c}\\
+  \node[etq, anchor=west] at (8.6,-2.05) {$\downarrow$ se olvida la fase global \eqref{eq:b-c}\\
         $\uparrow$ se elige la fase global $\gamma$ \eqref{eq:c-b}};
 \end{tikzpicture}
 \caption{Las tres representaciones del estado $\ket\psi$ y las fórmulas que traducen entre
@@ -189,7 +189,7 @@ sumarlas se obtiene la función completa:
   \psi(t)=A\cos(t-x)+B\cos(2t-y).}
 \end{equation}
 Si se prefiere la forma rectangular $\alpha=a_1+ib_1$, $\beta=a_2+ib_2$, la
-fórmula~$(a+ib)\cdot\cos nt=a\cos nt+b\sin nt$ \eqref{eq:regla-coef} del punto~1.1, $(a+ib)\cdot\cos nt=a\cos nt+b\sin nt$, da la
+fórmula~$(a+ib)\cdot\cos nt=a\cos nt+b\sin nt$ \eqref{eq:regla-coef} del punto~1.1 da la
 misma función escrita como $\psi(t)=a_1\cos t+b_1\sin t+a_2\cos 2t+b_2\sin 2t$. La forma polar
 tiene la ventaja de que cada número se lee directamente en la gráfica.
 
@@ -273,7 +273,7 @@ quieren recuperar los dos números complejos que las producen. Es la traducción
 anterior.
 
 \paragraph{Fórmula.}
-Por la ecuación~$\alpha\ket0=A\cos(t-x),\quad\penalty0 \beta\ket1=B\cos(2t-y),\quad\penalty0 \psi(t)=A\cos(t-x)+B\cos(2t-y)$ \eqref{eq:a-b}, $\alpha\ket0=A\cos(t-x)$ tiene altura $A$ y cresta en
+Por la ecuación~\eqref{eq:a-b}, $\alpha\ket0=A\cos(t-x)$ tiene altura $A$ y cresta en
 $t_\alpha\equiv x$, y $\beta\ket1=B\cos(2t-y)$ tiene altura $B$ y primera cresta en
 $t_\beta\equiv\frac y2$. Al despejar los cuatro números se obtiene
 \begin{equation}\label{eq:b-a}
@@ -577,8 +577,7 @@ para obtener una hay que elegir la fase global.
 
 \paragraph{Fórmula.}
 Por la forma~$\ket\psi\sim\cos\tfrac\theta2\,\ket0+e^{i\varphi}\sin\tfrac\theta2\,\ket1$ \eqref{eq:forma-bloch},
-$\ket\psi\sim\cos\frac\theta2\ket0+e^{i\varphi}\sin\frac\theta2\ket1$, el estado
-$\cos\frac\theta2\ket0+e^{i\varphi}\sin\frac\theta2\ket1$ corresponde al punto, y todos los demás
+el estado $\cos\frac\theta2\ket0+e^{i\varphi}\sin\frac\theta2\ket1$ corresponde al punto, y todos los demás
 difieren de él en una fase global $e^{i\gamma}$. Al multiplicar los dos coeficientes por
 $e^{i\gamma}$ se obtiene
 \begin{equation}\label{eq:c-a}
@@ -606,8 +605,7 @@ crestas, y de los coeficientes a la esfera con $\cos\frac\theta2=A$, $\sin\frac\
 $\varphi\equiv y-x$.
 
 \paragraph{Fórmula.}
-Por la ecuación~$A=\text{altura de }\alpha\ket0,\quad\penalty0 x\equiv t_\alpha,\quad\penalty0 B=\text{altura de }\beta\ket1,\quad\penalty0 y\equiv 2t_\beta$ \eqref{eq:b-a}, $A$ y $B$ son las alturas de las ondas, $x\equiv t_\alpha$ y
-$y\equiv 2t_\beta$. Al sustituir estos valores en $\cos\theta=A^2-B^2$ y en
+Por la ecuación~$A=\text{altura de }\alpha\ket0,\quad\penalty0 x\equiv t_\alpha,\quad\penalty0 B=\text{altura de }\beta\ket1,\quad\penalty0 y\equiv 2t_\beta$ \eqref{eq:b-a}, $A$ y $B$ son las alturas de las ondas. Al sustituir estos valores en $\cos\theta=A^2-B^2$ y en
 $\varphi\equiv y-x$, los ángulos de la esfera quedan escritos directamente en términos de las
 ondas:
 \begin{equation}\label{eq:b-c}
@@ -637,8 +635,7 @@ global.
 
 \paragraph{Fórmula.}
 Por la ecuación~$\alpha=e^{i\gamma}\cos\tfrac\theta2,\quad\penalty0 \beta=e^{i(\gamma+\varphi)}\sin\tfrac\theta2$ \eqref{eq:c-a}, $A=\cos\frac\theta2$, $x=\gamma$, $B=\sin\frac\theta2$ y
-$y=\gamma+\varphi$. Al sustituir estos valores en la onda de la ecuación~$\alpha\ket0=A\cos(t-x),\quad\penalty0 \beta\ket1=B\cos(2t-y),\quad\penalty0 \psi(t)=A\cos(t-x)+B\cos(2t-y)$ \eqref{eq:a-b},
-$\psi(t)=A\cos(t-x)+B\cos(2t-y)$, se obtiene
+$y=\gamma+\varphi$. Al sustituir estos valores en la onda $\psi(t)=A\cos(t-x)+B\cos(2t-y)$ de la ecuación~\eqref{eq:a-b} se obtiene
 \begin{equation}\label{eq:c-b}
   \destacado{\psi(t)=\cos\tfrac\theta2\,\cos(t-\gamma)
   +\sin\tfrac\theta2\,\cos(2t-\gamma-\varphi).}
@@ -653,7 +650,7 @@ esas ondas no son simples copias corridas unas de otras, como se explica a conti
 %======================================================================
 
 La onda $\psi(t)=\cos\frac\theta2\cos(t-\gamma)+\sin\frac\theta2\cos(2t-\gamma-\varphi)$ de la
-ecuación~$\psi(t)=\cos\tfrac\theta2\,\cos(t-\gamma)+\sin\tfrac\theta2\,\cos(2t-\gamma-\varphi)$ \eqref{eq:c-b} muestra un hecho que el widget permite ver directamente. Al cambiar la
+ecuación~\eqref{eq:c-b} muestra un hecho que el widget permite ver directamente. Al cambiar la
 fase global $\gamma$, la onda $\alpha\ket0=\cos\frac\theta2\cos(t-\gamma)$ se corre $\gamma$
 hacia la derecha, mientras que
 $\beta\ket1=\sin\frac\theta2\cos\bigl(2(t-\frac{\gamma+\varphi}2)\bigr)$ se corre solo
