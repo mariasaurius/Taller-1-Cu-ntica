@@ -16,7 +16,8 @@ resultados para el estado de los puntos 1.3 y 1.4,
   \ket\psi=\tfrac{\sqrt3}{2}\ket0+\tfrac{i}{2}\ket1 ,
 \]
 y al final del notebook se repiten todas las comprobaciones con $200$ estados y valores de
-$\tau$, $\eta$ y $p$ elegidos al azar.
+$\tau$, $\eta$ y $p$ elegidos al azar. Las simulaciones usan la semilla $2026$; con Qiskit 2.6.2
+el notebook reproduce exactamente los números de las tablas de este punto.
 
 \begin{definicionT}[Circuito y disparo]
 En Qiskit, un \emph{circuito} es una lista de operaciones que se aplican a uno o varios qubits,
@@ -53,8 +54,20 @@ La función \texttt{construir\_psi\_prima} aplica las fórmulas del punto 1.3,
 \[
   \alpha'=-e^{-i\eta}\alpha,\qquad \beta'=e^{-i\eta}e^{i\tau}\beta,\qquad c=\beta\,(1+e^{i\tau}),
 \]
-y devuelve un error si $\beta=0$ (no hay solución) o si $\tau=\pm\pi$ (daría $c=0$). Se
-probaron las tres soluciones del ejemplo del punto 1.3 con $\eta=0$ y una con $\eta=1$:
+y devuelve un error si $\beta=0$ (no hay solución) o si $\tau=\pm\pi$ (daría $c=0$):
+\begin{verbatim}
+def construir_psi_prima(alpha, beta, tau, eta=0.0):
+    # Si beta = 0 no hay solución (punto 1.3)
+    if abs(beta) < 1e-12:
+        raise ValueError("beta = 0: |psi> es |0> y no existe |psi'>")
+    if abs(abs(tau) - np.pi) < 1e-12:
+        raise ValueError("tau = pi da c = 0, que está excluido")
+    alpha_p = -np.exp(-1j * eta) * alpha
+    beta_p = np.exp(-1j * eta) * np.exp(1j * tau) * beta
+    c = beta * (1 + np.exp(1j * tau))
+    return Statevector([alpha_p, beta_p]), c
+\end{verbatim}
+Se probaron las tres soluciones del ejemplo del punto 1.3 con $\eta=0$ y una con $\eta=1$:
 
 \begin{center}
 \renewcommand{\arraystretch}{1.3}
@@ -68,8 +81,10 @@ probaron las tres soluciones del ejemplo del punto 1.3 con $\eta=0$ y una con $\
 \end{tabular}
 \end{center}
 
-Todas las $\ket{\psi'}$ tienen exactamente las probabilidades de $\ket\psi$, y las frecuencias
-quedan a menos de dos desviaciones estándar de ellas. Luego se calculó
+Las frecuencias están redondeadas a cuatro decimales; por eso en la fila de $\tau=0$ suman
+$0.9999$ (los valores sin redondear son $2981/4000=0.74525$ y $1019/4000=0.25475$). Todas las
+$\ket{\psi'}$ tienen exactamente las probabilidades de $\ket\psi$, y las frecuencias quedan a
+menos de dos desviaciones estándar de ellas. Luego se calculó
 $\ket\psi+e^{i\eta}\ket{\psi'}$, se normalizó y se comparó con $\ket1$ con el método
 \texttt{equiv}, que dice si dos estados son iguales salvo fase global:
 
@@ -123,7 +138,11 @@ circuito de $\ket\psi$ y las demás con el de $\ket{\psi'}$, y se juntaron los c
 
 Para todo $p$ las probabilidades exactas son las de $\ket\psi$, como se mostró en el punto 1.4, y
 las frecuencias quedan cerca de ellas: la diferencia más grande, en $p=\frac12$, es de unas
-$2.1$ desviaciones estándar.
+$2.1$ desviaciones estándar. Una diferencia de ese tamaño también se explica por el azar. Con la
+aproximación normal, una frecuencia queda a más de $2.1$ desviaciones estándar de su
+probabilidad con probabilidad cercana a $0.036$, así que entre las diez frecuencias de $0$ de las
+partes (a) y (b) al menos una lo hace con probabilidad $1-(1-0.036)^{10}\approx0.31$, cerca de
+una vez de cada tres.
 
 %======================================================================
 \subsection*{(c) Vectores de Bloch}
@@ -137,7 +156,10 @@ entradas de la matriz,
   r_z=\rho_{00}-\rho_{11},
 \]
 y se compararon con la lectura \emph{r} que muestra el widget del punto 1.2 para cada estado
-puro (las capturas del punto 1.3):
+puro (las capturas del punto 1.3). El widget solo representa estados puros, así que para cada
+mezcla se combinaron las lecturas del widget para $\ket\psi$ y $\ket{\psi'}$ con la fórmula
+$\vec r_p=p\,\vec r+(1-p)\,\vec r\,'$ \eqref{eq:14-segmento} del punto 1.4. Por ejemplo, para
+$p=\frac14$, $\frac14(0,\,0.866,\,0.5)+\frac34(0,\,-0.866,\,0.5)=(0,\,-0.433,\,0.5)$.
 
 \begin{center}
 \renewcommand{\arraystretch}{1.3}
@@ -148,18 +170,20 @@ puro (las capturas del punto 1.3):
   $\ket{\psi'}$, $\tau=\frac\pi2$ & $(0.866,\ 0,\ 0.5)$ & $(0.866,\ 0,\ 0.5)$ & $1$\\
   $\ket{\psi'}$, $\tau=-\frac\pi2$ & $(-0.866,\ 0,\ 0.5)$ & $(-0.866,\ 0,\ 0.5)$ & $1$\\
   estado final $\ket1$ & $(0,\ 0,\ -1)$ & $(0,\ 0,\ -1)$ & $1$\\\hline
-  $\rho_p$, $p=0$ & $(0,\ -0.866,\ 0.5)$ & -- & $1$\\
-  $\rho_p$, $p=\frac14$ & $(0,\ -0.433,\ 0.5)$ & -- & $0.6614$\\
-  $\rho_p$, $p=\frac12$ & $(0,\ 0,\ 0.5)$ & -- & $0.5$\\
-  $\rho_p$, $p=\frac34$ & $(0,\ 0.433,\ 0.5)$ & -- & $0.6614$\\
-  $\rho_p$, $p=1$ & $(0,\ 0.866,\ 0.5)$ & -- & $1$
+  $\rho_p$, $p=0$ & $(0,\ -0.866,\ 0.5)$ & $(0,\ -0.866,\ 0.5)$ & $1$\\
+  $\rho_p$, $p=\frac14$ & $(0,\ -0.433,\ 0.5)$ & $(0,\ -0.433,\ 0.5)$ & $0.6614$\\
+  $\rho_p$, $p=\frac12$ & $(0,\ 0,\ 0.5)$ & $(0,\ 0,\ 0.5)$ & $0.5$\\
+  $\rho_p$, $p=\frac34$ & $(0,\ 0.433,\ 0.5)$ & $(0,\ 0.433,\ 0.5)$ & $0.6614$\\
+  $\rho_p$, $p=1$ & $(0,\ 0.866,\ 0.5)$ & $(0,\ 0.866,\ 0.5)$ & $1$
 \end{tabular}
 \end{center}
 
-Los vectores de los estados puros coinciden con los del widget, que muestra tres decimales. El
-widget solo representa estados puros, así que para las mezclas la comparación se hace con los
-valores calculados en el punto 1.4, $\vec r_p=\bigl(0,(2p-1)\frac{\sqrt3}{2},\frac12\bigr)$, que
-dan los mismos números. Todos los estados, salvo el final, tienen $r_z=0.5$: los estados puros
+Los vectores de los estados puros coinciden con los del widget, que muestra tres decimales. Los
+de las mezclas coinciden con los puntos de la cuerda obtenidos de las lecturas del widget, y
+también con la fórmula del punto 1.4, $\vec r_p=\bigl(0,(2p-1)\frac{\sqrt3}{2},\frac12\bigr)$.
+En Qiskit el vector de cada mezcla sale de las entradas de su matriz $\rho_p$, mientras que en la
+columna del widget sale de los dos estados puros; que den lo mismo comprueba que las mezclas
+están sobre la cuerda. Todos los estados, salvo el final, tienen $r_z=0.5$: los estados puros
 están en el paralelo de $\ket\psi$ ($|\vec r|=1$) y las mezclas con $0<p<1$ están en la cuerda
 que une $\ket{\psi'}$ con $\ket\psi$, dentro de la esfera ($|\vec r|<1$). La
 figura~\ref{fig:15-bloch} compara el dibujo de Qiskit con la figura del punto 1.4, que muestra la misma cuerda.

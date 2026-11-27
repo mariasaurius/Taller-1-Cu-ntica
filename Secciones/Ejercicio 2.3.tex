@@ -14,13 +14,27 @@ El estado del sistema es
 \]
 Según el enunciado, si Ana mide en una base ortonormal $\{u_0,u_1\}$ de $H_1$, el resultado $k$ tiene probabilidad $p_k=\|\Psi_k\|^2$, donde $\Psi_k(s)=\bk{u_k}{\Psi(\cdot,s)}$, y la onda de Bruno pasa a ser $\varphi_k=\Psi_k/\sqrt{p_k}$.
 
-\paragraph{Medición de Ana en la base $\{\ket0,\ket1\}$.} Como $\bk{0}{\Psi(\cdot,s)}=\frac1{\sqrt2}\ket0(s)$ y $\bk{1}{\Psi(\cdot,s)}=\frac1{\sqrt2}\ket1(s)$, se obtienen $p_0=p_1=\frac12$, con $\varphi_0=\ket0$ y $\varphi_1=\ket1$.
-
-\paragraph{Medición de Ana en la base $\{\ket+,\ket-\}$.} Como $\bk{\pm}{0}=\frac1{\sqrt2}$ y $\bk{\pm}{1}=\pm\frac1{\sqrt2}$,
+\paragraph{Medición de Ana en la base $\{\ket0,\ket1\}$.} El producto interno de $H_1$ es el del punto 2.1,
 \[
-  \Psi_\pm(s)=\frac1{\sqrt2}\Bigl(\frac1{\sqrt2}\ket0(s)\pm\frac1{\sqrt2}\ket1(s)\Bigr)=\frac12\bigl(\ket0\pm\ket1\bigr)(s).
+  \bk fg=\frac1{2\pi}\int_0^{2\pi}\overline{f(t)}\,g(t)\,dt,
 \]
-Entonces $\|\Psi_\pm\|^2=\frac14+\frac14=\frac12$, es decir, $p_\pm=\frac12$, y $\varphi_\pm=\frac{\ket0\pm\ket1}{\sqrt2}=\ket\pm$.
+y para calcular $\Psi_k(s)$ se integra en $t$ con $s$ fija. Para $u_0=e^{it}$, como $\overline{e^{it}}=e^{-it}$,
+\[
+  \Psi_0(s)=\frac1{2\pi}\int_0^{2\pi}e^{-it}\,\frac1{\sqrt2}\bigl(e^{i(t+s)}+e^{2i(t+s)}\bigr)\,dt
+  =\frac1{\sqrt2}\Bigl(e^{is}\,\frac1{2\pi}\int_0^{2\pi}dt+e^{2is}\,\frac1{2\pi}\int_0^{2\pi}e^{it}\,dt\Bigr)
+  =\frac1{\sqrt2}\,e^{is},
+\]
+donde se usaron $e^{-it}e^{i(t+s)}=e^{is}$, $e^{-it}e^{2i(t+s)}=e^{it}e^{2is}$ y la integral del punto 2.1,
+\[
+  \frac1{2\pi}\int_0^{2\pi}e^{ikt}\,dt=\begin{cases}1,&k=0,\\0,&k\neq0.\end{cases}
+\]
+Del mismo modo, con $u_1=e^{2it}$ el término que sobrevive es $e^{-2it}e^{2i(t+s)}=e^{2is}$, y $\Psi_1(s)=\frac1{\sqrt2}\,e^{2is}$. Como $\|e^{is}\|=\|e^{2is}\|=1$, se obtienen $p_0=p_1=\frac12$, y la onda de Bruno queda $\varphi_0=e^{is}=\ket0$ o $\varphi_1=e^{2is}=\ket1$.
+
+\paragraph{Medición de Ana en la base $\{\ket+,\ket-\}$.} Ahora $\overline{\ket\pm(t)}=\frac1{\sqrt2}\bigl(e^{-it}\pm e^{-2it}\bigr)$. Al multiplicar por $\Psi(t,s)$ aparecen cuatro términos, y al integrar en $t$ solo quedan los dos en los que se cancela la dependencia en $t$: $e^{-it}e^{i(t+s)}=e^{is}$ y $e^{-2it}e^{2i(t+s)}=e^{2is}$. Los otros dos, $e^{-it}e^{2i(t+s)}=e^{it}e^{2is}$ y $e^{-2it}e^{i(t+s)}=e^{-it}e^{is}$, tienen integral $0$. Así,
+\[
+  \Psi_\pm(s)=\frac1{2\pi}\int_0^{2\pi}\frac1{\sqrt2}\bigl(e^{-it}\pm e^{-2it}\bigr)\frac1{\sqrt2}\bigl(e^{i(t+s)}+e^{2i(t+s)}\bigr)\,dt=\frac12\bigl(e^{is}\pm e^{2is}\bigr).
+\]
+Como $e^{is}$ y $e^{2is}$ son ortonormales, $\|\Psi_\pm\|^2=\frac14+\frac14=\frac12$, es decir, $p_\pm=\frac12$, y $\varphi_\pm=\frac1{\sqrt2}\bigl(e^{is}\pm e^{2is}\bigr)=\ket\pm$.
 
 Los resultados de Ana se resumen en la tabla siguiente.
 \begin{center}
@@ -34,7 +48,7 @@ Los resultados de Ana se resumen en la tabla siguiente.
 \end{tabular}
 \end{center}
 
-\paragraph{Probabilidades de Bruno.} Sea $\{w_0,w_1\}$ cualquier base ortonormal de $H_1$, en la que Bruno mide. Como $\{\ket0,\ket1\}$ es base ortonormal, para cualquier vector unitario $w$ se cumple $|\bk{w}{0}|^2+|\bk{w}{1}|^2=\|w\|^2=1$; lo mismo ocurre con la base $\{\ket+,\ket-\}$. Por tanto, si Ana mide en la base $\{\ket0,\ket1\}$,
+\paragraph{Probabilidades de Bruno.} Sea $\{w_0,w_1\}$ cualquier base ortonormal de $H_1$, en la que Bruno mide. Si la onda de Bruno es $\varphi_k$, obtiene $w_j$ con probabilidad $|\bk{w_j}{\varphi_k}|^2$, donde cada producto interno es una integral en $s$ como las anteriores. Como Bruno no conoce el resultado de Ana, por la ley de probabilidad total la probabilidad de $w_j$ es $\sum_k p_k\,|\bk{w_j}{\varphi_k}|^2$. Como $\{\ket0,\ket1\}$ es base ortonormal, para cualquier vector unitario $w$ se cumple $|\bk{w}{0}|^2+|\bk{w}{1}|^2=\|w\|^2=1$; lo mismo ocurre con la base $\{\ket+,\ket-\}$. Por tanto, si Ana mide en la base $\{\ket0,\ket1\}$,
 \[
   P(\text{Bruno obtiene } w_j)=\tfrac12\,|\bk{w_j}{0}|^2+\tfrac12\,|\bk{w_j}{1}|^2=\tfrac12 ,
 \]
@@ -44,11 +58,30 @@ y si Ana mide en la base $\{\ket+,\ket-\}$, la probabilidad también es
 \]
 Bruno ve, entonces, probabilidades iguales a $\frac12$ para cualquier base suya y sin importar la base de Ana. La respuesta a la pregunta es que no dependen.
 
-\paragraph{Reescritura con kets.} Con kets el cálculo muestra la razón. Como Bruno no conoce el resultado de Ana, su estado promedio es
+\paragraph{Reescritura con kets.} En kets, $\Psi=\frac1{\sqrt2}\bigl(\ket0\otimes\ket0+\ket1\otimes\ket1\bigr)$, y calcular $\Psi_k$ es hacer el producto interno con $u_k$ solo en el primer factor, que es el de la variable $t$:
 \[
-  \sum_k p_k\,\ket{\varphi_k}\bra{\varphi_k}.
+  \Psi_k=\frac1{\sqrt2}\bigl(\bk{u_k}{0}\,\ket0+\bk{u_k}{1}\,\ket1\bigr).
 \]
-Para la base $\{\ket0,\ket1\}$ esta suma es $\frac12\ket0\bra0+\frac12\ket1\bra1=\frac12 I$, y para la base $\{\ket+,\ket-\}$ es $\frac12\ket+\bra++\frac12\ket-\bra-=\frac12 I$. Las dos sumas dan el mismo operador. Como la probabilidad de cada resultado $w_j$ de Bruno es $\bra{w_j}\bigl(\tfrac12 I\bigr)\ket{w_j}=\tfrac12$, Bruno no puede saber qué base eligió Ana. Lo que sí depende de la base de Ana son las probabilidades conjuntas, es decir, cómo se relacionan los resultados de los dos, y eso solo se ve cuando se comparan ambos resultados.
+Con $u_k=\ket\pm$, como $\bk{\pm}{0}=\frac1{\sqrt2}$ y $\bk{\pm}{1}=\pm\frac1{\sqrt2}$, sale directamente $\Psi_\pm=\frac12\bigl(\ket0\pm\ket1\bigr)$, y con $u_k=\ket0$ o $\ket1$ sale $\Psi_0=\frac1{\sqrt2}\ket0$ y $\Psi_1=\frac1{\sqrt2}\ket1$, porque $\bk00=\bk11=1$ y $\bk01=\bk10=0$. Son los mismos resultados del cálculo con ondas, sin escribir ninguna integral.
+
+Lo que tiene Bruno también se puede escribir en una sola matriz. Como no conoce el resultado de Ana, su estado es la mezcla (definición del punto 1.4)
+\[
+  \rho_B=\sum_k p_k\,\ket{\varphi_k}\bra{\varphi_k}.
+\]
+Para la base $\{\ket0,\ket1\}$,
+\[
+  \rho_B=\tfrac12\ket0\bra0+\tfrac12\ket1\bra1=\tfrac12\begin{pmatrix}1&0\\0&0\end{pmatrix}+\tfrac12\begin{pmatrix}0&0\\0&1\end{pmatrix}=\tfrac12 I,
+\]
+y para la base $\{\ket+,\ket-\}$, con $\ket\pm=\frac1{\sqrt2}\begin{pmatrix}1\\\pm1\end{pmatrix}$,
+\[
+  \rho_B=\tfrac12\ket+\bra++\tfrac12\ket-\bra-=\tfrac12\cdot\tfrac12\begin{pmatrix}1&1\\1&1\end{pmatrix}+\tfrac12\cdot\tfrac12\begin{pmatrix}1&-1\\-1&1\end{pmatrix}=\tfrac12 I .
+\]
+Las dos elecciones de Ana dejan a Bruno con la misma matriz. Como $\bk{\varphi}{w}$ es el conjugado de $\bk{w}{\varphi}$, se tiene $|\bk{w_j}{\varphi_k}|^2=\bk{w_j}{\varphi_k}\bk{\varphi_k}{w_j}$, y la probabilidad de cada resultado de Bruno es
+\[
+  \sum_k p_k\,|\bk{w_j}{\varphi_k}|^2=\bra{w_j}\rho_B\ket{w_j}=\tfrac12\bk{w_j}{w_j}=\tfrac12 .
+\]
+
+\paragraph{Qué se gana.} Con kets, las integrales se reemplazan por productos internos de vectores de coeficientes en $\C^2$ y $\C^4$, que se calculan con las reglas $\bk00=\bk11=1$ y $\bk01=0$; en el cálculo con ondas hay que revisar en cada integral qué términos se anulan, y con kets eso ya está incluido en esas reglas. Además, el resultado no depende de que los estados sean ondas: el mismo cálculo vale para cualquier par de qubits, y es el que se programa en Qiskit, donde un estado de dos qubits es un vector de $4$ amplitudes. Por último, y esto es lo que responde la pregunta, con kets se ve la razón del resultado: todo lo que Bruno puede observar depende solo de la matriz $\rho_B$, que es $\frac12 I$ para las dos bases de Ana, y eso vale para cualquier base de Bruno a la vez. Con ondas solo se ve que cada probabilidad da $\frac12$. Lo que sí depende de la base de Ana son las probabilidades conjuntas, es decir, cómo se relacionan los resultados de los dos, y eso solo se ve cuando se comparan ambos resultados.
 
 \paragraph{Implementación en Qiskit.} El circuito usa dos qubits: el qubit $0$ representa la variable $t$ (Ana) y el qubit $1$ la variable $s$ (Bruno). Como $\ket0$ corresponde a $e^{it}$ y $\ket1$ a $e^{2it}$, una compuerta de Hadamard sobre el qubit $0$ seguida de una CNOT prepara $\Psi$ a partir de $\ket{00}$. Si Ana mide en la base $\{\ket+,\ket-\}$, se aplica una Hadamard al qubit $0$ antes de medir en la base computacional; lo mismo hace Bruno con el qubit $1$. Como las operaciones de Ana actúan sobre un qubit y las de Bruno sobre el otro, medir ambos al final da la misma estadística que medir primero a Ana y después a Bruno. El código es el siguiente.
 \begin{verbatim}

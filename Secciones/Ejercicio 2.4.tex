@@ -15,12 +15,24 @@ Si Ana envió $1$, el estado es $\ket{+\cdots+}$ o $\ket{-\cdots-}$. Como $|\bk{
 \[
   \prod_{j=1}^n\bigl|\bk{x_j}{+}\bigr|^2=\prod_{j=1}^n\bigl|\bk{x_j}{-}\bigr|^2=\prod_{j=1}^n\tfrac12=2^{-n}.
 \]
-Solo hay dos cadenas con todos los resultados iguales (la de puros ceros y la de puros unos), así que Bruno decide $0$ con probabilidad $2\cdot2^{-n}=2^{1-n}$. Esa es la probabilidad de error cuando Ana envió $1$. Por tanto,
+Solo hay dos cadenas con todos los resultados iguales (la de puros ceros y la de puros unos), así que Bruno decide $0$ con probabilidad $2\cdot2^{-n}=2^{1-n}$. Esa es la probabilidad de error cuando Ana envió $1$. Si Ana envía $0$ y $1$ con la misma probabilidad, por la ley de probabilidad total,
 \[
   P_{\text{error}}=\tfrac12\cdot 0+\tfrac12\cdot 2^{1-n}=2^{-n}.
 \]
 Para $n=1$ el error es $\frac12$, y Bruno no sabe nada, como se vio en el punto anterior. Para $n=2$ es $\frac14$, para $n=3$ es $\frac18$, y en general tiende a $0$ cuando $n$ crece.
 
-La regla anterior no es la mejor posible. Con una medición óptima (que no se desarrolla aquí, porque requiere calcular autovalores) el error disminuye más; por ejemplo, es aproximadamente $0.067$ para $n=3$ y $0.034$ para $n=4$.
+\paragraph{Conclusión.} Si el procedimiento existiera, Bruno podría determinar, con un error tan pequeño como se quiera, la base que eligió Ana, aunque Ana no le envíe nada. Esto choca con el punto anterior. Allí se vio que, para las dos bases de Ana, la onda de Bruno queda en la misma mezcla,
+\[
+  \rho_B=\sum_k p_k\,\ket{\varphi_k}\bra{\varphi_k}=\tfrac12 I .
+\]
+Las operaciones de la teoría cuántica son transformaciones lineales, y si Bruno aplica a su onda una transformación lineal $T$ y después mide, sus probabilidades dependen solo de $\rho_B$. En efecto, sea $w$ un resultado posible de la medición final y sean $a_0=\bra{w}T\ket{0}$ y $a_1=\bra{w}T\ket{1}$, los productos internos de $w$ con $T\ket0$ y con $T\ket1$. Si $\varphi=x_0\ket0+x_1\ket1$, por linealidad $\bk{w}{T\varphi}=a_0x_0+a_1x_1$, y
+\[
+  |\bk{w}{T\varphi}|^2=\overline{(a_0x_0+a_1x_1)}\,(a_0x_0+a_1x_1)=\sum_{i,j\in\{0,1\}}\overline{a_i}\,a_j\,x_j\overline{x_i}.
+\]
+El número $x_j\overline{x_i}$ es la entrada $(j,i)$ de la matriz $\ket\varphi\bra\varphi$ (definición del punto 1.4). Como Bruno no conoce el resultado de Ana, la probabilidad de $w$ es
+\[
+  \sum_k p_k\,|\bk{w}{T\varphi_k}|^2=\sum_{i,j}\overline{a_i}\,a_j\,(\rho_B)_{ji},
+\]
+que solo depende de las entradas de $\rho_B$. Como $\rho_B=\frac12 I$ en los dos casos, esa probabilidad es $\frac12\bigl(|a_0|^2+|a_1|^2\bigr)$ sin importar el bit de Ana, y Bruno se equivocaría con probabilidad $\frac12$ con cualquier regla de decisión. El procedimiento del enunciado da, en cambio, un error de $2^{-n}$. Por tanto, el procedimiento no puede ser una transformación lineal, y no existe en la teoría cuántica. Si existiera, Bruno podría conocer la elección de Ana sin recibir nada de ella, es decir, se podría enviar información a distancia de forma instantánea.
 
-\paragraph{Conclusión.} Si el procedimiento existiera, Bruno podría determinar con error tan pequeño como se quiera la base que Ana eligió. Pero en el punto anterior se vio que las probabilidades de Bruno no dependen de esa base. Que Bruno pudiera detectar la elección de Ana, sin recibir nada de ella, permitiría enviar información a distancia de forma instantánea, algo que la teoría cuántica no permite. Por tanto, el procedimiento no puede existir. Este es el teorema de no clonación: no hay una operación cuántica que copie un estado desconocido. Una razón directa es que una operación cuántica es lineal, y $\varphi\mapsto\varphi\otimes\varphi$ no lo es: $(\varphi_1+\varphi_2)\otimes(\varphi_1+\varphi_2)$ contiene los términos cruzados $\varphi_1\otimes\varphi_2+\varphi_2\otimes\varphi_1$, que no pueden salir de $\varphi_1\otimes\varphi_1$ y $\varphi_2\otimes\varphi_2$ por linealidad.
+Este es el teorema de no clonación: no hay una operación cuántica que copie un estado desconocido. También se puede ver directamente que $\varphi\mapsto\varphi\otimes\varphi$ no es lineal: $(\varphi_1+\varphi_2)\otimes(\varphi_1+\varphi_2)$ contiene los términos cruzados $\varphi_1\otimes\varphi_2+\varphi_2\otimes\varphi_1$, que no pueden salir de $\varphi_1\otimes\varphi_1$ y $\varphi_2\otimes\varphi_2$ por linealidad.

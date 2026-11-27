@@ -100,16 +100,16 @@ $\varphi'=\varphi-\pi$) es el punto del paralelo opuesto a $\ket\psi$.
 
 \subsection*{Comprobación con el widget}
 
-Para $\ket\psi=\frac{\sqrt3}{2}\ket0+\frac{i}{2}\ket1$ ($\theta=60^\circ$, $\varphi=90^\circ$,
+Para $\ket\psi=\frac{\sqrt3}{2}\ket0+\frac{i}{2}\ket1$ ($\theta=\frac\pi3$, $\varphi=\frac\pi2$,
 figura~\ref{fig:13-widget-psi}) y $\eta=0$, las soluciones son $\ket{\psi'}=-\frac{\sqrt3}{2}\ket0+\frac{i}{2}e^{i\tau}\ket1$.
 Tres de ellas:
 \begin{center}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabular}{ccccc}
   $\tau$ & $\ket{\psi'}$ & $\varphi'$ & $c=\beta(1+e^{i\tau})$ & $|c|$\\\hline
-  $0$ & $-\frac{\sqrt3}{2}\ket0+\frac{i}{2}\ket1$ & $-90^\circ$ & $i$ & $1$\\
-  $\frac\pi2$ & $-\frac{\sqrt3}{2}\ket0-\frac12\ket1$ & $0^\circ$ & $-\frac12+\frac{i}{2}$ & $\frac{\sqrt2}{2}$\\
-  $-\frac\pi2$ & $-\frac{\sqrt3}{2}\ket0+\frac12\ket1$ & $180^\circ$ & $\frac12+\frac{i}{2}$ & $\frac{\sqrt2}{2}$
+  $0$ & $-\frac{\sqrt3}{2}\ket0+\frac{i}{2}\ket1$ & $-\frac\pi2$ & $i$ & $1$\\
+  $\frac\pi2$ & $-\frac{\sqrt3}{2}\ket0-\frac12\ket1$ & $0$ & $-\frac12+\frac{i}{2}$ & $\frac{\sqrt2}{2}$\\
+  $-\frac\pi2$ & $-\frac{\sqrt3}{2}\ket0+\frac12\ket1$ & $\pi$ & $\frac12+\frac{i}{2}$ & $\frac{\sqrt2}{2}$
 \end{tabular}
 \end{center}
 Por ejemplo, con $\tau=\frac\pi2$,
@@ -146,8 +146,8 @@ $|\beta|$. Cada flecha punteada es $c-\beta=e^{i\tau}\beta$, es decir, $\beta$ g
 \centering
 \includegraphics[width=\linewidth]{Imágenes/p13_widget_psi.png}
 \caption{El estado $\ket\psi=\frac{\sqrt3}{2}\ket0+\frac{i}{2}\ket1$ en el widget del punto 1.2:
-(a) los coeficientes, (b) las ondas y (c) el punto de la esfera de Bloch, con $\theta=60^\circ$
-y $\varphi=90^\circ$.}
+(a) los coeficientes, (b) las ondas y (c) el punto de la esfera de Bloch, con $\theta=\frac\pi3$
+y $\varphi=\frac\pi2$ (el widget muestra los ángulos en grados: $60^\circ$ y $90^\circ$).}
 \label{fig:13-widget-psi}
 \end{figure}
 
@@ -155,19 +155,19 @@ y $\varphi=90^\circ$.}
 \centering
 \begin{minipage}{0.19\linewidth}\centering
   \includegraphics[width=\linewidth]{Imágenes/p13_bloch_psi.png}\\[-2pt]
-  {\footnotesize $\ket\psi$\\ $\varphi=90^\circ$}
+  {\footnotesize $\ket\psi$\\ $\varphi=\frac\pi2$}
 \end{minipage}\hfill
 \begin{minipage}{0.19\linewidth}\centering
   \includegraphics[width=\linewidth]{Imágenes/p13_bloch_tau0.png}\\[-2pt]
-  {\footnotesize $\tau=0$\\ $\varphi'=-90^\circ$}
+  {\footnotesize $\tau=0$\\ $\varphi'=-\frac\pi2$}
 \end{minipage}\hfill
 \begin{minipage}{0.19\linewidth}\centering
   \includegraphics[width=\linewidth]{Imágenes/p13_bloch_taumas.png}\\[-2pt]
-  {\footnotesize $\tau=\frac\pi2$\\ $\varphi'=0^\circ$}
+  {\footnotesize $\tau=\frac\pi2$\\ $\varphi'=0$}
 \end{minipage}\hfill
 \begin{minipage}{0.19\linewidth}\centering
   \includegraphics[width=\linewidth]{Imágenes/p13_bloch_taumenos.png}\\[-2pt]
-  {\footnotesize $\tau=-\frac\pi2$\\ $\varphi'=180^\circ$}
+  {\footnotesize $\tau=-\frac\pi2$\\ $\varphi'=\pi$}
 \end{minipage}\hfill
 \begin{minipage}{0.19\linewidth}\centering
   \includegraphics[width=\linewidth]{Imágenes/p13_bloch_final.png}\\[-2pt]
